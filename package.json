@@ -1,0 +1,30 @@
+{
+  "name": "OAA",
+  "version": "1.0.0",
+  "description": "Final Year Project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "client": "cd client && npm start",
+    "start_env": "concurrently \"nodemon server.js\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tonio-KhAn/OAA.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tonio-KhAn/OAA/issues"
+  },
+  "homepage": "https://github.com/Tonio-KhAn/OAA#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.15",
+    "morgan": "^1.10.0"
+  }
+}
