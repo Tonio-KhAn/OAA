@@ -11,12 +11,12 @@ const userSchema = new Schema({
     },
     first_name: {
         type: String,
-        required: true,
+        required: false,
         trim: true
     },
     last_name: {
         type: String,
-        required: true,
+        required: false,
         trim: true
     },
     alt_email: {
@@ -26,26 +26,27 @@ const userSchema = new Schema({
     },
     dob: {
         type: String,
-        required: true,
+        required: false,
         trim: true
     },
     type: {
         type: String,
-        required: true,
+        required: false,
         trim: true
     },
     sex: {
         type: String,
-        required: true,
+        required: false,
         trim: true
     },
     resumeID: {
         type: String,
+        required: false,
         trim: true
     },
     password: {
         type: String,
-        required: true,
+        required: false,
         trim: true
     },
 }, {
