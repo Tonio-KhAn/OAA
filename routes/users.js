@@ -184,16 +184,12 @@ router.route("/verify/:id").post((req, res) => {
     return res.status(400).json(
       {msg: 'User already verified'})
   }
-});
-  User.findOne({verifiedToken: sentToken})
-  .then(user=> {
-    user.verified = true;
+  user.verified = true;
     user.save()
     return res.status(200).json(
       {msg: 'User verified'})
-      .catch(err => res.status(400).json("Error: " + err));
-  })
-  
+})
+.catch(err => res.status(400).json("Error: " + err));
 });
 
 
