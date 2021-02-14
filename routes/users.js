@@ -6,18 +6,25 @@ const JWT = require('jsonwebtoken');
 const crypto = require('crypto');
 const config = require('config');
 const auth = require('../middleware/auth');
+const nodemailer = require('nodemailer');
+
+let transporter = nodemailer.createTransport({
+  service:'gmail',
+  auth:{
+    user:'oaafinal831@gmail.com',
+    pass:'thisisthepassword',
+  },
+  tls:{rejectUnauthorized: false
+  }
+});
+
 router.route("/").get(auth, (req, res) => {
     User.find()
       .then(user => res.json(user))
       .catch(err => res.status(400).json("Error: " + err));
   });
 
-  router.route("/").get(auth, (req, res) => {
-    User.find()
-      .then(user => res.json(user))
-      .catch(err => res.status(400).json("Error: " + err));
-  });
-
+  
   router.route('/user').get(auth, (req, res) => {
     User.findById(req.user.id)
       .select('-password')
@@ -87,28 +94,47 @@ router.route("/add").post((req, res) => {
     .save()
     .then(user => {
 
-      JWT.sign(
-          {id:user.id
-          },
-          config.get('jwtSecret'),
-          { expiresIn:3600},
-          (err, token) =>{
-              if(err) throw err;
-
-              res.json({token,
-              user:{
-                  id: user.id,
-                  uwi_email: user.uwi_email
+      crypto.randomBytes(32,(err,buffer)=>{
+        if(err){
+          console.log(err)
+        }
+        const token = buffer.toString("hex")
+        User.findOne({uwi_email})
+        .then(user=>{
+          if(!user){
+            return res.status(400).json({error:"No User with that email address"})
+          }
+          user.verifiedToken = token
+          user.save()
+          User.findOne({uwi_email})
+          .then(user=>{
+            let mailOption = {
+              from: 'oaafinal831@gmail.com',
+             to: user.uwi_email,
+             subject: 'This is a test',
+             text: 'this is a test ', 
+             html:`
+             <p> Click link to verify email.</p>
+             <h5><a href="http://localhost:8080/users/verify/${token}">link</a></h5>
+             `,
+            }
+            transporter.sendMail(mailOption,function(err, data){
+              if(err){
+               console.log('error',err)
+               return res.status(400).json({msg: 'error' });
+              }else{
+               return res.status(200).json({msg: 'sucessfull' });
               }
+            });
           })
-          .catch(err => res.status(400).json("msg: " + err));
+        })
+      });
           }
       )
-
+      .catch(err => res.status(400).json("msg: " + err));
       });
       })
   })
-});
 });
 
 
@@ -124,6 +150,9 @@ router.route("/login").post((req, res) => {
       if(!user) return res.status(400).json(
           {msg: 'User does not exist'}
       );
+      if(user.verified == false) return res.status(400).json(
+        {msg: 'User not verified'}
+    );
       bcrypt.compare(password, user.password)
       .then(isMatch =>{
           if(!isMatch) return res.status(400).json({msg: ' Wrong PassWord' });
@@ -146,5 +175,27 @@ router.route("/login").post((req, res) => {
       })
 });
 });
+
+router.route("/verify/:id").post((req, res) => {
+  const sentToken = req.params.id;
+  User.findOne({verifiedToken: sentToken})
+  .then(user=> {
+  if(user.verified == true){
+    return res.status(400).json(
+      {msg: 'User already verified'})
+  }
+});
+  User.findOne({verifiedToken: sentToken})
+  .then(user=> {
+    user.verified = true;
+    user.save()
+    return res.status(200).json(
+      {msg: 'User verified'})
+      .catch(err => res.status(400).json("Error: " + err));
+  })
+  
+});
+
+
 
 module.exports = router;

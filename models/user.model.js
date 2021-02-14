@@ -55,13 +55,14 @@ const userSchema = new Schema({
         trim: true
     },
     resetTokenExpire: {
-        type: String,
+        type: Date,
         required: false,
         trim: true
     },
     verifiedToken: {
         type: String,
         required: false,
+        unique: true,
         trim: true
     },
     verified: {
