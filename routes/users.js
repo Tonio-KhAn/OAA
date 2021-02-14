@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 let User = require('../models/user.model');
 const path = require('path');
 const JWT = require('jsonwebtoken');
+const crypto = require('crypto');
 const config = require('config');
 const auth = require('../middleware/auth');
 router.route("/").get(auth, (req, res) => {
@@ -10,6 +11,22 @@ router.route("/").get(auth, (req, res) => {
       .then(user => res.json(user))
       .catch(err => res.status(400).json("Error: " + err));
   });
+
+  router.route("/").get(auth, (req, res) => {
+    User.find()
+      .then(user => res.json(user))
+      .catch(err => res.status(400).json("Error: " + err));
+  });
+
+  router.route('/user').get(auth, (req, res) => {
+    User.findById(req.user.id)
+      .select('-password')
+      .then(user => res.json(user))
+      .catch(err => res.status(400).json('msg: ' + err));
+   
+});
+
+
 
 router.route('/email').get((req, res) => {
   const uwi_email = req.body.uwi_email;
@@ -35,6 +52,10 @@ router.route("/add").post((req, res) => {
   const type = req.body.type;
   const sex = req.body.sex;
   const password = req.body.password;
+  const resetToken = null;
+  const resetTokenExpire = null;
+  const verifiedToken = null;
+  const verified = 0;
   
   if (!uwi_email || !first_name || !last_name || !dob || !type || !sex || !password){
       return res.status(400).json({msg: ' Enter all Fields' });
@@ -52,8 +73,11 @@ router.route("/add").post((req, res) => {
         dob,
         type,
         sex,
-        password
-       
+        password,
+        resetToken,
+        resetTokenExpire,
+        verified,
+        verifiedToken,
       });
   bcrypt.genSalt(10,(err,salt) =>{
       bcrypt.hash(newUser.password, salt, (err, hash) => {
