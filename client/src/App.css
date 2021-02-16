@@ -7,7 +7,7 @@
 
 .home,
 .about,
-.sign-up {
+.register {
   display: flex;
   height: 90vh;
   align-items: center;
@@ -23,7 +23,7 @@
   font-size: 100px;
 }
 
-.sign-up {
+.register {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
