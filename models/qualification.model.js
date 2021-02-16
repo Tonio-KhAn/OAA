@@ -13,7 +13,7 @@ const qualificationSchema = new Schema({
         trim: true
     },
     startDate: {
-        type: date,
+        type: Date,
         required: true,
         trim: true
     },

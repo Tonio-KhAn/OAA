@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const degreeNameSchema = new Schema({
-    Name: {
+    name: {
         type: String,
         required: true,
         trim: true

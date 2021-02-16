@@ -5,11 +5,16 @@ const path = require('path');
 const bodyParser = require ('body-parser');
 
 const usersRouter = require("./routes/users");
+const jobOpportunityRouter = require("./routes/jobOpportunity");
+const jobQualificationRouter = require("./routes/jobQualification");
+const qualificationRouter = require("./routes/qualification");
+const degreeNameRouter = require("./routes/degreeName");
+const jobApplicationRouter = require("./routes/jobApplication");
 
 const app = express();
 app.use(bodyParser.json())
 
-const PORT = process.env.PORT || 8080;
+
 
 const MONGODB_URI = require('./config/keys').mongoURI;
 mongoose.connect(MONGODB_URI,{ // connect to database
@@ -22,16 +27,15 @@ mongoose.connection.on('connected', () => { // Check for database connection
     console.log('Database is connected')
 });
 
-app.use("/users", usersRouter) //yy
+app.use("/users", usersRouter) 
+app.use("/jobOpportunity", jobOpportunityRouter) 
+app.use("/jobQualification", jobQualificationRouter) 
+app.use("/qualification", qualificationRouter) 
+app.use("/degreeName", degreeNameRouter)
+app.use("/jobApplication", jobApplicationRouter)
 
 app.use(morgan("tiny"));
 
-app.get('/api/name',(req, res) => {
-    const data = {
-        username: 'tonio',
-        age: 5 
-    };
-    res.json(data);
-});
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, console.log(`Server is starting at ${PORT}`)); // passwordISnotpasswordyma

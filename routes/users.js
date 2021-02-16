@@ -18,7 +18,7 @@ let transporter = nodemailer.createTransport({
   }
 });
 
-router.route("/").get(auth, (req, res) => {
+router.route('/').get(auth, (req, res) => {
     User.find()
       .then(user => res.json(user))
       .catch(err => res.status(400).json("Error: " + err));
@@ -35,11 +35,15 @@ router.route("/").get(auth, (req, res) => {
 
 
 
-router.route('/email').get((req, res) => {
-  const uwi_email = req.body.uwi_email;
-    User.findOne({uwi_email})
+router.route("/email/:id").get((req, res) => {
+  const email = req.params.id;
+  const uwi_email3 = email.replace('!','.');
+  const uwi_email2 = uwi_email3.replace('!','.');
+  const uwi_email = uwi_email2.replace('!','.');
+  console.log(uwi_email)
+    User.findOne({uwi_email: uwi_email})
     .then(user => {
-      if(user) return res.status(400).json(
+      if(user) return res.status(200).json(
           {msg: 'User with same username already exist'}
       )
       return res.status(200).json(
@@ -50,7 +54,7 @@ router.route('/email').get((req, res) => {
 });
 
 
-router.route("/add").post((req, res) => {
+router.route('/add').post((req, res) => {
   const uwi_email = req.body.uwi_email;
   const first_name = req.body.first_name;
   const last_name = req.body.last_name;
@@ -66,10 +70,10 @@ router.route("/add").post((req, res) => {
   
   if (!uwi_email || !first_name || !last_name || !dob || !type || !sex || !password){
       return res.status(400).json({msg: ' Enter all Fields' });
-  }
+  };
   User.findOne({uwi_email})
   .then(user => {
-      if(user) return res.status(400).json(
+      if(user) return res.status(200).json(
           {msg: 'User with same username already exist'}
       );
       const newUser = new User({
@@ -102,7 +106,7 @@ router.route("/add").post((req, res) => {
         User.findOne({uwi_email})
         .then(user=>{
           if(!user){
-            return res.status(400).json({error:"No User with that email address"})
+            return res.status(200).json({error:"No User with that email address"})
           }
           user.verifiedToken = token
           user.save()
@@ -115,13 +119,13 @@ router.route("/add").post((req, res) => {
              text: 'this is a test ', 
              html:`
              <p> Click link to verify email.</p>
-             <h5><a href="http://localhost:8080/users/verify/${token}">link</a></h5>
+             <h5><a href="http://localhost:5000/users/verify/${token}">link</a></h5>
              `,
             }
             transporter.sendMail(mailOption,function(err, data){
               if(err){
                console.log('error',err)
-               return res.status(400).json({msg: 'error' });
+               return res.status(200).json({msg: 'error' });
               }else{
                return res.status(200).json({msg: 'sucessfull' });
               }
@@ -137,8 +141,7 @@ router.route("/add").post((req, res) => {
   })
 });
 
-
-router.route("/login").post((req, res) => {
+router.route('/login').post((req, res) => {
   const uwi_email = req.body.uwi_email;
   const password = req.body.password;
   
