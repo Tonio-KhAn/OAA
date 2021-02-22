@@ -4,12 +4,13 @@ import useForm from '../useForm';
 import '../Form.css';
 
 
-const FormSignup = ({ submitForm } ) => {
+const FormSignup = ({ submitForm, name }) => {
   const { handleChange, handleSubmit, errors, values } = useForm(
     submitForm,
     validate
   );
-
+  console.log(name);
+  
   return (
     <div className='form-content-right'>
       <form onSubmit={handleSubmit} className='form' noValidate>
@@ -24,8 +25,8 @@ const FormSignup = ({ submitForm } ) => {
             type='text'
             name='first_name'
             placeholder='Enter your first name'
-            value={values.first_name}
-            onChange={handleChange}
+            value={name.first_name}
+            
           />
           {errors.first_name && <p>{errors.first_name}</p>}
         </div>
@@ -36,8 +37,7 @@ const FormSignup = ({ submitForm } ) => {
             type='text'
             name='last_name'
             placeholder='Enter your last name'
-            value={values.last_name}
-            onChange={handleChange}
+            value={name.last_name}
           />
           {errors.last_name && <p>{errors.last_name}</p>}
         </div>
@@ -48,8 +48,7 @@ const FormSignup = ({ submitForm } ) => {
             type='email'
             name='uwi_email'
             placeholder='Enter your UWI email'
-            value={values.uwi_email}
-            onChange={handleChange}
+            value={name.uwi_email}
           />
           {errors.uwi_email && <p>{errors.uwi_email}</p>}
         </div>

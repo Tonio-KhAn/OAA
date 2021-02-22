@@ -12,8 +12,8 @@ export default function SignUp() {
   const [emailChecked, setEmailChecked] = useState(false);
 
   const [values, setValues] = useState({
-    first_name: '',
-    last_name: '',
+    first_name: "",
+    last_name: "",
     uwi_email: '',
     password: '',
     password2: '',
@@ -25,9 +25,9 @@ export default function SignUp() {
 
   function submitForm(valuesToSend) {
     const data = {
-      uwi_email: valuesToSend.uwi_email,
-      first_name: valuesToSend.first_name,
-      last_name: valuesToSend.last_name,
+      uwi_email: values.uwi_email,
+      first_name: values.first_name,
+      last_name: values.last_name,
       alt_email: valuesToSend.alt_email,
       dob: valuesToSend.dob,
       type: valuesToSend.type,
@@ -47,22 +47,33 @@ export default function SignUp() {
       )
       .then(
         res => console.log(res.data),
+        setIsSubmitted(true),
       )
       .catch(err => console.log(err));
-    setIsSubmitted(true);
+    
     
   }
 
   function checkEmail(valuesToSend) {
-    setEmailChecked(true);
-    
     axios
       .get(
         "/users/email/" + valuesToSend.uwi_email,
       )
       .then(
-        res => console.log(res.data,"hello"),
-      );
+        res => { 
+        if (res.data.msg == "User with same username already exist")
+        console.log(res.data,"hello")
+        else{
+        const first = valuesToSend.uwi_email.split(".");
+        const second = first[1].split("@");
+        values.first_name = first[0];
+        values.last_name = second[0];
+        values.uwi_email = valuesToSend.uwi_email;
+        console.log(first[0]);
+        console.log(second[0]);
+        setEmailChecked(true);
+        }
+      });
   }
 
 
@@ -78,7 +89,7 @@ export default function SignUp() {
           <FormSignUpEmail checkEmail={checkEmail}/>
         ) : (
           !isSubmitted ? (
-            <FormSignup submitForm={submitForm}/>
+            <FormSignup submitForm={submitForm} name={values} />
           ) : (
             <FormSuccess />
           )

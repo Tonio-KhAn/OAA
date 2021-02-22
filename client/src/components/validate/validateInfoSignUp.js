@@ -1,25 +1,6 @@
 export default function validateInfo(values) {
   let errors = {};
 
-  if (!values.first_name.trim()) {
-    errors.first_name = 'First name required';
-  }
-  else if (!/^[A-Za-z]+/.test(values.first_name.trim())) {
-    errors.first_name = 'Enter a valid first name';
-  }
-
-  if (!values.last_name.trim()) {
-    errors.last_name = 'Last name required';
-  }
-  else if (!/^[A-Za-z]+/.test(values.last_name.trim())) {
-    errors.first_name = 'Enter a valid last name';
-  }
-
-  if (!values.uwi_email) {
-    errors.uwi_email = 'UWI email required';
-  } else if (!/\S+@my.uwi.edu+/.test(values.uwi_email)) {
-    errors.uwi_email = 'UWI email address is invalid';
-  }
   if (!values.password) {
     errors.password = 'Password is required';
   } else if (values.password.length < 6) {
