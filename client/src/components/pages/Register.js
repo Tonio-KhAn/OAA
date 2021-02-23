@@ -1,7 +1,7 @@
 import '../../App.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../Form.css';
+import '../css/Form.css';
 import FormSignup from '../forms/FormSignup';
 import FormSignUpEmail from '../forms/FormSignUpEmail';
 import FormSuccess from '../forms/FormSuccess';

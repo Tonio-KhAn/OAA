@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { Component }from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
 import Home from './components/pages/Home';
@@ -8,10 +8,19 @@ import Register from './components/pages/Register';
 import Login from './components/pages/Login';
 import createPost from './components/pages/createPost';
 import Profile from './components/pages/Profile';
+import ConfirmEmail from './components/pages/ConfirmEmail';
+import JobOpportunity from './components/pages/JobOpportunityFeed';
+import { loadUser } from "./actions/authActions";
+import { Provider } from "react-redux";
+import store from "./store";
 
-function App() {
+class App extends Component {
+
+
+  render() {
   return (
     <>
+    <Provider store={store}>
       <Router>
         <Navbar />
         <Switch>
@@ -21,10 +30,13 @@ function App() {
           <Route path='/login' component={Login} />
           <Route path='/createPost' component={createPost} />
           <Route path='/profile' component={Profile} />
+          <Route path='/confirm/' component={ConfirmEmail} />
+          <Route path='/jobs' component={JobOpportunity} />
         </Switch>
       </Router>
+      </Provider>
     </>
   );
 }
-
+}
 export default App;

@@ -1,7 +1,7 @@
 import '../../App.css';
 import React, { useState } from 'react';
-import '../Form.css';
-import HS from '../HS';
+import '../css/Form.css';
+import HS from '../css/HS.css';
 
 export default function CreatePost() {
   return (

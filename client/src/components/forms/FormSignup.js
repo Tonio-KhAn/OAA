@@ -1,7 +1,7 @@
 import React from 'react';
 import validate from '../validate/validateInfoSignUp';
-import useForm from '../useForm';
-import '../Form.css';
+import useForm from '../useforms/useFormSignup';
+import '../css/Form.css';
 
 
 const FormSignup = ({ submitForm, name }) => {
@@ -75,6 +75,44 @@ const FormSignup = ({ submitForm, name }) => {
             onChange={handleChange}
           />
           {errors.password2 && <p>{errors.password2}</p>}
+        </div>
+        <div className='form-inputs'>
+          <label className='form-label'>Alternate email</label>
+          <input
+            className='form-input'
+            type='email'
+            name='alt_email'
+            placeholder='Enter an alternate email'
+            value={values.alt_email}
+            onChange={handleChange}
+          />
+          {errors.alt_email && <p>{errors.alt_email}</p>}
+        </div>
+        <div className='form-inputs'>
+          <label className='form-label'>Date of Birth</label>
+          <input
+            className='form-input'
+            type='date'
+            name='dob'
+            placeholder='Enter your date of birth (yyyy-mm-dd)'
+            value={values.dob}
+            onChange={handleChange}
+          />
+          {errors.dob && <p>{errors.dob}</p>}
+        </div>
+        <div className='form-inputs'>
+          <label className='form-label'>Sex</label>
+          <select id="sex" name="sex" form="form" onChange={handleChange}>
+            <option value='M'>Male</option>
+            <option value='F'>Female</option>
+          </select>
+        </div>
+        <div className='form-inputs'>
+          <label className='form-label'>Type</label>
+          <select id="type" name="type" form="form" onChange={handleChange}>
+            <option value='Student'>Student</option>
+            <option value='Alumni'>Alumni</option>
+          </select>
         </div>
         <button className='form-input-btn' type='submit'>
           Sign up

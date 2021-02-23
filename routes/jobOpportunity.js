@@ -74,6 +74,16 @@ router.route("/add").post(auth, (req, res) => {
     })
   
   });
+  
+  router.route("/").get(auth, (req, res) => {
+    JobOpportunity.find((error, data) => {
+      if (error) {
+        console.log(error);
+      } else {
+        res.json(data);
+      }
+    })
+  });
 
 
 

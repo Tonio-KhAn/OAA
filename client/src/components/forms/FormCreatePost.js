@@ -1,7 +1,7 @@
 import React from 'react';
 import validate from '../validate/validateLogin';
 import useForm from '../useForm';
-import '../Form.css';
+import '../css/Form.css';
 
 const FormCreatePost = ({ submitForm } ) => {
   const { handleChange, handleSubmit, errors, values } = useForm(
