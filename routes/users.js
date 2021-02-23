@@ -119,7 +119,7 @@ router.route('/add').post((req, res) => {
              text: 'this is a test ', 
              html:`
              <p> Click link to verify email.</p>
-             <h5><a href="http://localhost:5000/users/verify/${token}">link</a></h5>
+             <h5><a href="http://localhost:3000/verification/${token}">link</a></h5>
              `,
             }
             transporter.sendMail(mailOption,function(err, data){
@@ -184,7 +184,7 @@ router.route("/verify/:id").post((req, res) => {
   User.findOne({verifiedToken: sentToken})
   .then(user=> {
   if(user.verified == true){
-    return res.status(400).json(
+    return res.status(200).json(
       {msg: 'User already verified'})
   }
   user.verified = true;
