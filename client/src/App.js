@@ -10,6 +10,7 @@ import createPost from './components/pages/createPost';
 import Profile from './components/pages/Profile';
 import ConfirmEmail from './components/pages/ConfirmEmail';
 import JobOpportunity from './components/pages/JobOpportunityFeed';
+import LogOut from './components/pages/LogOut';
 import { loadUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -32,6 +33,7 @@ class App extends Component {
           <Route path='/profile' component={Profile} />
           <Route path='/confirm/' component={ConfirmEmail} />
           <Route path='/jobs' component={JobOpportunity} />
+          <Route path='/logout' component={LogOut} />
         </Switch>
       </Router>
       </Provider>

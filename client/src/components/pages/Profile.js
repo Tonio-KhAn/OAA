@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import '../../App.css';
 import {connect} from 'react-redux';
 import axios from "axios";
@@ -18,6 +18,7 @@ function Profile(props) {
     sex: ''
   });
 
+function loadUser(){
   const token = props.auth.token;
 
   const config = {
@@ -43,7 +44,11 @@ function Profile(props) {
     },
   )
   .catch(err => console.log(err));
+  };
 
+  useEffect(() => {
+    loadUser();
+  }, []);
     return (
 
       <div class= "page">

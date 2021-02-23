@@ -38,22 +38,23 @@ function Navbar(props) {
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                Home
+              <Link to='/Profile' className='nav-links' onClick={closeMobileMenu}>
+                Profile
               </Link>
             </li>
             <li className='nav-item'>
               <Link
-                to='/about'
+                to='/jobs'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                About
+                My Job Opportunities
               </Link>
             </li>
+            
           
             <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+              <Link to='/logout' className='nav-links' onClick={closeMobileMenu}>
                 Logout
               </Link>
             </li>
@@ -117,6 +118,8 @@ const mapStateToProps = state =>({
   isAuthenicated: state.auth.isAuthenticated,
   error:state.error
 }); 
+
+
 
 
 export default connect(
