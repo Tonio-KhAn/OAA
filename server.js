@@ -14,7 +14,7 @@ const jobApplicationRouter = require("./routes/jobApplication");
 const app = express();
 app.use(bodyParser.json())
 
-
+const PORT = process.env.PORT || 8080;
 
 const MONGODB_URI = require('./config/keys').mongoURI;
 mongoose.connect(MONGODB_URI,{ // connect to database
@@ -36,7 +36,7 @@ app.use("/jobApplication", jobApplicationRouter)
 
 app.use(morgan("tiny"));
 
-const PORT = process.env.PORT || 5000;
+
 
 if (process.env.NODE_ENV =='production'){
     app.use(express.static('client/build'));
