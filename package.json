@@ -5,9 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm start --prefix client",
     "client-install": "npm install --prefix client",
-    "heroku_postbuild": "npm install --prefix client -- only=dev && npm install --prefix client && npm run build --prefix client",
+    "heroku_postbuild": "cd react-ui/ && npm client-install --only=dev && NODE_ENV=development npm client-install --no-shrinkwrap && npm run build --prefix client",
     "start": "node server.js",
     "client": "cd client && npm start",
     "start_env": "concurrently \"nodemon server.js\" \"npm run client\""
