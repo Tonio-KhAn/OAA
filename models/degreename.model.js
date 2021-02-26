@@ -15,4 +15,4 @@ const degreeNameSchema = new Schema({
 
 const DegreeName = mongoose.model('DegreeName', degreeNameSchema);
 
-module.exports = DegreeName;
+module.exports = DegreeName; 
