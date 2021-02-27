@@ -1,4 +1,4 @@
-import React , { Component }from 'react';
+import React , { Component , Fragment} from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
 import Home from './components/pages/Home';
@@ -11,10 +11,15 @@ import Profile from './components/pages/Profile';
 import ConfirmEmail from './components/pages/ConfirmEmail';
 import JobOpportunity from './components/pages/JobOpportunityFeed';
 import LogOut from './components/pages/LogOut';
+import AllJobs from './components/tabs/AllJobs';
+import RecomendedJobs from './components/tabs/RecomendedJobs';
+import Apply from './components/pages/Apply';
+import CreateJobs from './components/tabs/CreateJobs';
 import Verification from './components/pages/Verification';
 import { loadUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
 
@@ -25,7 +30,6 @@ class App extends Component {
     <Provider store={store}>
       <Router>
         <Navbar />
-        <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/about' component={About} />
           <Route path='/register' component={Register} />
@@ -34,9 +38,12 @@ class App extends Component {
           <Route path='/profile' component={Profile} />
           <Route path='/confirm/' component={ConfirmEmail} />
           <Route path='/jobs' component={JobOpportunity} />
+          <Route path='/jobs/all' component={AllJobs} />
+          <Route path='/jobs/my' component={RecomendedJobs} />
+          <Route path='/apply/:id' component={Apply} />
+          <Route path='/jobs/create' component={CreateJobs}/>
           <Route path='/logout' component={LogOut} />
           <Route path='/verification/:id' component={Verification} />
-        </Switch>
       </Router>
       </Provider>
     </>
