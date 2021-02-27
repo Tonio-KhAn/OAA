@@ -14,6 +14,8 @@ import LogOut from './components/pages/LogOut';
 import AllJobs from './components/tabs/AllJobs';
 import RecomendedJobs from './components/tabs/RecomendedJobs';
 import Apply from './components/pages/Apply';
+import MyPost from './components/tabs/MyPost';
+import ManageDegree from './components/tabs/ManageDegrees';
 import CreateJobs from './components/tabs/CreateJobs';
 import Verification from './components/pages/Verification';
 import { loadUser } from "./actions/authActions";
@@ -36,6 +38,8 @@ class App extends Component {
           <Route path='/login' component={Login} />
           <Route path='/createPost' component={createPost} />
           <Route path='/profile' component={Profile} />
+          <Route path='/profile/myPost' component={MyPost} />
+          <Route path='/profile/manageDegrees' component={ManageDegree} />
           <Route path='/confirm/' component={ConfirmEmail} />
           <Route path='/jobs' component={JobOpportunity} />
           <Route path='/jobs/all' component={AllJobs} />

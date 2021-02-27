@@ -16,7 +16,8 @@ function CreateJobs() {
     const handleAdd = () => {
         setInputFields([...inputFields, {firstname:'', lastName:''} ])
     }
-
+    
+    
     const handleQualificationAdd = () => {
         console.log(Qualifications)
         console.log(qualificationValue)
