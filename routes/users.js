@@ -119,7 +119,7 @@ router.route('/add').post((req, res) => {
              text: 'this is a test ', 
              html:`
              <p> Click link to verify email.</p>
-             <h5><a href="http://localhost:3000/verification/${token}">link</a></h5>
+             <h5><a href="https://dcitconnect.herokuapp.com/verification/${token}">link</a></h5>
              `,
             }
             transporter.sendMail(mailOption,function(err, data){

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 let User = require('../models/user.model');
 let JobOpportunity = require('../models/jobOpportunity.model');
+let JobOpportunityMedia = require('../models/jobOpportunityMedia.model');
 let JobQualifications = require('../models/jobQualifications.model');
 let Qualification = require('../models/qualification.model');
 const path = require('path');
@@ -22,19 +23,34 @@ let transporter = nodemailer.createTransport({
 router.route("/add").post(auth, (req, res) => {
     const userId = req.user.id;
     const title = req.body.title;
+    const company = req.body.company;
     const description = req.body.description;
-
+    const documents = req.body.documents;
     const newJobOpportunity = new JobOpportunity({
         userId,
         title,
         description,
+        company,
     });
-    
+    console.log(documents);
     newJobOpportunity
     .save()
-    .then(jobOpportunity => { return res.status(200).json({msg:"sucessfully added!!!"});})
+    .then(jobOpportunity => { 
+      const jobOpportunityID = jobOpportunity.id
+      console.log(jobOpportunity.id)
+      documents.forEach(document => {
+       const mediaName = document.name
+        console.log(document.name)
+        const  newJobOpportunityMedia = new JobOpportunityMedia({
+        jobOpportunityID,
+        mediaName,
+       })
+       newJobOpportunityMedia
+       .save()
+    })
+    return res.status(200).json({msg: 'sucessfull' });
+    })
     .catch(err => res.status(400).json("Error: " + err));
-
   });
 
   router.route("/save/:id").get(auth, (req, res) => {
