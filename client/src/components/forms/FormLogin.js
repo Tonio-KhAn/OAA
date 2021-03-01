@@ -45,6 +45,9 @@ const FormLogin = ({ submitForm } ) => {
         <span className='form-input-login'>
           New to DCIT Connect? Sign up <a href='/register'>here</a>
         </span>
+        <span className='form-input-login'>
+          Forgot password? Click <a href='/reset'>here</a>
+        </span>
       </form>
     </div>
   );

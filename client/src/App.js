@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import About from './components/pages/About';
 import Register from './components/pages/Register';
 import Login from './components/pages/Login';
+import Reset from './components/pages/ResetPassword';
 import createPost from './components/pages/createPost';
 import Profile from './components/pages/Profile';
 import ConfirmEmail from './components/pages/ConfirmEmail';
@@ -48,6 +49,7 @@ class App extends Component {
           <Route path='/jobs/create' component={CreateJobs}/>
           <Route path='/logout' component={LogOut} />
           <Route path='/verification/:id' component={Verification} />
+          <Route path='/reset' component={Reset} />
       </Router>
       </Provider>
     </>
