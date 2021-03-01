@@ -40,7 +40,7 @@ function Login(props) {
       <div className='form-container'>
         <span className='close-btn'><Link to='/'>x</Link></span>
         <div className='form-content-left'>
-          <img className='form-img' alt='DCIT Picture' />
+        <img className='form-img' src='/1.png' alt='DCIT Picture' />
         </div>
           <FormLogin submitForm={submitForm}/>
         </div>
