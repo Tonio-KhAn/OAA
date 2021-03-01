@@ -1,27 +1,27 @@
 const router = require('express').Router();
 let User = require('../models/user.model');
-let DegreeName = require('../models/degreeName.model');
+let SkillName = require('../models/skillName.model');
 const path = require('path');
 const JWT = require('jsonwebtoken');
 const config = require('config');
 const auth = require('../middleware/auth');
 
 router.route("/").get((req, res) => {
-    DegreeName.find()
-      .then(degreeNames => res.json(degreeNames))
+    SkillName.find()
+      .then(skillName => res.json(skillName))
       .catch(err => res.status(400).json("Error: " + err));
   });
 
 router.route("/add").post(auth, (req, res) => {
     const name= req.body.name;
 
-    const newDegreeName = new DegreeName({
+    const newSkillName = new SkillName({
         name,
     });
     
-    newDegreeName
+    newSkillName
     .save()
-    .then(degreeName => { return res.status(200).json({msg:"sucessfully added!!!"});})
+    .then(skillName=> { return res.status(200).json({msg:"sucessfully added!!!"});})
     .catch(err => res.status(400).json("Error: " + err));
 
   });

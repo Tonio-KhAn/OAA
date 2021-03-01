@@ -3,6 +3,7 @@ let User = require('../models/user.model');
 let JobOpportunity = require('../models/jobOpportunity.model');
 let JobOpportunityMedia = require('../models/jobOpportunityMedia.model');
 let JobQualifications = require('../models/jobQualifications.model');
+let JobSkill = require('../models/jobSkill.model');
 let Qualification = require('../models/qualification.model');
 const path = require('path');
 const JWT = require('jsonwebtoken');
@@ -26,6 +27,8 @@ router.route("/add").post(auth, (req, res) => {
     const company = req.body.company;
     const description = req.body.description;
     const documents = req.body.documents;
+    const skills = req.body.skills;
+    const degrees = req.body.degrees;
     const newJobOpportunity = new JobOpportunity({
         userId,
         title,
@@ -37,6 +40,7 @@ router.route("/add").post(auth, (req, res) => {
     .save()
     .then(jobOpportunity => { 
       const jobOpportunityID = jobOpportunity.id
+      const jobID = jobOpportunity.id
       console.log(jobOpportunity.id)
       documents.forEach(document => {
        const mediaName = document.name
@@ -48,6 +52,26 @@ router.route("/add").post(auth, (req, res) => {
        newJobOpportunityMedia
        .save()
     })
+    skills.forEach(skill => {
+      const skillName = skill.name
+       console.log(skill.name)
+       const  newJobSkill = new JobSkill({
+       jobOpportunityID,
+       skillName,
+      })
+      newJobSkill
+      .save()
+   })
+   console.log(degrees)
+   degrees.forEach(degree => {
+    const qualificationID = degree.id
+    const  newJobQualifications = new JobQualifications({
+      jobID,
+      qualificationID,
+    })
+    newJobQualifications
+    .save()
+ })
     return res.status(200).json({msg: 'sucessfull' });
     })
     .catch(err => res.status(400).json("Error: " + err));

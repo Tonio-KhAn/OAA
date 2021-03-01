@@ -10,6 +10,8 @@ const jobQualificationRouter = require("./routes/jobQualification");
 const qualificationRouter = require("./routes/qualification");
 const degreeNameRouter = require("./routes/degreeName");
 const jobApplicationRouter = require("./routes/jobApplication");
+const jobSkillRouter = require("./routes/jobSkill");
+const skillNameRouter = require("./routes/skillName");
 
 const app = express();
 app.use(bodyParser.json())
@@ -33,6 +35,8 @@ app.use("/jobQualification", jobQualificationRouter)
 app.use("/qualification", qualificationRouter) 
 app.use("/degreeName", degreeNameRouter)
 app.use("/jobApplication", jobApplicationRouter)
+app.use("/jobSkill", jobSkillRouter)
+app.use("/skillName", skillNameRouter)
 
 app.use(morgan("tiny"));
 

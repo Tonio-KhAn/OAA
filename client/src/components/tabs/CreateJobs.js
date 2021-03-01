@@ -30,6 +30,7 @@ function CreateJobs(props) {
         .catch(err => console.log(err));
         };
 
+      
     const[ jobInfo, setJobInfo] = useState(
         {title: '',
          Company: '',
@@ -41,11 +42,70 @@ function CreateJobs(props) {
         {name:'test1', type:''}, 
         {name:'test2', type:''}, 
     ])
-    const[ Qualifications, setQualifications] = useState([
-        {name:''}, 
+    const[ qualifications, setQualifications] = useState([
     ])
 
-    const[ qualificationValue, setqualificationValue] = useState("networking")
+    const[ qualificationValue, setqualificationValue] = useState("no change")
+    
+    
+    const[ skillsList, setSkillsList] = useState([
+    ])
+
+    const[ degreesList, setDegreesList] = useState([
+    ])
+
+    const[ degrees, setDegrees] = useState([
+    ])
+    
+    const[ degreeValue, setDegreeValue] = useState("no change")
+
+    function getDegrees(){
+        const token = props.auth.token;
+
+        const config = {
+            headers: {}
+          };
+
+          if (token) {
+            config.headers["x-auth-token"] = token;
+          }
+
+        axios
+        .get(
+          "/degreeName/",
+          config
+        )
+        .then(
+          res => { console.log(res.data)
+          setDegreesList(res.data);
+          },
+        )
+        .catch(err => console.log(err));
+    }
+
+    function getSkills(){
+        const token = props.auth.token;
+
+        const config = {
+            headers: {}
+          };
+
+          if (token) {
+            config.headers["x-auth-token"] = token;
+          }
+
+        axios
+        .get(
+          "/skillName/",
+          config
+        )
+        .then(
+          res => { console.log(res.data)
+          setSkillsList(res.data);
+          },
+        )
+        .catch(err => console.log(err));
+    }
 
     const handleAdd = () => {
         setInputFields([...inputFields, {firstname:'', lastName:''} ])
@@ -53,16 +113,46 @@ function CreateJobs(props) {
     
     
     const handleQualificationAdd = () => {
-        console.log(Qualifications)
+        console.log(qualifications)
         console.log(qualificationValue)
-        setQualifications([...Qualifications, {name: qualificationValue} ])
-        console.log(Qualifications)
+        if (qualificationValue == "no change"){
+            setQualifications([...qualifications, {name: skillsList[0].name} ]) 
+        }else{
+                    setQualifications([...qualifications, {name: qualificationValue} ])
+        }
+        
+        console.log(qualifications)
     }
 
     const handleQualificationChange = e => {
         
         setqualificationValue(e.target.value);
         console.log(qualificationValue)
+    }
+
+    const handleDegreeAdd = () => {
+        
+        console.log(degrees)
+        console.log(degreeValue)
+        
+        if (degreeValue == "no change"){
+            setDegrees([...degrees, {id: degreesList[0]._id, name: degreesList[0].name} ]) 
+        }else{
+            degreesList.forEach(degreeSingle => {
+                if (degreeValue == degreeSingle._id){
+                    setDegrees([...degrees, {id: degreeValue, name: degreeSingle.name} ])
+                }
+            })
+        
+        }
+        console.log(degrees)
+    }
+
+    const handleDegreeChange = e => {
+        
+        setDegreeValue(e.target.value);
+        console.log(degreeValue)
+        console.log(degreesList)
     }
     
     const handleRemove = (index) => {
@@ -92,6 +182,8 @@ function CreateJobs(props) {
             company : jobInfo.company,
             description: jobInfo.description,
             documents: inputFields,
+            skills: qualifications,
+            degrees: degrees,
           };
           
           const config = {
@@ -119,6 +211,8 @@ function CreateJobs(props) {
 
       useEffect(() => {
         loadUser();
+        getDegrees();
+        getSkills();
       }, []);
 
     return (
@@ -164,9 +258,28 @@ function CreateJobs(props) {
          <button type="button" class="btn btn-primary btn-sm" onClick={() => handleAdd()}>Add</button>
 
         </div>
-        { Qualifications.map((Qualifications,index) =>(
+
+        { degrees.map((degree,index) =>(
             <div key={index} 
-            ><h5>{Qualifications.name}</h5></div>
+            ><h5>{degree.name}</h5></div>
+           
+        ))}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button" onClick={() => handleDegreeAdd()}>ADD</button>
+                </div>
+                <select class="custom-select" name="qualificationSelect" id="" onChange={handleDegreeChange}>
+                { degreesList.map((degreeList,index) =>(
+           <option key={index} value={degreeList._id}>{degreeList.name}</option>           
+        ))}
+                
+                
+  </select>
+</div>
+
+        { qualifications.map((qualification,index) =>(
+            <div key={index} 
+            ><h5>{qualification.name}</h5></div>
            
         ))}
             <div class="input-group mb-3">
@@ -174,9 +287,9 @@ function CreateJobs(props) {
                     <button class="btn btn-outline-secondary" type="button" onClick={() => handleQualificationAdd()}>ADD</button>
                 </div>
                 <select class="custom-select" name="qualificationSelect" id="" onChange={handleQualificationChange}>
-                <option value="networking">networking</option>
-                <option value="python">python</option>
-                <option value="java">java</option>
+                { skillsList.map((skillList,index) =>(
+           <option key={index} value={skillList.name}>{skillList.name}</option>           
+        ))}
   </select>
 </div>
 <div>
