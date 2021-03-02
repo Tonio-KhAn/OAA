@@ -12,6 +12,12 @@ router.route("/").get((req, res) => {
       .catch(err => res.status(400).json("Error: " + err));
   });
 
+  router.route("/:id").get((req, res) => {
+    DegreeName.findById(req.params.id)
+      .then(degreeNames => res.json(degreeNames))
+      .catch(err => res.status(400).json("Error: " + err));
+  });
+
 router.route("/add").post(auth, (req, res) => {
     const name= req.body.name;
 
