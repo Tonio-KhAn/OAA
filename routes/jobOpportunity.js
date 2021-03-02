@@ -21,6 +21,12 @@ let transporter = nodemailer.createTransport({
     }
   });
 
+  router.route("/media/:id").get((req, res) => {
+    JobOpportunityMedia.find({jobOpportunityID: req.params.id})
+      .then(jobOpportunityMedia => res.json(jobOpportunityMedia))
+      .catch(err => res.status(400).json("Error: " + err));
+  });
+
 router.route("/add").post(auth, (req, res) => {
     const userId = req.user.id;
     const title = req.body.title;
@@ -124,6 +130,13 @@ router.route("/add").post(auth, (req, res) => {
       }
     })
   });
+
+  router.route("/:id").get(auth, (req, res) => {
+    JobOpportunity.find({userId: req.params.id})
+    .then(myJobOpportunities => res.json(myJobOpportunities))
+    .catch(err => res.status(400).json("Error: " + err));
+  });
+
 
 
 

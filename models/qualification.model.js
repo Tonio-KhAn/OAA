@@ -27,6 +27,10 @@ const qualificationSchema = new Schema({
         required: true,
         trim: true
     },
+    courses: {
+        type: Array,
+        trim: true
+    },
 }, {
     timestamps: true,
 });

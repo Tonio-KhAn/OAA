@@ -1,15 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../App.css';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
-function Apply() {
+function Apply(props) {
+  const [testid, setTestid] = useState("");
     const[ values, setValues] = useState(
         {jobtitle: 'IT Manage', company: 'A Company', description:'A Job description goes here'},
     )
     const[ inputFields, setInputFields] = useState([
-        {name: "birth paper", type: ".php"},
-        {name: "grades", type: ".php"},
     ])
+    
+    function getMedias(){
+      const token = props.auth.token;
+      const config = {
+          headers: {}
+        };
+
+        if (token) {
+          config.headers["x-auth-token"] = token;
+        }
+
+      axios
+      .get(
+        "/jobOpportunity/media/"+ props.match.params.id,
+        config
+      )
+      .then(
+        res => { console.log(res.data)
+          setInputFields(res.data);
+        },
+      )
+      .catch(err => console.log(err));
+  }
+
+  useEffect(() => {
+    getMedias();
+  }, []);
 
     return (
      <>
@@ -23,7 +50,7 @@ function Apply() {
         <form>
       { inputFields.map((inputField,index) =>(
       <div class="input-group" key={index}>
-          <span >{inputField.name}</span>
+          <span >{inputField.mediaName}</span>
   <div class="custom-file">
   
     <input type="file" class="custom-file-input" id="inputGroupFile04"></input>
@@ -47,4 +74,12 @@ function Apply() {
     )
 }
 
-export default Apply
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+)(Apply);
+
+
