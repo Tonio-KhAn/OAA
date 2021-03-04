@@ -195,4 +195,43 @@ router.route("/verify/:id").post((req, res) => {
 .catch(err => res.status(400).json("Error: " + err));
 });
 
+router.route("/reset").post((req,res)=>{
+  const uwi_email = req.body.uwi_email;
+  crypto.randomBytes(32,(err,buffer)=>{
+      if(err){
+          console.log(err)
+      }
+      const token = buffer.toString("hex")
+      User.findOne({uwi_email})
+      .then(user=>{
+          if(!user){
+              return res.status(422).json({error:"User with that email does not exist!"})
+          }
+          user.resetToken = token
+          user.resetTokenExpire = Date.now() + 3600000
+          user.save().then((result)=>{
+              let mailOption = {
+               from: 'oaafinal831@gmail.com',
+               to: user.uwi_email,
+               subject: 'Reset Password',
+               text: 'this is a test ', 
+               html:`
+               <p> Click link to reset password.</p>
+               <h5><a href="http://localhost:3000/reset/${token}">link</a></h5>
+               `,
+              }
+              transporter.sendMail(mailOption,function(err, data){
+                if(err){
+                 console.log('error',err)
+                 return res.status(200).json({msg: 'error' });
+                }else{
+                 return res.status(200).json({msg: 'sucessfull' });
+                }
+              });
+            })
+
+      })
+  })
+})
+
 module.exports = router;
