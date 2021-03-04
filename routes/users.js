@@ -195,4 +195,27 @@ router.route("/verify/:id").post((req, res) => {
 .catch(err => res.status(400).json("Error: " + err));
 });
 
+router.route("/newpassword").post((req,res)=>{
+  const newpassword = req.body.password
+  const sentToken = req.body.token
+
+  User.findOne({resetToken:sentToken,expireToken:{$gt:Date.now()}})
+  .then(user=>{
+      if(!user){
+          return res.status(422).json({error:"Try again session expired"})
+      }
+      
+      bcrypt.hash(newPassword,12).then(hashedpassword=>{
+         user.password = hashedpassword
+         user.resetToken = undefined
+         user.expireToken = undefined
+         user.save().then((saveduser)=>{
+             res.json({message:"password updated success"})
+         })
+      })
+  }).catch(err=>{
+      console.log(err)
+  })
+})
+
 module.exports = router;
