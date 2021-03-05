@@ -61,8 +61,8 @@ export default function SignUp() {
       )
       .then(
         res => { 
-        if (res.data.msg == "User with same username already exist")
-        console.log(res.data,"hello")
+        if (res.data.msg == "User with same username already exist"){
+        console.log(res.data,"hello")}
         else{
         const first = valuesToSend.uwi_email.split(".");
         const second = first[1].split("@");
@@ -79,7 +79,7 @@ export default function SignUp() {
 
   return (
     <>
-      <div className='form-container'>
+      <div className='form-container-signup'>
         <span className='close-btn'><Link to='/'>x</Link></span>
         <div className='form-content-left'>
         <img className='form-img' src='/1.png' alt='DCIT Picture' />

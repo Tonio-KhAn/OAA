@@ -49,6 +49,7 @@ const FormSignup = ({ submitForm, name }) => {
             name='uwi_email'
             placeholder='Enter your UWI email'
             value={name.uwi_email}
+            readOnly
           />
           {errors.uwi_email && <p>{errors.uwi_email}</p>}
         </div>

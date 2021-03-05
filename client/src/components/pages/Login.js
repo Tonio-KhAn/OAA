@@ -37,7 +37,7 @@ function Login(props) {
     }
   return (
     <>
-      <div className='form-container'>
+      <div className='form-container-login'>
         <span className='close-btn'><Link to='/'>x</Link></span>
         <div className='form-content-left'>
         <img className='form-img' src='/1.png' alt='DCIT Picture' />

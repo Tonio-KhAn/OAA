@@ -12,7 +12,7 @@
 
 .btn--primary {
   background-color: var(--primary);
-  color: #242424;
+  color: white;
   border: 1px solid var(--primary);
 }
 
@@ -38,6 +38,6 @@
 .btn--medium:hover {
   transition: all 0.3s ease-out;
   background: #fff;
-  color: #242424;
+  color: white;
   transition: 250ms;
 }

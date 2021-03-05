@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 const useForm = (callback, validate) => {
   const [values, setValues] = useState({
-    password: '123456',
-    password2: '123456',
-    dob: '123456',
+    password: '',
+    password2: '',
+    dob: '',
     type: 'student',
     alt: '',
     sex: 'M'
