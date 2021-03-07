@@ -4,6 +4,7 @@ import './App.css';
 import Home from './components/pages/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import About from './components/pages/About';
+import Chat from './components/pages/Chat';
 import Register from './components/pages/Register';
 import Login from './components/pages/Login';
 import Reset from './components/pages/ResetPassword';
@@ -22,6 +23,8 @@ import Verification from './components/pages/Verification';
 import { loadUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
+
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
@@ -35,6 +38,7 @@ class App extends Component {
         <Navbar />
           <Route path='/' exact component={Home} />
           <Route path='/about' component={About} />
+          <Route path='/chat' component={Chat}/>
           <Route path='/register' component={Register} />
           <Route path='/login' component={Login} />
           <Route path='/createPost' component={createPost} />

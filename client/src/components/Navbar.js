@@ -51,6 +51,15 @@ function Navbar(props) {
                 My Job Opportunities
               </Link>
             </li>
+            <li className='nav-item'>
+              <Link
+                to='/chat'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Chat
+              </Link>
+            </li>
             
           
             <li className='nav-item'>

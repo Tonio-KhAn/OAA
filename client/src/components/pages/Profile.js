@@ -1,15 +1,15 @@
 import React, { useState , useEffect } from 'react';
 import '../../App.css';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import axios from "axios";
-import {Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Profile(props) {
 
  
   const [values, setValues] = useState({
-    first_name: "",
-    last_name: "",
+    first_name: '',
+    last_name: '',
     uwi_email: '',
     password: '',
     password2: '',
