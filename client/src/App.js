@@ -39,7 +39,6 @@ class App extends Component {
           <Route path='/login' component={Login} />
           <Route path='/createPost' component={createPost} />
           <Route path='/profile' component={Profile} />
-          <Route path='/profile/myPost' component={MyPost} />
           <Route path='/profile/manageDegrees' component={ManageDegree} />
           <Route path='/confirm/' component={ConfirmEmail} />
           <Route path='/jobs' component={JobOpportunity} />
