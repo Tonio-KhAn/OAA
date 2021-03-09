@@ -15,7 +15,6 @@ import LogOut from './components/pages/LogOut';
 import AllJobs from './components/tabs/AllJobs';
 import RecomendedJobs from './components/tabs/RecomendedJobs';
 import Apply from './components/pages/Apply';
-import MyPost from './components/tabs/MyPost';
 import ManageDegree from './components/tabs/ManageDegrees';
 import CreateJobs from './components/tabs/CreateJobs';
 import Verification from './components/pages/Verification';
@@ -23,6 +22,10 @@ import { loadUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Posts from './components/pages/PostsFeed';
+import AllPosts from './components/tabs/AllPosts';
+import CreatePosts from './components/tabs/CreatePosts';
+
 
 class App extends Component {
 
@@ -50,6 +53,10 @@ class App extends Component {
           <Route path='/logout' component={LogOut} />
           <Route path='/verification/:id' component={Verification} />
           <Route path='/reset' component={Reset} />
+          <Route path='/posts' component={Posts} />
+          <Route path='/posts/all' component={AllPosts} />
+          <Route path='/posts/create' component={CreatePosts} />
+
       </Router>
       </Provider>
     </>

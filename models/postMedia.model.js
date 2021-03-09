@@ -2,18 +2,13 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const postSchema = new Schema({
-    userId: {
+const postMediaSchema = new Schema({
+    postID: {
         type: String,
         required: true,
         trim: true
     },
-    title: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    body: {
+    mediaName: {
         type: String,
         required: true,
         trim: true
@@ -24,6 +19,6 @@ const postSchema = new Schema({
     timestamps: true,
 });
 
-const Post = mongoose.model('Post', postSchema);
+const postMedia = mongoose.model('postMedia', postMediaSchema);
 
-module.exports = Post;
+module.exports = postMedia;
