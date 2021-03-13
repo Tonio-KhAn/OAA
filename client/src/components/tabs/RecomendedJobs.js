@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../../App.css';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import {Link } from 'react-router-dom';
 
 function RecomendedJobs(props) {
 
@@ -74,7 +75,7 @@ function RecomendedJobs(props) {
         <h5 class="card-title">{job.title}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{job.company}</h6>
         <p class="card-text">{job.description}</p>
-        <a href="#" class="card-link">Read More</a>
+        <Link to={'/jobs/info/'+ job._id}className='nav-links'><button  class="card-link">go to job</button></Link>
     </div>
     ))}
 </div>

@@ -19,6 +19,7 @@ import MyPost from './components/tabs/MyPost';
 import ManageDegree from './components/tabs/ManageDegrees';
 import CreateJobs from './components/tabs/CreateJobs';
 import Verification from './components/pages/Verification';
+import JobInfo from './components/tabs/JobInfo';
 import { loadUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -45,6 +46,7 @@ class App extends Component {
           <Route path='/jobs' component={JobOpportunity} />
           <Route path='/jobs/all' component={AllJobs} />
           <Route path='/jobs/my' component={RecomendedJobs} />
+          <Route path='/jobs/info/:id' component={JobInfo} />
           <Route path='/apply/:id' component={Apply} />
           <Route path='/jobs/create' component={CreateJobs}/>
           <Route path='/logout' component={LogOut} />

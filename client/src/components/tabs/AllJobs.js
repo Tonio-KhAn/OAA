@@ -62,7 +62,7 @@ function AllJobs(props) {
       }, []);
 
     return (
-     <>
+     <> 
       <div>
       <div class="card" style={{float : 'left', width : "800px" , marginRight: '100px', marginLeft: '50px', marginTop: '50px'}} >
             <h5 class="card-header">Jobs</h5>
