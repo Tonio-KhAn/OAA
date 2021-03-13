@@ -14,6 +14,12 @@ const jobApplicationSchema = new Schema({
         trim: true
     },
     
+    rank: {
+        type: Number,
+        trim: true
+    },
+
+    
 }, {
     timestamps: true,
 });
