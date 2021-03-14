@@ -5,8 +5,8 @@ import CardItem from './CardItem';
 function Cards() {
   return (
     <div className='cards'>
-      <h1>Check out for more information about The Department of Computing and 
-        Information Technology
+      <h1>Learn about DCIT Connect
+        
       </h1>
       <div className='cards__container'>
         <div className='cards__wrapper'>

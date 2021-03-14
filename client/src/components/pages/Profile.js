@@ -37,11 +37,7 @@ function loadUser(){
   )
   .then(
     res => { console.log(res.data)
-    setValues({
-      ...values,
-      ["first_name"]: res.data.first_name,
-      ["last_name"]: res.data.last_name
-    });
+    setValues(res.data);
     },
   )
   .catch(err => console.log(err));
@@ -52,19 +48,16 @@ function loadUser(){
   }, []);
     return (
 
+      <div class= "page-back">
       <div class= "page">
         <div class= "profile__card card">
           <div>
             <img style ={{width:"180px",height:"160px",borderRadius:"20px"}} 
             src="https://sothis.es/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"/>
           </div>
-          <div><h2>{values.first_name} {values.last_name}</h2>
-            <div class = "profile_content">
-              <h5>friends </h5>
-              <h5>posts </h5>
-              <h5>chat </h5>
-            </div>
-            <div><p>Graduated in 2018. Software Developer.</p></div>
+          <div><h2 style={{textTransform: 'capitalize'}} >{values.first_name} {values.last_name}</h2>
+          <h4 style={{textTransform: 'capitalize'}} >{values.type}</h4>
+          <h6 style={{}} >{values.uwi_email}</h6>
           </div>
         </div>
 <div>
@@ -75,7 +68,7 @@ function loadUser(){
     </Link>
   </li>
   <li class="nav-item">
-  <Link to='/posts/all' className='nav-links'>
+  <Link to='/profile/posts' className='nav-links'>
     <button class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true" >Posts</button>
     </Link>
   </li>
@@ -92,7 +85,7 @@ function loadUser(){
 </ul>
 </div>
          </div>
-
+         </div>
 
                                                         );
                                                       }

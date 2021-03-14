@@ -126,6 +126,7 @@ router.route("/add").post(auth, (req, res) => {
       if (error) {
         console.log(error);
       } else {
+        data.reverse();
         res.json(data);
       }
     })

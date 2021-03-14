@@ -255,6 +255,8 @@ function ManageDegrees(props) {
 
     return (
      <>
+     <div class= "page-back">
+      <div class= "page">
    <div>
        Manage degrees
     <div>
@@ -326,6 +328,8 @@ function ManageDegrees(props) {
          
 
         
+   </div>
+   </div>
    </div>
         </>
     )
