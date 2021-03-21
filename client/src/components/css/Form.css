@@ -190,12 +190,28 @@
   width: 240px;
   padding: 40px;
   margin: 0 auto;
-  border: 0;
   cursor: pointer;
-  border-radius: 2px;
+  border: 1px solid white;
   transform: translateY(-50%);
-  box-shadow: 0 10px 20px -5px #94a6af;
+  background-color: transparent;
   overflow: hidden;
+}
+
+
+.bbutton {
+  background-color: transparent;
+  color: #fff;
+  padding: 8px 20px;
+  border: 1px solid white;
+  transition: all 0.3s ease-out;
+  margin-bottom: 15px;
+}
+
+.bbutton:hover {
+  transition: all 0.3s ease-out;
+  background: #fff;
+  color: #242424;
+  transition: 250ms;
 }
 
 .abutton:before,
@@ -210,7 +226,7 @@
 
 .abutton:before {
   transform: scale(1);
-  background-color: #fff;
+  background-color:transparent;
   background-size: cover;
   transition: 0.3s ease transform;
   z-index: 1;
@@ -237,9 +253,10 @@ button div:after {
   top: 0;
   right: 0;
   left: 0;
-  color: rgb(0, 0, 0);
-  font-size: 30px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(255, 255, 255);
+  font-size: 30px;  
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif;
   font-weight: bold;
   line-height: 1;
   text-align: center;
@@ -267,12 +284,16 @@ button div:after {
 }
 
 .abutton:hover div:before {
+  border: 1px;  
+  border-color: white;
   letter-spacing: 3px;
   opacity: 0;
   transform: scale(4);
 }
 
 .abutton:hover div:after {
+  border: 1px;  
+  border-color: white;
   letter-spacing: 0;
   opacity: 1;
   transform: scale(1);
