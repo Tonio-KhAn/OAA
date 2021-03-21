@@ -7,7 +7,7 @@ video {
 }
 
 .hero-container {
-  background: url('../images/14698c05b7416f50b7dda1422972cf26.jpg') center center/cover no-repeat;
+  /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
   height: 100vh;
   width: 100%;
   display: flex;
@@ -15,7 +15,9 @@ video {
   justify-content: center;
   align-items: center;
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
-  object-fit: contain;
+  object-fit: cover;
+  position: fixed;
+  z-index: -1;
 }
 
 .hero-container > h1 {

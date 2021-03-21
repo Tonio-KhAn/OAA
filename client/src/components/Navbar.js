@@ -27,7 +27,7 @@ function Navbar(props) {
   if (props.isAuthenicated) {
   return (
     <>
-      <nav className='navbar'>
+      <div className='navbar navbar-fixed-top'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             DCIT Connect
@@ -40,6 +40,11 @@ function Navbar(props) {
             <li className='nav-item'>
               <Link to='/Profile' className='nav-links' onClick={closeMobileMenu}>
                 Profile
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link to='/posts/all' className='nav-links' onClick={closeMobileMenu}>
+                Post
               </Link>
             </li>
             <li className='nav-item'>
@@ -61,14 +66,14 @@ function Navbar(props) {
           </ul>
           
         </div>
-      </nav>
+      </div>
     </>
   )
 }
 
   return (
     <>
-      <nav className='navbar'>
+      <nav className='navbar navbar-fixed-top'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             DCIT Connect
@@ -111,6 +116,7 @@ function Navbar(props) {
               </Link>
             </li>
           </ul>
+          {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
         </div>
       </nav>
     </>
