@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../../App.css';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import {Link } from 'react-router-dom';
 
 function RecomendedJobs(props) {
 
@@ -67,14 +68,14 @@ function RecomendedJobs(props) {
 
       <div>
 
-<div class="card" style={{float : 'left', width : "800px" , marginRight: '100px', marginLeft: '50px', marginTop: '50px'}} >
-<h5 class="card-header">Jobs</h5>
+<div class="card" style={{float : 'left', width : "800px" , marginRight: '100px', marginLeft: '50px', marginTop: '0px'}} >
+<h1 class="card-header" style={{fontFamily:"monospace"}}>Jobs</h1>
 { myJobOpportunity.map((job,index) =>(
     <div class="card-body" key={index} style={{borderBottom : '2px solid black', marginTop: '10px'}} >
-        <h5 class="card-title">{job.title}</h5>
+        <h5 class="card-title" style={{color: "grey"}}>{job.title}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{job.company}</h6>
-        <p class="card-text">{job.description}</p>
-        <a href="#" class="card-link">Read More</a>
+        <p class="card-text"  style={{fontFamily:"initial"}}>{job.description}</p>
+        <Link to={'/jobs/info/'+ job._id}className='nav-links'><button  class="card-link">go to job</button></Link>
     </div>
     ))}
 </div>
@@ -82,13 +83,13 @@ function RecomendedJobs(props) {
 <div>
 
 <div class="card" style={{width : "300px", marginTop: '10px'}}>
-<h5 class="card-header">Applied Jobs</h5>
-    <div class="card-body" style={{borderBottom : '2px solid black'}} >
-        <h5 class="card-title">IT Manager</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Company Name</h6>
-        <p class="card-text">Description of Job Here</p>
-        <a href="#" class="card-link">Read More</a>
-    </div>
+<h1 class="card-header" style={{fontFamily:"monospace"}}>Applied Jobs</h1>
+                    <div class="card-body" style={{borderBottom : '2px solid black'}} >
+                        <h5 class="card-title" style={{color: "grey"}}>IT Manager</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Company Name</h6>
+                        <p class="card-text" style={{fontFamily:"initial"}}>Description of Job Here</p>
+                        <a href="#" class="card-link">Read More</a>
+                    </div>
 </div>
 </div>
 </div>

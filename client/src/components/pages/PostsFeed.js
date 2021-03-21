@@ -26,12 +26,12 @@ function PostsFeed() {
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
   <Link to='/posts/all' className='nav-links'>
-    <button class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true" >All Jobs</button>
+    <button class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true" >All Post</button>
     </Link>
   </li>
   <li class="nav-item">
   <Link to='/posts/create' className='nav-links'>
-    <button class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true" >Create Job</button>
+    <button class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true" >Create Post</button>
     </Link>
   </li>
 </ul>

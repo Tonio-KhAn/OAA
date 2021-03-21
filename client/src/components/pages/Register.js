@@ -79,10 +79,10 @@ export default function SignUp() {
 
   return (
     <>
+    <div className='back'>
       <div className='form-container-signup'>
         <span className='close-btn'><Link to='/'>x</Link></span>
-        <div className='form-content-left'>
-        <img className='form-img' src='/1.png' alt='DCIT Picture' />
+        <div className='form-content-left-register' >
         </div>
         {
         !emailChecked ? (
@@ -95,6 +95,7 @@ export default function SignUp() {
           )
         )
         }
+      </div>
       </div>
     </>
   );

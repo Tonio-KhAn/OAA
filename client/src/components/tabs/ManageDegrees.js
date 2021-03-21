@@ -43,7 +43,12 @@ function ManageDegrees(props) {
 
     const[ degreesList, setDegreesList] = useState([
     ])
+     
+    const[ gradesList, setGradesList] = useState([
+    ])
 
+    const[ coursesList, setCoursesList] = useState([
+    ])
     const[ adding, setAdding] = useState(false)
 
     function getDegrees(Userid){
@@ -122,13 +127,61 @@ function ManageDegrees(props) {
         .catch(err => console.log(err));
     }
 
+    function getGradesList(){
+      const token = props.auth.token;
+
+      const config = {
+          headers: {}
+        };
+
+        if (token) {
+          config.headers["x-auth-token"] = token;
+        }
+
+      axios
+      .get(
+        "/grades/",
+        config
+      )
+      .then(
+        res => { console.log(res.data)
+        setGradesList(res.data);
+        },
+      )
+      .catch(err => console.log(err));
+  }
+
+  function getCoursesList(){
+    const token = props.auth.token;
+
+    const config = {
+        headers: {}
+      };
+
+      if (token) {
+        config.headers["x-auth-token"] = token;
+      }
+
+    axios
+    .get(
+      "/courseName/",
+      config
+    )
+    .then(
+      res => { console.log(res.data)
+      setCoursesList(res.data);
+      },
+    )
+    .catch(err => console.log(err));
+}
+
     const handleAdd = () => {
         setInputFields([...inputFields, {id: degreesList[0]._id, status:'student',startYear:''} ]);
         setAdding(true)
     }
 
     const handleAddCourse = () => {
-        setCourses([...courses, {name:''} ]);
+        setCourses([...courses, {name:coursesList[0].courseTitle, grade:gradesList[0].grade} ]);
     }
 
     const handleRemoveCourses = (index) => {
@@ -195,11 +248,15 @@ function ManageDegrees(props) {
       
     useEffect(() => {
         loadUser();
-        getDegreesList()
+        getDegreesList();
+        getGradesList();
+        getCoursesList()
       }, []);
 
     return (
      <>
+     <div class= "page-back">
+      <div class= "page">
    <div>
        Manage degrees
     <div>
@@ -242,8 +299,18 @@ function ManageDegrees(props) {
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-lg">CourseName</span>
                 </div>
-            <input type="text" class="form-control" value={course.name} name="name" aria-label="Large" onChange={e => handleCourseChange(indexCourses, e)} aria-describedby="inputGroup-sizing-sm"></input>
+            
+            <select class="custom-select" name="name" id="" onChange={e => handleCourseChange(indexCourses, e)}>
+            { coursesList.map((courseList,indexCourse) =>(
+           <option key={indexCourse} value={courseList.courseTitle}>{courseList.courseTitle}</option>           
+        ))}  
+           </select> 
             <button type="button" class="btn btn-primary btn-sm" onClick={() => handleRemoveCourses(indexCourses)}>Remove</button>
+            <select class="custom-select" name="grade" id="" onChange={e => handleCourseChange(indexCourses, e)}>
+            { gradesList.map((gradeList,indexGrades) =>(
+           <option key={indexGrades} value={gradeList.grade}>{gradeList.grade}</option>           
+        ))}  
+           </select>  
             </div>
          ))}
          <button type="button" class="btn btn-primary btn-sm" onClick={() => handleAddCourse()}>Add Course</button>
@@ -261,6 +328,8 @@ function ManageDegrees(props) {
          
 
         
+   </div>
+   </div>
    </div>
         </>
     )

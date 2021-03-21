@@ -34,6 +34,36 @@ function Apply(props) {
       .catch(err => console.log(err));
   }
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    const token = props.auth.token;
+    const data = {
+        jobId: props.match.params.id
+      };
+      
+      const config = {
+        headers: {}
+      };
+      
+      console.log(data);
+      if (token) {
+        config.headers["x-auth-token"] = token;
+      }
+      axios
+        .post(
+          "/jobApplication/add",
+          data,
+          config
+        )
+        .then(
+          res => console.log(res.data),
+        )
+        .catch(err => console.log(err));
+      
+      
+    
+  }
+
   useEffect(() => {
     getMedias();
   }, []);
@@ -47,7 +77,7 @@ function Apply(props) {
      </div>
      <br></br>
       <div>
-        <form>
+        <form onSubmit={handleSubmit} >
       { inputFields.map((inputField,index) =>(
       <div class="input-group" key={index}>
           <span >{inputField.mediaName}</span>

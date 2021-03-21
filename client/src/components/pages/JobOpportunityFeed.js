@@ -21,7 +21,6 @@ function JobOpportunityFeed() {
 
     return (
      <>
-            <div >
                 <h1>Job Feed</h1>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -42,7 +41,7 @@ function JobOpportunityFeed() {
   </li>
 </ul>
 
-            </div>
+           
         </>
     )
 }

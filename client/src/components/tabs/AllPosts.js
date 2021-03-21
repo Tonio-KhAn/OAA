@@ -67,12 +67,12 @@ function AllPosts(props) {
           <br></br>
           
 
-      <h3 style={{marginLeft:'53px'}}> All Posts</h3>   
       <div class="card" style={{float : 'left', width : "800px" , marginRight: '100px', marginLeft: '50px', marginTop: '50px'}} >
+      <h1 class="card-header" style={{fontFamily:"monospace"}}>All Post</h1>
                 { Posts.map((thispost,index) =>(
                     <div class="card-body" key={index} style={{borderBottom : '2px solid black', marginTop: '10px'}} >
-                        <h5 class="card-title">{thispost.title}</h5>
-                        <p class="card-text">{thispost.body}</p>
+                        <h5 class="card-title"  style={{color: "grey"}}>{thispost.title}</h5>
+                        <p class="card-text" style={{fontFamily:"initial"}}>{thispost.body}</p>
                     </div>
                     ))}
             </div>
