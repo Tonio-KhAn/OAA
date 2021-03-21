@@ -7,15 +7,20 @@ import './css/HeroSection.css';
 function HeroSection() {
   return (
     <div className='hero-container'>
-      <h1>Welcome to DCIT Connect!</h1>
+      <video src='/videos/video-3.mp4' autoPlay loop muted />
+      <h1>WELCOME TO DCIT CONNECT</h1>
       <p>What are you waiting for?</p>
-      <br></br>
-      <br></br>
-      <Link to={'/register'}>
-        <button className='abutton'>
-          <div></div>
-        </button>
+      <div className='hero-btns'>
+        <Link to='/register'>
+        <Button
+          className='btns'
+          buttonStyle='btn--outline'
+          buttonSize='btn--large'
+        >
+          GET STARTED
+        </Button>
         </Link>
+      </div>
     </div>
   );
 }

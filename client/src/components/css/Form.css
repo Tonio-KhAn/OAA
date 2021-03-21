@@ -1,6 +1,5 @@
 .back {
-  background-image: url("../images/cloud.jpg");
-  background-color: black;
+  background-color: aliceblue;
   background-size: cover;
   margin: 0%;
   top: 80px;
@@ -41,19 +40,21 @@
 }
 
 .form-content-left-register {
-  background-image: url("../images/register.jpg");
+  background-image: url("../images/register.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
   border-radius: 10px 0 0 10px;
   position: relative;
+  background-position: center;
 }
 
 .form-content-left {
-  background-image: url("../images/login.jpg");
+  background-image: url("../images/login.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
   border-radius: 10px 0 0 10px;
   position: relative;
+  background-position: center;
 }
 .form-img {
   max-width: 100%;
