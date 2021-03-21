@@ -29,7 +29,7 @@ function CreatePosts(props) {
           },
         )
         .catch(err => console.log(err));
-        };
+        }
 
       
     const[ postInfo, setPostInfo] = useState(
@@ -37,15 +37,6 @@ function CreatePosts(props) {
          body: '',
         }, 
     )
-
-    const[ inputFields, setInputFields] = useState([
-        {name:'', type:''} 
-    ])
-   
-    const handleAdd = () => {
-        setInputFields([...inputFields, {firstname:'', lastName:''} ])
-    }
-    
 
     const handleSingleChange = e =>{
         setPostInfo({

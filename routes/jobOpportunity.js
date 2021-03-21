@@ -5,6 +5,7 @@ let JobOpportunityMedia = require('../models/jobOpportunityMedia.model');
 let JobQualifications = require('../models/jobQualifications.model');
 let JobSkill = require('../models/jobSkill.model');
 let Qualification = require('../models/qualification.model');
+let JobApplications = require('../models/jobApplication.model');
 const path = require('path');
 const JWT = require('jsonwebtoken');
 const config = require('config');
@@ -24,6 +25,31 @@ let transporter = nodemailer.createTransport({
   router.route("/media/:id").get((req, res) => {
     JobOpportunityMedia.find({jobOpportunityID: req.params.id})
       .then(jobOpportunityMedia => res.json(jobOpportunityMedia))
+      .catch(err => res.status(400).json("Error: " + err));
+  });
+
+  
+  router.route("/applyiedJobs/:id").get((req, res) => {
+    var jobsList = null;
+    var count = 0
+
+    JobApplications.find({userId: req.param.id})
+      .then(applications => 
+        {
+          console.log(applications)
+          jobsList = [];
+          applications.forEach (application => {
+          JobOpportunity.findById(application.jobOpportunityID)
+          .then (Opportunity => {
+            jobsList.push(Opportunity)
+            count = count + 1
+            if (count === applications.length){
+              res.json(jobsList)
+            }
+          })
+        })
+        }
+        )
       .catch(err => res.status(400).json("Error: " + err));
   });
 

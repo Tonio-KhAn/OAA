@@ -29,13 +29,12 @@ function ManageDegrees(props) {
           },
         )
         .catch(err => console.log(err));
-        };
+        }
 
 
 
         const[ inputFields, setInputFields] = useState([])
 
-    const[ degreeInfos, setDegreeInfos] = useState([])
     const[ degreeNames, setDegreeNames] = useState([])
 
     const[ courses, setCourses] = useState([
@@ -68,7 +67,6 @@ function ManageDegrees(props) {
         )
         .then(
           res => { console.log(res.data)
-          setDegreeInfos(res.data);
           getMyDegreeNames(res.data);
           },
         )

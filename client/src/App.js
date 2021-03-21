@@ -2,8 +2,9 @@ import React , { Component , Fragment} from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
 import Home from './components/pages/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import About from './components/pages/About';
+import Chat from './components/pages/Chat';
 import Register from './components/pages/Register';
 import Login from './components/pages/Login';
 import Reset from './components/pages/ResetPassword';
@@ -19,7 +20,6 @@ import ManageDegree from './components/tabs/ManageDegrees';
 import CreateJobs from './components/tabs/CreateJobs';
 import Verification from './components/pages/Verification';
 import JobInfo from './components/tabs/JobInfo';
-import { loadUser } from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -57,6 +57,7 @@ class App extends Component {
           <Route path='/posts' component={Posts} />
           <Route path='/posts/all' component={AllPosts} />
           <Route path='/posts/create' component={CreatePosts} />
+          <Route path='/chat' component={Chat}/>
 
       </Router>
       </Provider>

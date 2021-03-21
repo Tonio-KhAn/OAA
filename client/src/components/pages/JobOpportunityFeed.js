@@ -1,24 +1,9 @@
-import React, { useState , Component } from 'react';
+import React from 'react';
 import {Link } from 'react-router-dom';
 import '../../App.css';
-import axios from 'axios';
-import AllJobs from '../tabs/AllJobs';
-import RecomendedJobs from '../tabs/RecomendedJobs';
-import CreateJobs from '../tabs/CreateJobs';
+
 function JobOpportunityFeed() {
-    
-    const jobOpportunityList = [];
-
-    function getJobOpportunities(){
-        axios.get('/jobOpportunity/')
-        .then(res => {
-            jobOpportunityList = res.data;
-        })
-        .catch(err => console.log(err));
-    };
-
  
-
     return (
      <>
                 <h1>Job Feed</h1>

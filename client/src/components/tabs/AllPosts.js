@@ -1,38 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom';
 import '../../App.css';
 import axios from 'axios';
 import {connect} from 'react-redux';
 
 function AllPosts(props) {
     
-    const[ id , setId] = useState()
     const[ Posts, setPosts] = useState([])
 
-    function loadUser(){
-        const token = props.auth.token;
-      
-        const config = {
-          headers: {}
-        };
-      
-        if (token) {
-          config.headers["x-auth-token"] = token;
-        }
-      
-        axios
-        .get(
-          "/users/user",
-          config
-        )
-        .then(
-          res => { console.log(res.data)
-          setId(res.data._id);
-          },
-        )
-        .catch(err => console.log(err));
-        
-    }
+   
 
     function getPosts() {
 
@@ -57,7 +32,6 @@ function AllPosts(props) {
     }
 
     useEffect(() => {
-        loadUser();
         getPosts();
       }, []);
 

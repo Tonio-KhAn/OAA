@@ -11,7 +11,7 @@ export default function SignUp() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [emailChecked, setEmailChecked] = useState(false);
 
-  const [values, setValues] = useState({
+  const [values] = useState({
     first_name: "",
     last_name: "",
     uwi_email: '',
@@ -46,12 +46,17 @@ export default function SignUp() {
         config
       )
       .then(
+        axios.post(
+          'https://api.chatengine.io/projects/people',
+          { 'username': `${values.uwi_email}`, 'secret': `${valuesToSend.password}`, 'first_name': `${values.first_name}`, 'last_name': `${values.last_name}` },
+          { headers: { "Private-Key": '6451a947-04bd-4a1f-ad1b-f26ea5f77c3a' }}
+        )
+        .then((response) => console.log(response.data))
+        .catch((error) => console.log(error)),
         res => console.log(res.data),
         setIsSubmitted(true),
       )
       .catch(err => console.log(err));
-    
-    
   }
 
   function checkEmail(valuesToSend) {
@@ -61,7 +66,7 @@ export default function SignUp() {
       )
       .then(
         res => { 
-        if (res.data.msg == "User with same username already exist"){
+        if (res.data.msg === "User with same username already exist"){
         console.log(res.data,"hello")}
         else{
         const first = valuesToSend.uwi_email.split(".");
