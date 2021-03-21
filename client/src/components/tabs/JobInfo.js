@@ -4,10 +4,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 
 function JobInfo(props) {
-  const [testid, setTestid] = useState("");
-    const[ values, setValues] = useState(
-        {jobtitle: 'IT Manage', company: 'A Company', description:'A Job description goes here'},
-    )
+ 
     const[ inputFields, setInputFields] = useState([
     ])
     

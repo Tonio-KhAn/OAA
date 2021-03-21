@@ -1,24 +1,9 @@
-import React, { useState , Component } from 'react';
+import React from 'react';
 import {Link } from 'react-router-dom';
 import '../../App.css';
-import axios from 'axios';
-import AllJobs from '../tabs/AllJobs';
-import RecomendedJobs from '../tabs/RecomendedJobs';
-import CreateJobs from '../tabs/CreateJobs';
+
 function PostsFeed() {
     
-    const PostsList = [];
-
-    function getPosts(){
-        axios.get('/Posts/')
-        .then(res => {
-            PostsList = res.data;
-        })
-        .catch(err => console.log(err));
-    };
-
- 
-
     return (
      <>
             <div >

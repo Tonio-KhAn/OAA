@@ -52,7 +52,7 @@ function loadUser(){
       <div class= "page">
         <div class= "profile__card card">
           <div>
-            <img style ={{width:"180px",height:"160px",borderRadius:"20px"}} 
+            <img alt="user" style ={{width:"180px",height:"160px",borderRadius:"20px"}} 
             src="https://sothis.es/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"/>
           </div>
           <div><h2 style={{textTransform: 'capitalize'}} >{values.first_name} {values.last_name}</h2>

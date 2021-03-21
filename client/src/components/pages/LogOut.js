@@ -13,7 +13,7 @@ function Logout(props){
         return (
           <>
             <div>
-                <a href="#"  className="nav-link" onClick={logOutClick()}>Logout</a>
+                <a href="/home"  className="nav-link" onClick={logOutClick()}>Logout</a>
             </div>
           </>
         )

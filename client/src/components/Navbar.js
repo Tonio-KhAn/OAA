@@ -1,28 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './css/Navbar.css';
 import {connect} from 'react-redux';
 
 function Navbar(props) {
   const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
-  };
 
-  useEffect(() => {
-    showButton();
-  }, []);
-
-  window.addEventListener('resize', showButton);
   if (props.isAuthenicated) {
   return (
     <>
@@ -55,8 +42,15 @@ function Navbar(props) {
                 My Job Opportunities
               </Link>
             </li>
-            
-          
+            <li className='nav-item'>
+              <Link
+                to='/chat'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Chat
+              </Link>
+            </li>          
             <li className='nav-item'>
               <Link to='/logout' className='nav-links' onClick={closeMobileMenu}>
                 Logout

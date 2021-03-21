@@ -5,34 +5,35 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 
 function AllJobs(props) {
-
-    const[ id , setId] = useState()
     const[ jobOpportunity, setJobOpportunity] = useState([])
+    
+    const[ applyiedJobs, setApplyiedJobs] = useState([])
 
     function loadUser(){
-        const token = props.auth.token;
+      const token = props.auth.token;
+    
+      const config = {
+        headers: {}
+      };
+    
+      if (token) {
+        config.headers["x-auth-token"] = token;
+      }
+    
+      axios
+      .get(
+        "/users/user",
+        config
+      )
+      .then(
+        res => { console.log(res.data)
+        getAppliedJobs(res.data._id)
+        console.log(res.data._id);
+        },
+      )
+      .catch(err => console.log(err));
       
-        const config = {
-          headers: {}
-        };
-      
-        if (token) {
-          config.headers["x-auth-token"] = token;
-        }
-      
-        axios
-        .get(
-          "/users/user",
-          config
-        )
-        .then(
-          res => { console.log(res.data)
-          setId(res.data._id);
-          },
-        )
-        .catch(err => console.log(err));
-        
-    }
+  }
 
     function getJobOpportunity() {
 
@@ -56,9 +57,31 @@ function AllJobs(props) {
 
     }
 
+    function getAppliedJobs(userID) {
+
+      const token = props.auth.token;
+
+      const config = {
+          headers: {}
+        };
+
+        if (token) {
+          config.headers["x-auth-token"] = token;
+        }
+
+      axios.get('/jobOpportunity/applyiedJobs/' + userID, config)
+      .then(
+          res => { console.log(res.data)
+          setApplyiedJobs(res.data)
+          },
+        )
+        .catch(err => console.log(err));
+
+  }
+
     useEffect(() => {
+        getJobOpportunity(); 
         loadUser();
-        getJobOpportunity();
       }, []);
 
     return (
@@ -86,12 +109,15 @@ function AllJobs(props) {
 
                 <div class="card" style={{width : "300px", marginTop: '10px'}}>
                 <h1 class="card-header" style={{fontFamily:"monospace"}}>Applied Jobs</h1>
-                    <div class="card-body" style={{borderBottom : '2px solid black'}} >
-                        <h5 class="card-title" style={{color: "grey"}}>IT Manager</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Company Name</h6>
-                        <p class="card-text" style={{fontFamily:"initial"}}>Description of Job Here</p>
+                { applyiedJobs.map((applyiedJob,index2) =>(
+                    <div class="card-body" key={index2} style={{borderBottom : '2px solid black', marginTop: '10px'}} >
+                        <h3 class="card-title" style={{color: "grey"}}>{applyiedJob.title}</h3>
+                        <h6 class="card-subtitle mb-2 text-muted">{applyiedJob.company}</h6>
                         <a href="#" class="card-link">Read More</a>
+                        
+                        
                     </div>
+                    ))}
                 </div>
                 </div>
                 </div>

@@ -29,7 +29,7 @@ function CreateJobs(props) {
           },
         )
         .catch(err => console.log(err));
-        };
+        }
 
       
     const[ jobInfo, setJobInfo] = useState(
@@ -115,7 +115,7 @@ function CreateJobs(props) {
     const handleQualificationAdd = () => {
         console.log(qualifications)
         console.log(qualificationValue)
-        if (qualificationValue == "no change"){
+        if (qualificationValue === "no change"){
             setQualifications([...qualifications, {name: skillsList[0].name} ]) 
         }else{
                     setQualifications([...qualifications, {name: qualificationValue} ])
@@ -135,11 +135,11 @@ function CreateJobs(props) {
         console.log(degrees)
         console.log(degreeValue)
         
-        if (degreeValue == "no change"){
+        if (degreeValue === "no change"){
             setDegrees([...degrees, {id: degreesList[0]._id, name: degreesList[0].name} ]) 
         }else{
             degreesList.forEach(degreeSingle => {
-                if (degreeValue == degreeSingle._id){
+                if (degreeValue === degreeSingle._id){
                     setDegrees([...degrees, {id: degreeValue, name: degreeSingle.name} ])
                 }
             })
