@@ -100,7 +100,9 @@ function Navbar(props) {
               </Link>
             </li>
           </ul>
+          <Link to={'/register'}>
           {<button className='bbutton'>SIGN UP</button>}
+          </Link>
         </div>
       </nav>
     </>

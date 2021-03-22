@@ -217,16 +217,15 @@ function CreateJobs(props) {
 
     return (
         <>
+        
+        <br></br>
+        <br></br>
         <form class="test" onSubmit={handleSubmit}>
           <div>
-            <br></br>
             <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Job Title</span>
-              </div>
               <input
                 type="text"
-                class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+                class="input100"
                 name="title"
                 placeholder='Title of the job'
                 value={jobInfo.title}
@@ -235,12 +234,9 @@ function CreateJobs(props) {
             </div>
             <br></br>
             <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">Company Name</span>
-              </div>
               <input
                 type="text"
-                class="form-control" aria-label="Medium" aria-describedby="inputGroup-sizing-sm"
+                class="input100"
                 name="company"
                 placeholder='Name of company'
                 value={jobInfo.company}
@@ -249,11 +245,8 @@ function CreateJobs(props) {
             </div>
             <br></br>
             <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Description</span>
-              </div>
               <textarea
-                class="form-control" aria-label="With textarea"
+                class="input100"
                 name="description"
                 placeholder='Description of job'
                 value={jobInfo.description}
@@ -265,29 +258,38 @@ function CreateJobs(props) {
           <div>
             { inputFields.map((inputField,index) =>(
             <div class="input-group" key={index}>
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">Document Name</span>
-              </div>
               <input type="text"
-                class="form-control"
+                class="input100"
                 name="name"
+                placeholder="Document name"
                 value ={inputField.name}
                 onChange={e => handleDocumentChange(index, e)} aria-label="Large" aria-describedby="inputGroup-sizing-sm">
               </input>
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-lg">Document Type</span>
-              </div>
               <input
                 type="text"
-                class="form-control"
+                class="input100"
+                placeholder="Document type"
                 name="type"
                 value ={inputField.type}
                 onChange={ e => handleDocumentChange(index, e)} aria-label="Large" aria-describedby="inputGroup-sizing-sm">
               </input>
-              <button type="button" class="btn btn-danger" onClick={() => handleRemove(index)}>Remove</button>
+              <div class="container-contact200-form-btn">
+
+          <div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button class="contact100-form-btn"onClick={() => handleRemove(index)}>
+							Remove
+						</button>
+					</div>
+          <div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+            <button class="contact100-form-btn"onClick={() => handleAdd(index)}>
+							Add Document
+						</button>
+					</div>
+				</div>
             </div>
             ))}
-          <button type="button" class="btn btn-success" onClick={() => handleAdd()}>Add Document</button>
           </div>
           <br></br>
           { degrees.map((degree,index) =>(
@@ -295,10 +297,10 @@ function CreateJobs(props) {
               <h5>{degree.name}</h5></div>   
           ))}
           <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <button class="btn btn-success" type="button" onClick={() => handleDegreeAdd()}>Add Required Degree</button>
+            <div class="sel">
+              <button class="btnnew" type="button" onClick={() => handleDegreeAdd()}>Add Required Degree:</button>
             </div>
-            <select class="custom-select" name="qualificationSelect" id="" onChange={handleDegreeChange}>
+            <select class="selector" name="qualificationSelect" id="" onChange={handleDegreeChange}>
               { degreesList.map((degreeList,index) =>(
               <option key={index} value={degreeList._id}>{degreeList.name}</option>
               ))}              
@@ -309,19 +311,30 @@ function CreateJobs(props) {
               <h5>{qualification.name}</h5></div>
           ))}
           <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <button class="btn btn-success" type="button" onClick={() => handleQualificationAdd()}>Add Required Skill</button>
+            <div class="sel">
+              <button class="btnnew" type="button" onClick={() => handleQualificationAdd()}>Add Required Skill:</button>
             </div>
-            <select class="" name="qualificationSelect" id="" onChange={handleQualificationChange}>
+            <select class="selector" name="qualificationSelect" id="" onChange={handleQualificationChange}>
               { skillsList.map((skillList,index) =>(
               <option key={index} value={skillList.name}>{skillList.name}</option>           
               ))}
             </select>
-          </div>
+          </div>        
           <div>
-            <button class="btn btn-primary"  type='submit'>Create</button>
-          </div>
-        </form>
+          <div class="container-contact100-form-btn">
+            <div class="wrap-contact100-form-btn">  
+            <div class="contact100-form-bgbtn"></div>  
+            <button class="contact100-form-btn" type='submit'>
+              Create  
+              </button>
+              </div>
+              </div>          
+              </div>        
+              </form>
+        
+        <br></br>
+        
+        <br></br>
       </>
     )
   }
