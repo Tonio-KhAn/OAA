@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import '../../App.css';
+import '../css/CreateJobs.css';
 import axios from 'axios';
 import {connect} from 'react-redux';
 
@@ -271,7 +272,7 @@ function ManageDegrees(props) {
             <div class="input-group input-group-lg" >
             <div class="input-group mb-3">
                 
-                <select class="custom-select" name="id" id="" onChange={e => handleAddDegreeChange(indexA, e)}>
+                <select class="selector" name="id" id="" onChange={e => handleAddDegreeChange(indexA, e)}>
                 { degreesList.map((degreeList,indexDegree) =>(
            <option key={indexDegree} value={degreeList._id}>{degreeList.name}</option>           
         ))}        
@@ -282,7 +283,7 @@ function ManageDegrees(props) {
 </div>
 <div class="input-group mb-3">
                 
-                <select class="custom-select" name="status" id="" onChange={e => handleAddDegreeChange(indexA, e)}>
+                <select class="selector" name="status" id="" onChange={e => handleAddDegreeChange(indexA, e)}>
            <option  value="student">Student</option>           
            <option  value="alumni">Alumni</option>    
                 
@@ -300,30 +301,45 @@ function ManageDegrees(props) {
                     <span class="input-group-text" id="inputGroup-sizing-lg">CourseName</span>
                 </div>
             
-            <select class="custom-select" name="name" id="" onChange={e => handleCourseChange(indexCourses, e)}>
+            <select class="selector" name="name" id="" onChange={e => handleCourseChange(indexCourses, e)}>
             { coursesList.map((courseList,indexCourse) =>(
            <option key={indexCourse} value={courseList.courseTitle}>{courseList.courseTitle}</option>           
         ))}  
            </select> 
             <button type="button" class="btn btn-primary btn-sm" onClick={() => handleRemoveCourses(indexCourses)}>Remove</button>
-            <select class="custom-select" name="grade" id="" onChange={e => handleCourseChange(indexCourses, e)}>
+            <select class="selector" name="grade" id="" onChange={e => handleCourseChange(indexCourses, e)}>
             { gradesList.map((gradeList,indexGrades) =>(
            <option key={indexGrades} value={gradeList.grade}>{gradeList.grade}</option>           
         ))}  
            </select>  
             </div>
          ))}
-         <button type="button" class="btn btn-primary btn-sm" onClick={() => handleAddCourse()}>Add Course</button>
-            <button className='form-input-btn' type='submit' >
+
+         
+         <button type="button" class="btnnew" onClick={() => handleAddCourse()}>Add Course</button>
+            <button className='contact100-form-btn' type='submit' >
           ADD DEGREE
         </button>
             </form>
         ))}
         {
-        !adding ? (
-        <button type="button" class="btn btn-primary btn-sm" onClick={() => handleAdd()}>Add</button>
-        ):
-        <button type="button" class="btn btn-primary btn-sm" onClick={() => handleCancel()}>Cancel</button>
+                      <div class="container-contact200-form-btn">
+
+                      <div class="wrap-contact100-form-btn">
+                        <div class="contact100-form-bgbtn"></div>
+                        !adding ? (
+                        <button class="contact100-form-btn"onClick={() => handleAdd()}>
+                          Add
+                        </button>
+                        ):
+                      </div>
+                      <div class="wrap-contact100-form-btn">
+                        <div class="contact100-form-bgbtn"></div>
+                        <button class="contact100-form-btn"onClick={() => handleCancel()}>
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
         }
          
 
