@@ -312,7 +312,7 @@ function CreateJobs(props) {
             <div class="input-group-prepend">
               <button class="btn btn-success" type="button" onClick={() => handleQualificationAdd()}>Add Required Skill</button>
             </div>
-            <select class="custom-select" name="qualificationSelect" id="" onChange={handleQualificationChange}>
+            <select class="" name="qualificationSelect" id="" onChange={handleQualificationChange}>
               { skillsList.map((skillList,index) =>(
               <option key={index} value={skillList.name}>{skillList.name}</option>           
               ))}

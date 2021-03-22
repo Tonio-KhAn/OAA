@@ -15,6 +15,7 @@ const skillNameRouter = require("./routes/skillName");
 const PostsRouter = require("./routes/Posts")
 const courseNameRouter = require("./routes/courseName");
 const gradesRouter = require("./routes/grades");
+const adminRouter = require("./routes/admin");
 
 const app = express();
 app.use(bodyParser.json())
@@ -43,6 +44,7 @@ app.use("/skillName", skillNameRouter)
 app.use("/Posts", PostsRouter)
 app.use("/courseName", courseNameRouter)
 app.use("/grades", gradesRouter)
+app.use("/adminroute", adminRouter)
 
 app.use(morgan("tiny"));
 
