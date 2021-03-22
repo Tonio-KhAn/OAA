@@ -6,7 +6,6 @@ function JobOpportunityFeed() {
  
     return (
      <>
-                <h1>Job Feed</h1>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
