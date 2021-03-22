@@ -97,12 +97,9 @@ function CreatePosts(props) {
           <div>
             <br></br>
             <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Post Title</span>
-              </div>
               <input
                 type="text"
-                class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+                class="input100" 
                 name="title"
                 placeholder='Title of Post'
                 value={postInfo.title}
@@ -112,11 +109,8 @@ function CreatePosts(props) {
             <br></br>
             <br></br>
             <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Description</span>
-              </div>
               <textarea
-                class="form-control" aria-label="With textarea"
+                class="input100"
                 name="body"
                 placeholder='Body of post'
                 value={postInfo.description}
@@ -128,9 +122,16 @@ function CreatePosts(props) {
 
           <br></br>
           <div>
-            <button class="btn btn-primary"  type='submit'>Create</button>
-          </div>
-        </form>
+          <div class="container-contact100-form-btn">
+            <div class="wrap-contact100-form-btn">  
+            <div class="contact100-form-bgbtn"></div>
+            <button class="contact100-form-btn" type='submit'>
+              Create
+              </button>
+              </div>
+              </div>          
+              </div>
+              </form>
         <div class="row">
           <br></br>
           </div>
