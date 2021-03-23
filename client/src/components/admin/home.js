@@ -27,13 +27,11 @@ function AdminHome() {
                     <a href = "/admin/job" class="dashLink">JobOpportunities<br></br><i class="fas fa-user-tie"></i></a>
                 </div>
                 <div class="col-md-3 card dash">
-hello
+                <a href = "/admin/skill" class="dashLink">Skills<br></br><i class="fas fa-hammer"></i></a>
                 </div>
                 <div class="col-md-3 card dash">
-hello
                 </div>
                 <div class="col-md-3 card dash">
-hello
                 </div>
             </div>
 

@@ -4,10 +4,10 @@ import '../../App.css';
 import './adminCss.css';
 import axios from "axios";
 
-function UserHome({setUser, setSet}) {
+function PostHome({setPost, setSet}) {
     const [values, setValues] = useState([]);
 
-    function loadUsers(){
+    function loadPosts(){
       
         const config = {
           headers: {}
@@ -16,7 +16,7 @@ function UserHome({setUser, setSet}) {
       
         axios
         .get(
-          "/adminroute/users/",
+          "/adminroute/post/",
           config
         )
         .then(
@@ -28,12 +28,12 @@ function UserHome({setUser, setSet}) {
         }
 
         const handleClick = (value) => {
-           setUser(value);
+           setPost(value);
            setSet(1);
         }
 
         useEffect(() => {
-            loadUsers();
+            loadPosts();
           }, []);
     return (
      <>
@@ -44,10 +44,9 @@ function UserHome({setUser, setSet}) {
                         <div class="card">
                             <button onClick={e => handleClick(value)}> 
                         <h1>
-                           {value.first_name} {value.last_name}
+                            {value.title}
                         </h1>
                         <h4>
-                            antonio.khan@my.uwi.edu 
                         </h4>
                             </button>
                         </div>
@@ -59,4 +58,4 @@ function UserHome({setUser, setSet}) {
     )
 }
 
-export default UserHome
+export default PostHome

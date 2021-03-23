@@ -265,8 +265,10 @@ function ManageDegrees(props) {
          </div> 
 ))} 
 </div>
+<div class="card">
         {inputFields.map((inputField,indexA) =>(
             <form onSubmit={handleSubmit} key={indexA}>
+            <h5>New Degree</h5>
             <div class="input-group input-group-lg" >
             <div class="input-group mb-3">
                 
@@ -314,31 +316,34 @@ function ManageDegrees(props) {
          ))}
 
          
-         <button type="button" class="btnnew" onClick={() => handleAddCourse()}>Add Course</button>
-            <button className='contact100-form-btn' type='submit' >
-          ADD DEGREE
-        </button>
+            <button type="button" class="btnnew" onClick={() => handleAddCourse()}>Add Course</button>
+                  <div class="wrap-contact100-form-btn">
+                  <button className='btnnew' type='submit' >
+                    ADD DEGREE
+                  </button>
+                  </div>
             </form>
         ))}
-        {
+</div>
+        
                       <div class="container-contact200-form-btn">
 
                       <div class="wrap-contact100-form-btn">
                         <div class="contact100-form-bgbtn"></div>
-                        !adding ? (
+                        { !adding ? (
                         <button class="contact100-form-btn"onClick={() => handleAdd()}>
                           Add
                         </button>
                         ):
-                      </div>
-                      <div class="wrap-contact100-form-btn">
-                        <div class="contact100-form-bgbtn"></div>
+                      (
                         <button class="contact100-form-btn"onClick={() => handleCancel()}>
                           Cancel
                         </button>
+                        )}
                       </div>
                     </div>
-        }
+                    
+        
          
 
         

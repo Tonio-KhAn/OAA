@@ -32,6 +32,7 @@ import AdminUser from './components/admin/user';
 import AdminPost from './components/admin/post';
 import AdminCourse from './components/admin/course';
 import AdminDegree from './components/admin/degree';
+import AdminSkill from './components/admin/skill';
 class App extends Component {
 
 
@@ -69,6 +70,7 @@ class App extends Component {
           <Route path='/admin/post' component={AdminPost} />
           <Route path='/admin/course' component={AdminCourse} />
           <Route path='/admin/degree'  component={AdminDegree} />
+          <Route path='/admin/skill'  component={AdminSkill} />
       </Router>
       </Provider>
     </>

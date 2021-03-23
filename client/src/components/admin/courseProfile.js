@@ -3,9 +3,9 @@ import {Link } from 'react-router-dom';
 import '../../App.css';
 import './adminCss.css';
 
-function AdminUserProfile({user, setSet, setUser}) {
-    const handleClick = (userId) => {
-        setUser([]);
+function CourseProfile({course, setSet, setCourse}) {
+    const handleClick = () => {
+        setCourse([]);
         setSet(0);
      }
 
@@ -23,20 +23,18 @@ function AdminUserProfile({user, setSet, setUser}) {
                             </button>
                             <div class="card" style={{ margin : "auto"}}>
                             <div>
-                            <h1>Name</h1>
-                            <h3>{user.first_name} {user.last_name}</h3>
+                            <h1>Title</h1>
+                            <h3>{course.courseTitle}</h3>
                             </div>
                             <div>
-                            <h1>UWI Email</h1>
-                            <h3>{user.uwi_email}</h3>
+                            <h1>Course</h1>
+                            <h3>{course.courseCode}</h3>
                             </div>
                             <div>
-                            <h1>Sex</h1>
-                            <h3>{user.sex}</h3>
-                            </div>
-                            <div>
-                            <h1>Type</h1>
-                            <h3>{user.type}</h3>
+                            <h1>Skills</h1>
+                            {course.skills.map((value,index) =>(
+                            <h3 key={index}>{value.name}</h3>
+                            ))} 
                             </div>
                             </div>
                         </div>
@@ -47,4 +45,4 @@ function AdminUserProfile({user, setSet, setUser}) {
     )
 }
 
-export default AdminUserProfile
+export default CourseProfile

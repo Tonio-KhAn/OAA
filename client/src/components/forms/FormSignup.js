@@ -111,8 +111,8 @@ const FormSignup = ({ submitForm, name }) => {
         <div className='form-inputs'>
           <label className='form-label'>Type</label>
           <select id="type" name="type" form="form" onChange={handleChange}>
-            <option value='Student'>Student</option>
-            <option value='Alumni'>Alumni</option>
+            <option value='student'>Student</option>
+            <option value='alumni'>Alumni</option>
           </select>
         </div>
         <button className='form-input-btn' type='submit'>
