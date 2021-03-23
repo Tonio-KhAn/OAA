@@ -10,6 +10,33 @@
   cursor: pointer;
 }
 
+.btna {
+  padding: 8px 20px;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+  color: #686868;
+  line-height: 1.2;
+  border: solid 1px;
+
+}
+
+.btnb {
+  padding: 8px 20px;
+  border-radius: 2px;
+  outline: none;
+  border: none;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+  color: #686868;
+  line-height: 1.2;
+
+}
+
 .btn--primary {
   background-color: var(--primary);
   color: #242424;
