@@ -259,7 +259,6 @@ function ManageDegrees(props) {
      <div class= "page-back">
       <div class= "page">
    <div>
-       Manage degrees
     <div>
        {degreeNames.map((degreeName,index) =>(
         <div class="input-group" key={index}>
@@ -291,22 +290,31 @@ function ManageDegrees(props) {
   </select>
 </div>
             <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-lg">Start Year</span>
+                    <span class="btna" id="inputGroup-sizing-lg">Year Started:</span>
                 </div>
+                
             <input type="date" class="form-control" name="startYear" value ={inputField.startYear}onChange={e => handleAddDegreeChange(indexA, e)}  aria-label="Large" aria-describedby="inputGroup-sizing-sm"></input>
             </div>
+            <br></br>
             { courses.map((course,indexCourses) =>(
             <div class="input-group input-group-lg" key={indexCourses} >
+                
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-lg">CourseName</span>
+                    <span class="btnb" id="inputGroup-sizing-lg">Course Name:</span>
                 </div>
             
             <select class="selector" name="name" id="" onChange={e => handleCourseChange(indexCourses, e)}>
+
             { coursesList.map((courseList,indexCourse) =>(
            <option key={indexCourse} value={courseList.courseTitle}>{courseList.courseTitle}</option>           
         ))}  
            </select> 
-            <button type="button" class="btn btn-primary btn-sm" onClick={() => handleRemoveCourses(indexCourses)}>Remove</button>
+           <br></br>
+           <br></br>
+           
+        <div class="container-contact100-form-btn">
+            <button type="button" class="contact300-form-btn" onClick={() => handleRemoveCourses(indexCourses)}>Remove</button>
+</div>
             <select class="selector" name="grade" id="" onChange={e => handleCourseChange(indexCourses, e)}>
             { gradesList.map((gradeList,indexGrades) =>(
            <option key={indexGrades} value={gradeList.grade}>{gradeList.grade}</option>           
@@ -315,41 +323,45 @@ function ManageDegrees(props) {
             </div>
          ))}
 
+         <br></br>
          
-         <button type="button" class="btnnew" onClick={() => handleAddCourse()}>Add Course</button>
-            <button className='contact100-form-btn' type='submit' >
+         <div class="container-contact200-form-btn">
+         <div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+         <button type="button" class="contact300-form-btn" onClick={() => handleAddCourse()}>Add Course</button>
+            </div>
+            <br></br>
+            <div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+            <button type='submit' class="contact300-form-btn" >
           ADD DEGREE
         </button>
+        </div>
+        </div>
             </form>
         ))}
+        <br></br>
+        <br></br>
+        <div class="container-contact100-form-btn">
         {
-                      <div class="container-contact200-form-btn">
-
-                      <div class="wrap-contact100-form-btn">
-                        <div class="contact100-form-bgbtn"></div>
-                        !adding ? (
-                        <button class="contact100-form-btn"onClick={() => handleAdd()}>
-                          Add
-                        </button>
-                        ):
-                      </div>
-                      <div class="wrap-contact100-form-btn">
-                        <div class="contact100-form-bgbtn"></div>
-                        <button class="contact100-form-btn"onClick={() => handleCancel()}>
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
+        !adding ? (
+          <button type="button" class="contact300-form-btn" onClick={() => handleAdd()}>Add Degree</button>
+          ):
+          <button type="button" class="contact300-form-btn" onClick={() => handleCancel()}>Cancel</button>
+          }
+          </div>
+          <br></br>
+           <br></br>
+  
+          
+     </div>
+     </div>
+     </div>
+          </>
+      )
         }
          
 
-        
-   </div>
-   </div>
-   </div>
-        </>
-    )
-}
 
 const mapStateToProps = state => ({
     auth: state.auth
