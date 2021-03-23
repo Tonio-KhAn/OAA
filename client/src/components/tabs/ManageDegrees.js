@@ -264,8 +264,10 @@ function ManageDegrees(props) {
          </div> 
 ))} 
 </div>
+<div class="card">
         {inputFields.map((inputField,indexA) =>(
             <form onSubmit={handleSubmit} key={indexA}>
+            <h5>New Degree</h5>
             <div class="input-group input-group-lg" >
             <div class="input-group mb-3">
                 
@@ -323,43 +325,40 @@ function ManageDegrees(props) {
 
          <br></br>
          
-         <div class="container-contact200-form-btn">
-         <div class="wrap-contact100-form-btn">
-						<div class="contact100-form-bgbtn"></div>
-         <button type="button" class="contact300-form-btn" onClick={() => handleAddCourse()}>Add Course</button>
-            </div>
-            <br></br>
-            <div class="wrap-contact100-form-btn">
-						<div class="contact100-form-bgbtn"></div>
-            <button type='submit' class="contact300-form-btn" >
-          ADD DEGREE
-        </button>
-        </div>
-        </div>
+            <button type="button" class="btnnew" onClick={() => handleAddCourse()}>Add Course</button>
+                  <div class="wrap-contact100-form-btn">
+                  <button className='btnnew' type='submit' >
+                    ADD DEGREE
+                  </button>
+                  </div>
             </form>
         ))}
-        <br></br>
-        <br></br>
-        <div class="container-contact100-form-btn">
-        {
-        !adding ? (
-          <button type="button" class="contact300-form-btn" onClick={() => handleAdd()}>Add Degree</button>
-          ):
-          <button type="button" class="contact300-form-btn" onClick={() => handleCancel()}>Cancel</button>
-          }
-          </div>
-          <br></br>
-           <br></br>
-  
-          
-     </div>
-     </div>
-     </div>
-          </>
-      )
-        }
-         
+</div>
+        
+                      <div class="container-contact200-form-btn">
 
+                      <div class="wrap-contact100-form-btn">
+                        <div class="contact100-form-bgbtn"></div>
+                        { !adding ? (
+                        <button class="contact100-form-btn"onClick={() => handleAdd()}>
+                          Add
+                        </button>
+                        ):
+                      (
+                        <button class="contact100-form-btn"onClick={() => handleCancel()}>
+                          Cancel
+                        </button>
+                        )}
+                      </div>
+                    </div>
+                    
+                    </div>
+                    </div>
+                    </div>
+                    </>
+                    )
+         
+}
 
 const mapStateToProps = state => ({
     auth: state.auth

@@ -26,8 +26,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Posts from './components/pages/PostsFeed';
 import AllPosts from './components/tabs/AllPosts';
 import CreatePosts from './components/tabs/CreatePosts';
-
-
+import AdminHome from './components/admin/home';
+import AdminJob from './components/admin/job';
+import AdminUser from './components/admin/user';
+import AdminPost from './components/admin/post';
+import AdminCourse from './components/admin/course';
+import AdminDegree from './components/admin/degree';
+import AdminSkill from './components/admin/skill';
 class App extends Component {
 
 
@@ -58,7 +63,14 @@ class App extends Component {
           <Route path='/posts/all' component={AllPosts} />
           <Route path='/posts/create' component={CreatePosts} />
           <Route path='/chat' component={Chat}/>
-
+           
+          <Route path='/admin' exact component={AdminHome} />
+          <Route path='/admin/job'  component={AdminJob} />
+          <Route path='/admin/user'  component={AdminUser} />
+          <Route path='/admin/post' component={AdminPost} />
+          <Route path='/admin/course' component={AdminCourse} />
+          <Route path='/admin/degree'  component={AdminDegree} />
+          <Route path='/admin/skill'  component={AdminSkill} />
       </Router>
       </Provider>
     </>

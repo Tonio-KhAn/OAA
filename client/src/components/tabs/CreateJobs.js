@@ -283,7 +283,7 @@ function CreateJobs(props) {
 					</div>
           <div class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn"></div>
-            <button class="contact100-form-btn"onClick={() => handleAdd(index)}>
+            <button class="contact100-form-btn"onClick={() => handleAdd()}>
 							Add Document
 						</button>
 					</div>
