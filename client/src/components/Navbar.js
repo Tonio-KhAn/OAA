@@ -50,14 +50,12 @@ function Navbar(props) {
               >
                 Chat
               </Link>
-            </li>          
-            <li className='nav-item'>
-              <Link to='/logout' className='nav-links' onClick={closeMobileMenu}>
-                Logout
-              </Link>
             </li>
           </ul>
           
+          <Link to='/logout' onClick={closeMobileMenu}>
+          {<button className='bbutton'>LOG OUT</button>}
+          </Link>
         </div>
       </div>
     </>
