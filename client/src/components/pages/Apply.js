@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../App.css';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import '../css/CreateJobs.css';
 
 function Apply(props) {
     const[ values] = useState(
@@ -70,6 +71,9 @@ function Apply(props) {
     return (
      <>
      <div>
+     <div class="test" style={{marginTop: "20px"}}>
+        <div class="card" style={{ margin : "auto"}}>
+          <div>
      <h1>{values.jobtitle}</h1>
      <h2>{values.company}</h2>
      <p>{values.description}</p>
@@ -89,14 +93,18 @@ function Apply(props) {
 ))}
 <div class="input-group">
   <div class="input-group-prepend">
-    <span class="input-group-text">Additional Coomments</span>
+    <span class="input-group-text">Comments:</span>
   </div>
   <textarea class="form-control" aria-label="With textarea"></textarea>
 </div>
-<button className='form-input-btn' type='submit'>
+<button className='applybtn' type='submit'>
          Apply
           </button>
+          
 </form> 
+</div>
+</div>
+</div>
 </div>
 
         </>

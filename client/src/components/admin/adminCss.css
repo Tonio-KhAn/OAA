@@ -1,17 +1,48 @@
 .dash {
+  
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   text-align: center;
   height: 150px;
   color: black;
 }
 
 .dashLink {
+  
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   font-size: 30px;
   color: black;
   text-decoration: none;
 }
 
 .dashLink:hover {
+  
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   font-size: 30px;
   color: rgb(175, 175, 175);
   text-decoration: none;
+}
+
+.adminbackbtn{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display:block;
+  justify-content: center;
+  align-items: center;
+  min-width: 150px;
+  height: 62px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  background-color: #27cdff;
+  line-height: 1.2;
+  text-transform: uppercase;
+  margin: auto;
+  margin-top: 5px;
 }

@@ -15,12 +15,6 @@ function CourseProfile({course, setSet, setCourse}) {
                 <ul>
                     <li value="100">
                         <div class="card">
-                            <button  onClick={e => handleClick()}> 
-                        <h4>
-                            Back
-                        </h4>
-                        
-                            </button>
                             <div class="card" style={{ margin : "auto"}}>
                             <div>
                             <h1>Title</h1>
@@ -36,6 +30,13 @@ function CourseProfile({course, setSet, setCourse}) {
                             <h3 key={index}>{value.name}</h3>
                             ))} 
                             </div>
+                            
+                            <button className="adminbackbtn" onClick={e => handleClick()}> 
+                        <h4>
+                            Back
+                        </h4>
+                        
+                            </button>
                             </div>
                         </div>
                     </li>

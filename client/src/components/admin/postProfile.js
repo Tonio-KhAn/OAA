@@ -15,12 +15,6 @@ function PostProfile({post, setSet, setPost}) {
                 <ul>
                     <li value="100">
                         <div class="card">
-                            <button  onClick={e => handleClick()}> 
-                        <h4>
-                            Back
-                        </h4>
-                        
-                            </button>
                             <div class="card" style={{ margin : "auto"}}>
                             <div>
                             <h1>Title</h1>
@@ -30,6 +24,13 @@ function PostProfile({post, setSet, setPost}) {
                             <h1>Post</h1>
                             <h3>{post.body}</h3>
                             </div>
+                            
+                            <button className="adminbackbtn"  onClick={e => handleClick()}> 
+                        <h4>
+                            Back
+                        </h4>
+                        
+                            </button>
                             </div>
                         </div>
                     </li>

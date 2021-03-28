@@ -297,28 +297,30 @@ function CreateJobs(props) {
               <h5>{degree.name}</h5></div>   
           ))}
           <div class="input-group mb-3">
-            <div class="sel">
-              <button class="btnnew" type="button" onClick={() => handleDegreeAdd()}>Add Required Degree:</button>
-            </div>
             <select class="selector" name="qualificationSelect" id="" onChange={handleDegreeChange}>
               { degreesList.map((degreeList,index) =>(
               <option key={index} value={degreeList._id}>{degreeList.name}</option>
               ))}              
             </select>
+            
+            <div class="sel">
+              <button class="btnnew" type="button" onClick={() => handleDegreeAdd()}>Add Required Degree</button>
+            </div>
           </div>
           { qualifications.map((qualification,index) =>(
             <div key={index}>
               <h5>{qualification.name}</h5></div>
           ))}
           <div class="input-group mb-3">
-            <div class="sel">
-              <button class="btnnew" type="button" onClick={() => handleQualificationAdd()}>Add Required Skill:</button>
-            </div>
-            <select class="selector" name="qualificationSelect" id="" onChange={handleQualificationChange}>
+            
+          <select class="selector" name="qualificationSelect" id="" onChange={handleQualificationChange}>
               { skillsList.map((skillList,index) =>(
               <option key={index} value={skillList.name}>{skillList.name}</option>           
               ))}
             </select>
+            <div class="sel">
+              <button class="btnnew" type="button" onClick={() => handleQualificationAdd()}>Add Required Skill</button>
+            </div>
           </div>        
           <div>
           <div class="container-contact100-form-btn">
@@ -327,7 +329,7 @@ function CreateJobs(props) {
             <button class="contact100-form-btn" type='submit'>
               Create  
               </button>
-              </div>
+              </div> 
               </div>          
               </div>        
               </form>

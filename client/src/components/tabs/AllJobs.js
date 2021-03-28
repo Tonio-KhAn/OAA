@@ -3,6 +3,8 @@ import {Link } from 'react-router-dom';
 import '../../App.css';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import '../css/CreateJobs.css';
+
 
 function AllJobs(props) {
     const[ jobOpportunity, setJobOpportunity] = useState([])
@@ -95,7 +97,7 @@ function AllJobs(props) {
                         <h6 class="card-subtitle mb-2 text-muted">{job.company}</h6>
                         <p class="card-text" style={{fontFamily:"initial"}}>{job.description}</p>
                         <a href="#" class="card-link">Read More</a>
-                        <Link to={'/apply/'+ job._id}className='nav-links'><button  class="card-link">Apply</button></Link>
+                        <Link to={'/apply/'+ job._id}className='nav-links'><button  class="applybtn">Apply</button></Link>
                         
                     </div>
                     ))}
@@ -104,7 +106,7 @@ function AllJobs(props) {
                 <div style={{margin: "0px"}}>
 
                 <div class="card" style={{width : "300px", marginTop: '55px'}}>
-                <button type="button" class="btn btn-primary btn-lg"  style={{marginBottom: '10px'}} >Create Job <i class="fas fa-plus"></i></button>
+                <button type="button" class="createbtn"  style={{marginBottom: '10px'}} >Create Job <i class="fas fa-plus"></i></button>
                 </div>
 
                 <div class="card" style={{width : "300px", marginTop: '10px'}}>

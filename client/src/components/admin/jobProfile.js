@@ -2,6 +2,7 @@ import React from 'react';
 import {Link } from 'react-router-dom';
 import '../../App.css';
 import './adminCss.css';
+import '../css/CreateJobs.css';
 
 function JobProfile({job, setSet, setJob}) {
     const handleClick = () => {
@@ -15,12 +16,6 @@ function JobProfile({job, setSet, setJob}) {
                 <ul>
                     <li value="100">
                         <div class="card">
-                            <button  onClick={e => handleClick()}> 
-                        <h4>
-                            Back
-                        </h4>
-                        
-                            </button>
                             <div class="card" style={{ margin : "auto"}}>
                             <div>
                             <h1>Title</h1>
@@ -30,6 +25,13 @@ function JobProfile({job, setSet, setJob}) {
                             <h1>Job</h1>
                             <h3>{job.title}</h3>
                             </div>
+                            
+                            <button className="adminbackbtn" onClick={e => handleClick()}> 
+                        <h5>
+                            Back
+                        </h5>
+                        
+                            </button>
                           
                             </div>
                         </div>

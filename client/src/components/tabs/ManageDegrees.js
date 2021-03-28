@@ -311,15 +311,16 @@ function ManageDegrees(props) {
            </select> 
            <br></br>
            <br></br>
-           
-        <div class="container-contact100-form-btn">
-            <button type="button" class="contact300-form-btn" onClick={() => handleRemoveCourses(indexCourses)}>Remove</button>
-</div>
-            <select class="selector" name="grade" id="" onChange={e => handleCourseChange(indexCourses, e)}>
+
+           <select class="selector" name="grade" id="" onChange={e => handleCourseChange(indexCourses, e)}>
             { gradesList.map((gradeList,indexGrades) =>(
            <option key={indexGrades} value={gradeList.grade}>{gradeList.grade}</option>           
         ))}  
            </select>  
+           
+        <div class="container-contact100-form-btn">
+            <button type="button" class="contact300-form-btn" onClick={() => handleRemoveCourses(indexCourses)}>Remove</button>
+</div>
             </div>
          ))}
 

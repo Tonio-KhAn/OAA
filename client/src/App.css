@@ -2,22 +2,29 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "PT Sans", sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .r-title {
   margin-top: var(--rTitleMarginTop, 0) !important;
   margin-bottom: var(--rTitleMarginBottom, 0) !important;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 p:not([class]) {
   line-height: var(--cssTypographyLineHeight, 1.78);
   margin-top: var(--cssTypographyBasicMargin, 1em);
   margin-bottom: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 p:not([class]):first-child {
   margin-top: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 /*
@@ -27,6 +34,8 @@ text component
 .text {
   display: var(--textDisplay, inline-flex);
   font-size: var(--textFontSize, 1rem);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 /*
@@ -39,6 +48,8 @@ core styles
 
 .time {
   display: var(--timeDisplay, inline-flex);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 /*
@@ -47,6 +58,8 @@ extensions
 
 .time__month {
   margin-left: var(--timelineMounthMarginLeft, 0.25em);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 /*
@@ -61,18 +74,26 @@ skin
   font-weight: var(--timeFontWeight, 700);
   text-transform: var(--timeTextTransform, uppercase);
   color: var(--timeColor, currentColor);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .card {
   padding: var(--timelineCardPadding, 1.5rem 1.5rem 1.25rem);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .card__content {
   margin-top: var(--cardContentMarginTop, 0.5rem);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .profile__content {
   margin-right: var(--cardContentMarginTop, 0.5rem);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .card {
@@ -85,25 +106,36 @@ skin
     0 1px 2px 0 rgba(0, 0, 0, 0.24)
   );
   background-color: var(--timelineCardBackgroundColor, #fff);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .card__title {
   --rTitleMarginTop: var(--cardTitleMarginTop, 1rem);
   font-size: var(--cardTitleFontSize, 1.25rem);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .timeline {
   display: var(--timelineDisplay, grid);
   grid-row-gap: var(--timelineGroupsGap, 2rem);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
+
 
 .timeline__year {
   margin-bottom: 1.25rem; /* 1 */
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .timeline__cards {
   display: var(--timeloneCardsDisplay, grid);
   grid-row-gap: var(--timeloneCardsGap, 1.5rem);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .profile__card {
@@ -111,6 +143,8 @@ skin
   text-align: right;
   justify-content: space-between;
   grid-row-gap: var(--timeloneCardsGap, 3rem);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .timeline {
@@ -121,6 +155,8 @@ skin
     var(--timelineLineBackgroundColor, var(--uiTimelineMainColor));
   padding-top: 1rem;
   padding-bottom: 1.5rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .timeline__year {
@@ -128,11 +164,15 @@ skin
   --timeColor: var(--uiTimelineSecondaryColor);
   --timeBackgroundColor: var(--uiTimelineMainColor);
   --timeFontWeight: var(--timelineYearFontWeight, 400);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .timeline__card {
   position: relative;
   margin-left: var(--timelineCardLineGap, 1rem);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 /*
@@ -143,6 +183,8 @@ skin
   overflow: hidden;
   padding-top: 0.25rem; /* 1 */
   padding-bottom: 0.25rem; /* 1 */
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .timeline__card::before {
@@ -158,6 +200,8 @@ skin
   top: var(--timelineCardLineTop, 1rem);
   left: -50%;
   z-index: -1;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 /*
@@ -168,10 +212,13 @@ SETTINGS
 /**/
 .timeline {
   --timelineMainColor: #000000;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 body {
-  font-family: "PT Sans", sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+  "Lucida Sans", Arial, sans-serif;
   color: #222;
 
   background-color: #f0f0f0;
@@ -181,16 +228,22 @@ body {
 }
 
 p {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   margin-top: 0;
   margin-bottom: 1rem;
   line-height: 1.5;
 }
 
 p:last-child {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   margin-bottom: 0;
 }
 
 .page {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   background-color: rgba(128, 128, 128, 0);
   max-width: 60rem;
   margin-left: auto;
@@ -198,12 +251,16 @@ p:last-child {
 }
 
 .page-back {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   background-color: rgba(207, 207, 207, 0.692);
   width: 100%;
   bottom: 0px;
 }
 
 .showPosts {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -213,6 +270,8 @@ p:last-child {
 .home,
 .about,
 .register {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   display: flex;
   height: 90vh;
   align-items: center;
@@ -221,6 +280,8 @@ p:last-child {
 }
 
 .about {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -229,6 +290,8 @@ p:last-child {
 }
 
 .register {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
