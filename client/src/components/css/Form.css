@@ -200,6 +200,7 @@
 
 
 .bbutton {
+  position: relative;
   background-color: transparent;
   color: #fff;
   padding: 8px 20px;

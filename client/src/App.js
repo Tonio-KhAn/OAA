@@ -33,6 +33,8 @@ import AdminPost from './components/admin/post';
 import AdminCourse from './components/admin/course';
 import AdminDegree from './components/admin/degree';
 import AdminSkill from './components/admin/skill';
+import suggestedFriends from './components/pages/suggestedFriends';
+import friends from './components/pages/friends';
 class App extends Component {
 
 
@@ -63,7 +65,6 @@ class App extends Component {
           <Route path='/posts/all' component={AllPosts} />
           <Route path='/posts/create' component={CreatePosts} />
           <Route path='/chat' component={Chat}/>
-           
           <Route path='/admin' exact component={AdminHome} />
           <Route path='/admin/job'  component={AdminJob} />
           <Route path='/admin/user'  component={AdminUser} />
@@ -71,6 +72,8 @@ class App extends Component {
           <Route path='/admin/course' component={AdminCourse} />
           <Route path='/admin/degree'  component={AdminDegree} />
           <Route path='/admin/skill'  component={AdminSkill} />
+          <Route path='/suggestedFriends' component={suggestedFriends} />
+          <Route path='/friends' component={friends} />
       </Router>
       </Provider>
     </>
