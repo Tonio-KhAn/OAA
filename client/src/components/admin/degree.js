@@ -5,7 +5,8 @@ import './adminCss.css';
 import axios from "axios";
 import DegreeProfile from './degreeProfile';
 import DegreeHome from './degreeHome';
-import UserEdit from './userEdit';
+import DegreeAdd from './degreeAdd';
+import DegreeEdit from './degreeEdit';
 
 function AdminDegree() {
     const [degree, setDegree] = useState([]);
@@ -37,7 +38,7 @@ function AdminDegree() {
             <div >
                 <div class="row">
                         <div class="col-md-3 card dash" >
-                            <a href = "#" class="dashLink">Add User<br></br><i class="fas fa-plus"></i></a>
+                            <a href = "#" class="dashLink" onClick={e => {setSet(3)}}>Add Degree<br></br><i class="fas fa-plus"></i></a>
                         </div>
                         <div class="col-md-3 card dash">
                             <a href = "#"  class="dashLink"  onClick={e => {if(set === 1){setSet(2)}}} >Edit Degree<br></br><i class="fas fa-edit"></i></a>
@@ -57,7 +58,11 @@ function AdminDegree() {
                  set === 1 ?(
                  < DegreeProfile degree={degree} setDegree={setDegree} setSet={setSet}/>
                  ) : (
-                < UserEdit degree={degree} setDegree={setDegree} setSet={setSet}/>
+                    set === 2 ?(
+                        < DegreeEdit degree={degree} setDegree={setDegree} setSet={setSet}/>
+                        ) : (
+                       <  DegreeAdd degree={degree} setDegree={setDegree} setSet={setSet}/>
+                        )  
                  )  
                 )
                 }

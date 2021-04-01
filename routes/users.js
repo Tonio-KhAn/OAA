@@ -33,6 +33,9 @@ router.route('/').get(auth, (req, res) => {
    
 });
 
+  
+
+
 
 
 router.route("/email/:id").get((req, res) => {
@@ -59,6 +62,7 @@ router.route('/add').post((req, res) => {
   const first_name = req.body.first_name;
   const last_name = req.body.last_name;
   const alt_email = req.body.alt_email;
+  const friends = [];
   const dob = req.body.dob;
   const type = req.body.type;
   const sex = req.body.sex;
@@ -81,6 +85,7 @@ router.route('/add').post((req, res) => {
         first_name,
         last_name,
         alt_email,
+        friends,
         dob,
         type,
         sex,

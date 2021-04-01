@@ -32,6 +32,7 @@ function AdminHome() {
                 <div class="col-md-3 card dash">
                 </div>
                 <div class="col-md-3 card dash">
+                <a href = "/admin/grade" class="dashLink">Grade<br></br><i class="fas fa-hammer"></i></a>
                 </div>
             </div>
 

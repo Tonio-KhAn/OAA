@@ -5,7 +5,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 
 function ManageDegrees(props) {
-    const[ id , setId] = useState()
+    const[ id , setId] = useState();
 
     function loadUser(){
         const token = props.auth.token;
@@ -47,8 +47,7 @@ function ManageDegrees(props) {
     const[ gradesList, setGradesList] = useState([
     ])
 
-    const[ coursesList, setCoursesList] = useState([
-    ])
+    const[ coursesList, setCoursesList] = useState([])
     const[ adding, setAdding] = useState(false)
 
     function getDegrees(Userid){

@@ -5,13 +5,14 @@ import './adminCss.css';
 import axios from "axios";
 import JobProfile from './jobProfile';
 import JobHome from './jobHome';
-import UserEdit from './userEdit';
+import JobEdit from './userEdit';
+import JobAdd from './jobAdd';
 
 function AdminJob() {
     const [job, setJob] = useState([]);
     const [set, setSet] = useState(0); 
     
-    const deleteUser = e => {
+    const deleteJob = e => {
         console.log("hello")
   
         const config = {
@@ -37,13 +38,13 @@ function AdminJob() {
             <div >
                 <div class="row">
                         <div class="col-md-3 card dash" >
-                            <a href = "#" class="dashLink">Add User<br></br><i class="fas fa-plus"></i></a>
+                            <a href = "#" class="dashLink" onClick={e => {setSet(3)}} >Add Job<br></br><i class="fas fa-plus"></i></a>
                         </div>
                         <div class="col-md-3 card dash">
                             <a href = "#"  class="dashLink"  onClick={e => {if(set === 1){setSet(2)}}} >Edit Job<br></br><i class="fas fa-edit"></i></a>
                         </div>
                         <div class="col-md-3 card dash">
-                            <a href = "#" class="dashLink"  onClick={e => {if(set === 1){deleteUser()}}} >Delete Job<br></br><i class="fas fa-trash"></i></a>
+                            <a href = "#" class="dashLink"  onClick={e => {if(set === 1){deleteJob()}}} >Delete Job<br></br><i class="fas fa-trash"></i></a>
                         </div>
                         <div class="col-md-3 card dash">
                             <a href = "/admin/user/verify" class="dashLink"  onClick={e => {if(set === 1){setSet(2)}}} ><br></br><i class="fas fa-check"></i></a>
@@ -57,8 +58,12 @@ function AdminJob() {
                  set === 1 ?(
                  < JobProfile job={job} setJob={setJob} setSet={setSet}/>
                  ) : (
-                < UserEdit job={job} setJob={setJob} setSet={setSet}/>
-                 )  
+                    set === 2 ?(
+                        < JobEdit job={job} setJob={setJob} setSet={setSet}/>
+                        ) : (
+                       < JobAdd setSet={setSet}/>
+                        )  
+                 )   
                 )
                 }
             </div>

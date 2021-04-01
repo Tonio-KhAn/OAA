@@ -5,14 +5,14 @@ import './adminCss.css';
 import axios from "axios";
 import SkillProfile from './skillProfile';
 import SkillHome from './skillHome';
-import UserEdit from './userEdit';
+import SkillEdit from './skillEdit';
 import SkillAdd from './skillAdd';
 
 function AdminSkill() {
     const [skill, setSkill] = useState([]);
     const [set, setSet] = useState(0); 
     
-    const deleteUser = e => {
+    const deleteSkill = e => {
         console.log("hello")
   
         const config = {
@@ -44,10 +44,10 @@ function AdminSkill() {
                             <a href = "#"  class="dashLink"  onClick={e => {if(set === 1){setSet(2)}}} >Edit Skill<br></br><i class="fas fa-edit"></i></a>
                         </div>
                         <div class="col-md-3 card dash">
-                            <a href = "#" class="dashLink"  onClick={e => {if(set === 1){deleteUser()}}} >Delete Skill<br></br><i class="fas fa-trash"></i></a>
+                            <a href = "#" class="dashLink"  onClick={e => {if(set === 1){deleteSkill()}}} >Delete Skill<br></br><i class="fas fa-trash"></i></a>
                         </div>
                         <div class="col-md-3 card dash">
-                            <a href = "/admin/user/verify" class="dashLink"  onClick={e => {if(set === 1){setSet(2)}}} ><br></br><i class="fas fa-check"></i></a>
+                            <a href = "/admin/skill/verify" class="dashLink"  onClick={e => {if(set === 1){setSet(2)}}} ><br></br><i class="fas fa-check"></i></a>
                         </div>
                 </div>
 
@@ -59,7 +59,7 @@ function AdminSkill() {
                  < SkillProfile skill={skill} setSkill={setSkill} setSet={setSet}/>
                  ) : (
                     set === 2 ?(
-                        < UserEdit skill={skill} setSkill={setSkill} setSet={setSet}/>
+                        < SkillEdit skill={skill} setSkill={setSkill} setSet={setSet}/>
                         ) : (
                        < SkillAdd skill={skill} setSkill={setSkill} setSet={setSet}/>
                         )  

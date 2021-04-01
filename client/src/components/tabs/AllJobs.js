@@ -52,7 +52,17 @@ function AllJobs(props) {
         axios.get('/jobOpportunity/', config)
         .then(
             res => { console.log(res.data)
-            setJobOpportunity(res.data);
+            var tempArray = [];
+            var count = 0;
+            res.data.forEach(temp =>{
+              if (temp.open === true){
+                tempArray.push(temp)
+              }
+            count ++  
+            if (count === res.data.length)
+            setJobOpportunity(tempArray);
+            })
+            
             },
           )
           .catch(err => console.log(err));
