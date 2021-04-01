@@ -61,11 +61,13 @@ router.route("/add").post(auth, (req, res) => {
     const documents = req.body.documents;
     const skills = req.body.skills;
     const degrees = req.body.degrees;
+    const open = true;
     const newJobOpportunity = new JobOpportunity({
         userId,
         title,
         description,
         company,
+        open,
     });
     console.log(documents);
     newJobOpportunity
@@ -164,7 +166,55 @@ router.route("/add").post(auth, (req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
   });
 
+  router.route("/individual/:id").get(auth, (req, res) => {
+    JobOpportunity.findById(req.params.id)
+    .then(myJobOpportunities => res.json(myJobOpportunities))
+    .catch(err => res.status(400).json("Error: " + err));
+  });
 
+
+  router.route("/close/:id").put(auth, (req, res) => {
+    JobOpportunity.findById(req.params.id)
+    .then(myJobOpportunities => 
+      {
+        myJobOpportunities.open = false;
+        console.log(myJobOpportunities.open)
+        myJobOpportunities
+          .save()
+          .then(() => res.json(myJobOpportunities))
+          .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+  });
+
+  router.route("/successfulApplicants/:id").put(auth, (req, res) => {
+    console.log(req.body)
+    JobOpportunity.findById(req.params.id)
+    .then(myJobOpportunities => 
+      {
+        myJobOpportunities.applicants = req.body;
+        myJobOpportunities
+          .save()
+          .then(() => res.json(myJobOpportunities.applicants))
+          .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+  });
+
+  router.route("/review/:id").put(auth, (req, res) => {
+    console.log(req.body)
+    JobOpportunity.findById(req.params.id)
+    .then(myJobOpportunities => 
+      {
+        console.log(myJobOpportunities.applicants[req.body.index] )
+        myJobOpportunities.applicants = req.body.review;
+        myJobOpportunities
+          .save()
+          .then(() => res.json(myJobOpportunities.applicants))
+          .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+  });
 
 
   module.exports = router;

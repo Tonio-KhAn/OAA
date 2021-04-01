@@ -14,10 +14,41 @@ const config = require('config');
 const auth = require('../middleware/auth');
 
 router.route("/all/:id").get((req, res) => {
+    var count = 0;
     JobApplication.find({jobOpportunityID:req.params.id})
       .then(applications => {
           applications.sort(function(a, b){return b.rank - a.rank});
-          res.json(applications)})
+          var applied = [];
+          User.find()
+          .select('-password')
+          .then(users => {
+            applications.forEach(application => {
+                users.forEach( user => {
+                    console.log(application.userID)
+                    console.log(user._id)
+                if (application.userID == user._id){
+                    console.log("helloo")
+                   var temp = {
+                    _id: application._id,
+                    userID: user._id,
+                    uwi_email: user.uwi_email,
+                    first_name: user.first_name,
+                    last_name: user.last_name,
+                    counter: count,
+                }
+                applied.push(temp)
+                }
+                
+               
+            })
+            count++;
+            if (count === applications.length){
+                console.log("here")
+                res.json(applied)
+            }
+            })
+          })
+          })
       .catch(err => res.status(400).json("Error: " + err));
   });
 

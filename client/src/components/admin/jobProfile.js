@@ -22,8 +22,12 @@ function JobProfile({job, setSet, setJob}) {
                             <h3>{job.title}</h3>
                             </div>
                             <div>
-                            <h1>Job</h1>
-                            <h3>{job.title}</h3>
+                            <h1>Company</h1>
+                            <h3>{job.company}</h3>
+                            </div>
+                            <div>
+                            <h1>Description</h1>
+                            <h3>{job.description}</h3>
                             </div>
                             
                             <button className="adminbackbtn" onClick={e => handleClick()}> 

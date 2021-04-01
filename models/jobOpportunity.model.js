@@ -23,6 +23,16 @@ const jobOpportunitySchema = new Schema({
         required: true,
         trim: true
     },
+    open: {
+        type: Boolean,
+        required: true,
+        trim: true
+    },
+    applicants: {
+        type: Array,
+        required: true,
+        trim: true
+    },
     
 }, {
     timestamps: true,

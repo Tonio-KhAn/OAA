@@ -1,17 +1,14 @@
-import React, { useState , useEffect } from 'react';
+import React from 'react';
 import {Link } from 'react-router-dom';
 import '../../App.css';
 import './adminCss.css';
 
-function DegreeProfile({degree, setSet, setDegree}) {
+function GradeProfile({grade, setSet, setGrade}) {
     const handleClick = () => {
-        
-        setDegree([]);
+        setGrade([]);
         setSet(0);
      }
-     useEffect(() => {
-      }, []);
-      
+
     return (
      <>
             <div >
@@ -20,18 +17,14 @@ function DegreeProfile({degree, setSet, setDegree}) {
                         <div class="card">
                             <div class="card" style={{ margin : "auto"}}>
                             <div>
-                            <h1>Title</h1>
-                            <h3>{degree.name}</h3>
+                            <h1>Grade</h1>
+                            <h3>{grade.grade}</h3>
                             </div>
-                            
                             <div>
-                            <h1>Courses</h1>
-                            {degree.courses.map((value,index) =>(
-                            <h3 key={index}>{value.courseCode}</h3>
-                            ))} 
+                            <h1>Amount</h1>
+                            <h3>{grade.amount}</h3>
                             </div>
-                            
-                            <button className="adminbackbtn" onClick={e => handleClick()}> 
+                            <button className="adminbackbtn"   onClick={e => handleClick()}> 
                         <h4>
                             Back
                         </h4>
@@ -46,4 +39,4 @@ function DegreeProfile({degree, setSet, setDegree}) {
     )
 }
 
-export default DegreeProfile
+export default GradeProfile

@@ -69,6 +69,10 @@ const userSchema = new Schema({
         type: Boolean,
         required: true,
     },
+    friends:{
+        type: Array,
+        trim: true,
+    }
 }, {
     timestamps: true,
 });

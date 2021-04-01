@@ -20,7 +20,7 @@ router.route("/").get((req, res) => {
 
 router.route("/add").post(auth, (req, res) => {
     const name= req.body.name;
-    const courses = req.body.courses;
+    const courses = [];
 
     const newDegreeName = new DegreeName({
         name,

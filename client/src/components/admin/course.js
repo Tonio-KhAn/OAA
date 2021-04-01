@@ -5,7 +5,8 @@ import './adminCss.css';
 import axios from "axios";
 import CourseProfile from './courseProfile';
 import CourseHome from './courseHome';
-import UserEdit from './userEdit';
+import CourseEdit from './courseEdit';
+import CourseAdd from './courseAdd';
 
 function AdminCourse() {
     const [course, setCourse] = useState([]);
@@ -37,7 +38,7 @@ function AdminCourse() {
             <div >
                 <div class="row">
                         <div class="col-md-3 card dash" >
-                            <a href = "#" class="dashLink">Add User<br></br><i class="fas fa-plus"></i></a>
+                            <a href = "#" class="dashLink" onClick={e => {setSet(3)}}>Add Course<br></br><i class="fas fa-plus"></i></a>
                         </div>
                         <div class="col-md-3 card dash">
                             <a href = "#"  class="dashLink"  onClick={e => {if(set === 1){setSet(2)}}} >Edit Course<br></br><i class="fas fa-edit"></i></a>
@@ -57,9 +58,13 @@ function AdminCourse() {
                  set === 1 ?(
                  < CourseProfile course={course} setCourse={setCourse} setSet={setSet}/>
                  ) : (
-                < UserEdit course={course} setCourse={setCourse} setSet={setSet}/>
-                 )  
-                )
+                    set === 2 ?(
+                        < CourseEdit course={course} setCourse={setCourse} setSet={setSet}/>
+                        ) : (
+                       < CourseAdd course={course} setCourse={setCourse} setSet={setSet}/>
+                        )  
+                 ) 
+                 ) 
                 }
             </div>
         </>

@@ -47,6 +47,7 @@ function UserAdd({user, setUser, setSet}) {
         sex: userToAdd.sex,
         password: userToAdd.password
       };
+
       console.log(data)
       axios
       .post(
@@ -119,6 +120,17 @@ function UserAdd({user, setUser, setSet}) {
                 onChange={handleSingleChange}>
               </input>
             </div>
+            <div className='form-inputs'>
+          <label className='form-label'>Date of Birth</label>
+          <input
+            className='form-input'
+            type='date'
+            name='dob'
+            placeholder='Enter your date of birth (yyyy-mm-dd)'
+            value={userToAdd.dob}
+            onChange={handleSingleChange}
+          />
+        </div>
             <div className='form-inputs'>
           <label className='form-label'>Sex</label>
           <select id="sex" name="sex" form="form" onChange={handleSingleChange}>
