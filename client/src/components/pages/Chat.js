@@ -11,8 +11,7 @@ function Chat(props) {
     const authObject = { 'Project-ID': 'b8359b3b-6fff-4134-8a19-277b38c77e07', 'User-Name': 'username', 'User-Secret': 'password' }
 
     const [values, setValues ] = useState({
-        first_name: '',
-        last_name: ''
+        uwi_email: ''
     });
 
     function loadUser() {
@@ -33,9 +32,7 @@ function Chat(props) {
             .then(
                 res => { console.log(res.data)
                     setValues({
-                        ...values,
-                        ['first_name']: res.data.first_name,
-                        ['last_name']: res.data.last_name
+                        'uwi_email': res.data.uwi_email
                     });
                 },
             )
@@ -46,15 +43,24 @@ function Chat(props) {
         loadUser();
     }, []);
 
-	return (
-		<ChatEngine
-			height='90vh'
-			userName='dcitConnect'
-			userSecret='fYpwak-punvag-rervy4'
-			projectID='b8359b3b-6fff-4134-8a19-277b38c77e07'
-            renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps}/>}
-		/>
-	);
+    if(values.uwi_email === '') {
+        return (
+        <div></div>
+        );
+    }
+    else {
+        return (
+                <ChatEngine
+                    height='90vh'
+                    userName={values.uwi_email}
+                    userSecret='dcitConnect'
+                    projectID='b8359b3b-6fff-4134-8a19-277b38c77e07'
+                    renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps}/>}
+                />
+        );
+    }
+
+	
 }
 
 const mapStateToProps = state => ({

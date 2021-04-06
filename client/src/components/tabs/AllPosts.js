@@ -42,7 +42,7 @@ function AllPosts(props) {
           
 
       <div class="card" style={{float : 'left', width : "800px" , marginRight: '100px', marginLeft: '50px', marginTop: '50px'}} >
-      <h1 class="card-header" style={{fontFamily:"monospace"}}>All Post</h1>
+      <h1 class="card-header" style={{fontFamily:"monospace"}}>All Posts</h1>
                 { Posts.map((thispost,index) =>(
                     <div class="card-body" key={index} style={{borderBottom : '2px solid black', marginTop: '10px'}} >
                         <h5 class="card-title"  style={{color: "grey"}}>{thispost.title}</h5>

@@ -5,6 +5,7 @@ let SkillName = require('../models/skillName.model');
 let DegreeName = require('../models/degreeName.model');
 let JobOpportunity = require('../models/jobOpportunity.model');
 let Post = require('../models/post.model');
+let Qualification = require('../models/qualification.model');
 const path = require('path');
 const JWT = require('jsonwebtoken');
 const config = require('config');
@@ -14,14 +15,20 @@ router.route('/users/').get((req, res) => {
     User.find()
       .then(user => res.json(user))
       .catch(err => res.status(400).json("Error: " + err));
-  });
+});
 
-  router.route('/user/:id').get((req, res) => {
-    User.findById(req.params.id)
-      .select('-password')
-      .then(user => res.json(user))
-      .catch(err => res.status(400).json('msg: ' + err));
-   
+router.route('/qualifications/').get((req, res) => {
+  Qualification.find()
+    .then(qualificaiton => res.json(qualificaiton))
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
+router.route('/user/:id').get((req, res) => {
+  User.findById(req.params.id)
+    .select('-password')
+    .then(user => res.json(user))
+    .catch(err => res.status(400).json('msg: ' + err));
+  
 });
 
 router.route('/userUpdate/:id').put((req, res) => {

@@ -24,13 +24,18 @@ function Navbar(props) {
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
-              <Link to='/Profile' className='nav-links' onClick={closeMobileMenu}>
+              <Link to='/profile' className='nav-links' onClick={closeMobileMenu}>
                 Profile
               </Link>
             </li>
             <li className='nav-item'>
+              <Link to='/communityfeed/community' className='nav-links' onClick={closeMobileMenu}>
+                Community
+              </Link>
+            </li>
+            <li className='nav-item'>
               <Link to='/posts/all' className='nav-links' onClick={closeMobileMenu}>
-                Post
+                Posts
               </Link>
             </li>
             <li className='nav-item'>

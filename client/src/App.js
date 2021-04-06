@@ -33,6 +33,13 @@ import AdminPost from './components/admin/post';
 import AdminCourse from './components/admin/course';
 import AdminDegree from './components/admin/degree';
 import AdminSkill from './components/admin/skill';
+import AdminReports from './components/admin/reports';
+import CommunityFeed from './components/pages/CommunityFeed';
+import AllUsers from './components/tabs/AllUsers';
+import MyUsers from './components/tabs/MyUsers';
+import SuggestedUsers from './components/tabs/SuggestedUsers';
+
+
 class App extends Component {
 
 
@@ -63,6 +70,10 @@ class App extends Component {
           <Route path='/posts/all' component={AllPosts} />
           <Route path='/posts/create' component={CreatePosts} />
           <Route path='/chat' component={Chat}/>
+          <Route path='/communityfeed' component={CommunityFeed} />
+          <Route path='/communityfeed/community' component={AllUsers} />
+          <Route path='/communityfeed/myfriends' component={MyUsers} />
+          <Route path='/communityfeed/suggestedfriends' component={SuggestedUsers} />
            
           <Route path='/admin' exact component={AdminHome} />
           <Route path='/admin/job'  component={AdminJob} />
@@ -71,6 +82,7 @@ class App extends Component {
           <Route path='/admin/course' component={AdminCourse} />
           <Route path='/admin/degree'  component={AdminDegree} />
           <Route path='/admin/skill'  component={AdminSkill} />
+          <Route path='/admin/reports'  component={AdminReports} />
       </Router>
       </Provider>
     </>

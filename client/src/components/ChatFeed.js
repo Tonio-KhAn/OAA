@@ -54,7 +54,7 @@ const ChatFeed = (props) => {
                     {chat?.title}
                 </div>
                 <div className='chat-subtitle'>
-                    {chat.people.map((person) => ` ${person.person.username}`)}
+                    {chat.people.map((person) => ` ${person.person.first_name}`)}
                 </div>
             </div>
             {renderMessages()}
