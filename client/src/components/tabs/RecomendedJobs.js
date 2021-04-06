@@ -3,6 +3,7 @@ import '../../App.css';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {Link } from 'react-router-dom';
+import '../css/CreateJobs.css';
 
 function RecomendedJobs(props) {
 
@@ -99,7 +100,7 @@ function RecomendedJobs(props) {
         <h5 class="card-title" style={{color: "grey"}}>{job.title}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{job.company}</h6>
         <p class="card-text"  style={{fontFamily:"initial"}}>{job.description}</p>
-        <Link to={'/jobs/info/'+ job._id}className='nav-links'><button  class="card-link">go to job</button></Link>
+        <Link to={'/jobs/info/'+ job._id}className='nav-links'><button className='applybtn'>go to job</button></Link>
     </div>
     ))}
 </div>
@@ -113,13 +114,11 @@ function RecomendedJobs(props) {
                         <h3 class="card-title" style={{color: "grey"}}>{applyiedJob.title}</h3>
                         <h6 class="card-subtitle mb-2 text-muted">{applyiedJob.company}</h6>
                         <a href="#" class="card-link">Read More</a>
-                        
-                        
-                    </div>
+                        </div>
                     ))}
-</div>
-</div>
-</div>
+                    </div>
+                    </div>
+                    </div>
                 </div>
         </>
     )

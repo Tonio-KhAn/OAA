@@ -20,7 +20,7 @@ class friends extends React.Component {
                             <Card.Header>
                                 <Card.Title as='h5'>Friends</Card.Title>
                             </Card.Header>
-                            <Card.Body className='px-0 py-2'>
+                            <Card.Body className='x-0 y-2'>
                                 <Table responsive hover>
                                     <tbody>
                                     <tr className="unread">

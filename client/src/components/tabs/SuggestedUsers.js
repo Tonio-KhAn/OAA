@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import '../../App.css';
+import {Row, Col, Card, Table, Tabs, Tab, Button} from 'react-bootstrap';
+import '../css/suggestedFriends.css';
+import Aux from "../../hoc/_Aux";
 import axios from 'axios';
 import {connect} from 'react-redux';
 
@@ -58,31 +60,46 @@ function SuggestedUsers(props) {
     }, []);
     
     return (
-        <>
-            <div>
-                <br></br>
-                <div class="card" style={{float : 'left', width : "800px" , marginRight: '100px', marginLeft: '50px', marginTop: '50px'}} >
-                    <h1 class="card-header" style={{fontFamily:"monospace"}}>Suggested Friends</h1>
-                    { users.map((user, index) => (
-                    <div class="card-body" key={index} style={{borderBottom : '2px solid black', marginTop: '10px'}}>
-                        <h5 class="card-title"  style={{color: "grey"}}>{user.first_name}</h5>
-                        <p class="card-text" style={{fontFamily:"initial"}}>{user.last_name}</p>
-                        {user.status ?
-                            <></>
-                            :
-                            <>
-                                <button onClick={() => addUser(user._id)} type="button" class="btn btn-primary btn-sm"  style={{marginBottom: '10px'}}>
-                                    Add Friend <i class="fas fa-plus"></i>
-                                </button>
-                                <p>Also studied {user.qualifications[0]}</p>
-                            </>    
-                        }   
+        <Aux>
+            <div className='test1'>
+            <Row>
+                <Col>
+                        <Card className='Suggested-Users'>
+                            <Card.Header>
+                                <Card.Title as='h5'>
+                                    Suggested Friends
+                                    </Card.Title>
+                                </Card.Header>
+                            { users.map((user, index) => (
+                            <Card.Body className='x-0 y-2'>
+                                <Table responsive hover>
+                                    <tbody>
+                                    <tr className="unread">
+                                        <td>
+                                            <h6 className="mb-1">{user.first_name} {user.last_name}</h6>
+                                            <p className="m-0"> Also studied {user.qualifications[0]}</p>
+                                        </td>
+                                        {user.status ?
+                                        <></>
+                                        :
+                                        <>
+                                        <td><button onClick={() => addUser(user._id)} className="label theme-bg text-white f-12">
+                                            Add Friend <i class="fas fa-plus"></i>
+                                                </button>
+                                                </td>
+                                                </>
+                                                } 
+                                                </tr>
+                                    </tbody>
+                                </Table>
+                            </Card.Body>
+                            ))}
+                        </Card>
+                    </Col>
+                    </Row>
                     </div>
-                    ))}
-                </div>
-            </div>
-        </>
-    )
+                    </Aux>
+            )
 }
 
 const mapStateToProps = state => ({
