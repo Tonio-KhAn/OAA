@@ -17,6 +17,7 @@ import AllJobs from './components/tabs/AllJobs';
 import RecomendedJobs from './components/tabs/RecomendedJobs';
 import Apply from './components/pages/Apply';
 import ManageDegree from './components/tabs/ManageDegrees';
+import EditProfile from './components/tabs/editProfile';
 import CreateJobs from './components/tabs/CreateJobs';
 import Verification from './components/pages/Verification';
 import JobInfo from './components/tabs/JobInfo';
@@ -26,6 +27,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Posts from './components/pages/PostsFeed';
 import AllPosts from './components/tabs/AllPosts';
 import CreatePosts from './components/tabs/CreatePosts';
+import Resume from './components/tabs/resume';
 import AdminHome from './components/admin/home';
 import AdminJob from './components/admin/job';
 import AdminUser from './components/admin/user';
@@ -52,6 +54,8 @@ class App extends Component {
           <Route path='/createPost' component={createPost} />
           <Route path='/profile' component={Profile} />
           <Route path='/profile/manageDegrees' component={ManageDegree} />
+          <Route path='/profile/editProfile' component={EditProfile} />
+          <Route path='/profile/resume' component={Resume} />
           <Route path='/confirm/' component={ConfirmEmail} />
           <Route path='/jobs' component={JobOpportunity} />
           <Route path='/jobs/all' component={AllJobs} />

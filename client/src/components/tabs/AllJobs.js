@@ -30,6 +30,7 @@ function AllJobs(props) {
       .then(
         res => { console.log(res.data)
         getAppliedJobs(res.data._id)
+        getJobOpportunity(res.data._id)
         console.log(res.data._id);
         },
       )
@@ -37,7 +38,7 @@ function AllJobs(props) {
       
   }
 
-    function getJobOpportunity() {
+    function getJobOpportunity(userID) {
 
         const token = props.auth.token;
 
@@ -49,7 +50,7 @@ function AllJobs(props) {
             config.headers["x-auth-token"] = token;
           }
 
-        axios.get('/jobOpportunity/', config)
+        axios.get('/jobOpportunity/allJobs/' + userID, config)
         .then(
             res => { console.log(res.data)
             var tempArray = [];
@@ -92,7 +93,7 @@ function AllJobs(props) {
   }
 
     useEffect(() => {
-        getJobOpportunity(); 
+        
         loadUser();
       }, []);
 
