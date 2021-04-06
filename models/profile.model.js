@@ -11,10 +11,13 @@ const profileSchema = new Schema({
     },
     profilePictureID: {
         type: String,
-        required: true,
         trim: true
     },
     
+    resumeID: {
+        type: String,
+        trim: true
+    },
 }, {
     timestamps: true,
 });

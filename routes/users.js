@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 let User = require('../models/user.model');
 let Qualification = require('../models/qualification.model');
 let DegreeName = require('../models/degreeName.model');
+let Profile = require('../models/profile.model');
 const path = require('path');
 const JWT = require('jsonwebtoken');
 const crypto = require('crypto');
@@ -344,11 +345,24 @@ router.route("/verify/:id").post((req, res) => {
   }
   user.verified = true;
     user.save()
-    return res.status(200).json(
-      {msg: 'User verified'})
+    .then(user=> {
+      const userID = user._id;
+      const profilePictureID = null;
+
+      const newProfile = new Profile({
+        userID,
+        profilePictureID
+    })
+    newProfile.save()
+    .then(profile => {
+      return res.status(200).json(
+        {msg: 'User verified'})
+      })
+
 })
 .catch(err => res.status(400).json("Error: " + err));
 });
+})
 
 router.route("/reset").post((req,res)=>{
   const uwi_email = req.body.uwi_email;

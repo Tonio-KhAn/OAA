@@ -29,14 +29,13 @@ let transporter = nodemailer.createTransport({
   });
 
   
-  router.route("/applyiedJobs/:id").get((req, res) => {
+  router.route("/applyiedJobs/:id").get(auth, (req, res) => {
     var jobsList = null;
     var count = 0
 
     JobApplications.find({userId: req.param.id})
       .then(applications => 
         {
-          console.log(applications)
           jobsList = [];
           applications.forEach (application => {
           JobOpportunity.findById(application.jobOpportunityID)
@@ -51,6 +50,45 @@ let transporter = nodemailer.createTransport({
         }
         )
       .catch(err => res.status(400).json("Error: " + err));
+  });
+
+  router.route("/allJobs/:id").get(auth ,(req, res) => {
+    var jobsList = [];
+    var count = 0
+    var count2 = 0
+    JobOpportunity.find()
+    .then(jobs => {
+      console.log(req.user.id)
+      JobApplications.find({userId: req.param.id})
+      .then(applications => {
+        console.log("0")
+       jobs.forEach(job =>{
+        let check = 0;
+        count = 0
+        applications.forEach(application =>{
+          if (application.jobOpportunityID == job._id){
+            check = 1
+          }
+          console.log("count"+ count)
+          console.log("count2"+ count2)
+          console.log("check"+ check)
+          console.log("lenght"+ applications.length)
+          count = count + 1
+          if (count == applications.length && check == 0){
+            jobsList.push(job)
+            console.log(jobsList)
+          }
+          
+        })
+        count2 = count2 + 1
+        if (count2 === jobs.length){
+          res.json(jobsList)
+        }
+      }) 
+      })
+      .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
   });
 
 router.route("/add").post(auth, (req, res) => {

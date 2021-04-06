@@ -5,7 +5,9 @@ import axios from "axios";
 import {Link } from 'react-router-dom';
 
 function Profile(props) {
-
+  const [profile, setProfile] = useState({
+    location:"https://sothis.es/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"
+  });
  
   const [values, setValues] = useState({
     first_name: "",
@@ -43,8 +45,41 @@ function loadUser(){
   .catch(err => console.log(err));
   };
 
+  function loadProfile(){
+    const token = props.auth.token;
+  
+    const config = {
+      headers: {}
+    };
+  
+    if (token) {
+      config.headers["x-auth-token"] = token;
+    }
+  
+    axios
+    .get(
+      "/media/profile",
+      config
+    )
+    .then(
+      res => { console.log(res.data)
+        if (res.data.location == null){
+          setProfile({
+            "location": "https://sothis.es/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"});
+          
+        }
+        else{
+          setProfile({
+        "location": res.data.location});
+      }
+    }
+    )
+    .catch(err => console.log(err));
+    };
+
   useEffect(() => {
     loadUser();
+    loadProfile();
   }, []);
     return (
 
@@ -53,7 +88,7 @@ function loadUser(){
         <div class= "profile__card card">
           <div>
             <img alt="user" style ={{width:"180px",height:"160px",borderRadius:"20px"}} 
-            src="https://sothis.es/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"/>
+            src={profile.location}/>
           </div>
           <div><h2 style={{textTransform: 'capitalize'}} >{values.first_name} {values.last_name}</h2>
           <h4 style={{textTransform: 'capitalize'}} >{values.type}</h4>
