@@ -11,7 +11,7 @@ function PostsFeed() {
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
   <Link to='/posts/all' className='nav-links'>
-    <button class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true" >All Post</button>
+    <button class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true" >All Posts</button>
     </Link>
   </li>
   <li class="nav-item">

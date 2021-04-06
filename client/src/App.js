@@ -36,6 +36,13 @@ import AdminSkill from './components/admin/skill';
 import suggestedFriends from './components/pages/suggestedFriends';
 import friends from './components/pages/friends';
 import AdminGrade from './components/admin/grade';
+import AdminReports from './components/admin/reports';
+import CommunityFeed from './components/pages/CommunityFeed';
+import AllUsers from './components/tabs/AllUsers';
+import MyUsers from './components/tabs/MyUsers';
+import SuggestedUsers from './components/tabs/SuggestedUsers';
+
+
 class App extends Component {
 
 
@@ -66,6 +73,11 @@ class App extends Component {
           <Route path='/posts/all' component={AllPosts} />
           <Route path='/posts/create' component={CreatePosts} />
           <Route path='/chat' component={Chat}/>
+          <Route path='/communityfeed' component={CommunityFeed} />
+          <Route path='/communityfeed/community' component={AllUsers} />
+          <Route path='/communityfeed/myfriends' component={MyUsers} />
+          <Route path='/communityfeed/suggestedfriends' component={SuggestedUsers} />
+           
           <Route path='/admin' exact component={AdminHome} />
           <Route path='/admin/job'  component={AdminJob} />
           <Route path='/admin/user'  component={AdminUser} />
@@ -76,6 +88,7 @@ class App extends Component {
           <Route path='/suggestedFriends' component={suggestedFriends} />
           <Route path='/friends' component={friends} />
           <Route path='/admin/grade'  component={AdminGrade} />
+          <Route path='/admin/reports'  component={AdminReports} />
       </Router>
       </Provider>
     </>

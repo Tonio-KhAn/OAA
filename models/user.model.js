@@ -69,9 +69,9 @@ const userSchema = new Schema({
         type: Boolean,
         required: true,
     },
-    friends:{
+    friends: {
         type: Array,
-        trim: true,
+        trim: true
     }
 }, {
     timestamps: true,

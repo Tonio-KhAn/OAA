@@ -1,12 +1,16 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 let User = require('../models/user.model');
+let Qualification = require('../models/qualification.model');
+let DegreeName = require('../models/degreeName.model');
 const path = require('path');
 const JWT = require('jsonwebtoken');
 const crypto = require('crypto');
 const config = require('config');
 const auth = require('../middleware/auth');
 const nodemailer = require('nodemailer');
+
+const axios = require('axios');
 
 let transporter = nodemailer.createTransport({
   service:'gmail',
@@ -33,10 +37,148 @@ router.route('/').get(auth, (req, res) => {
    
 });
 
-  
+router.route('/addfriend/').put(auth, (req, res) => {
+  User.findById(req.user.id)
+    .then(user => {
+      user.friends.push(req.body.id);
+      
+      user
+        .save()
+        .then(() => res.json(user))
+        .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
 
+router.route('/community').get(auth, (req, res) => {
+  var userArray = []
+  User.findById(req.user.id)
+    .then(myUser => {
+      User.find()
+      .then(users => {
+        users.forEach(user => {
+          if (user._id != req.user.id) {
+            var temp = {
+              _id: user._id,
+              first_name: user.first_name,
+              last_name: user.last_name,
+              status: false
+            }
+            myUser.friends.forEach(friend => {
+              if (friend == user._id) {
+                temp.status = true;
+              }
+            })
+            userArray.push(temp);
+          }
+        })
+        res.json(userArray)
+      })
+    .catch(err => res.status(400).json("Error: " + err));
+    }) 
+    .catch(err => res.status(400).json("Error: " + err));
+});
 
+router.route('/mycommunity').get(auth, (req, res) => {
+  var userArray = []
+  User.findById(req.user.id)
+    .then(myUser => {
+      User.find()
+      .then(users => {
+        users.forEach(user => {
+          if (user._id != req.user.id) {
+            var temp = {
+              _id: user._id,
+              first_name: user.first_name,
+              last_name: user.last_name,
+              status: false
+            }
+            myUser.friends.forEach(friend => {
+              if (friend == user._id) {
+                temp.status = true;
+                userArray.push(temp);
+              }
+            })
+          }
+        })
+        res.json(userArray)
+      })
+    .catch(err => res.status(400).json("Error: " + err));
+    }) 
+    .catch(err => res.status(400).json("Error: " + err));
+});
 
+router.route('/suggestedfriends').get(auth, (req, res) => {
+  var userDegree = []
+  var tempArray = []
+  var suggestedArray = []
+  DegreeName.find()
+    .then(degrees => {
+      User.findById(req.user.id)
+        .then(user => {
+          User.find()
+            .then(people => {
+              Qualification.find()
+                .then(qualifications => {
+                  people.forEach(person => {
+                    if (person._id != req.user.id) {
+                      var temp = {
+                        _id: person._id,
+                        first_name: person.first_name,
+                        last_name: person.last_name,
+                        qualifications: [],
+                        status: false
+                      }
+                      user.friends.forEach(friend => {
+                        if (friend == person._id) {
+                          temp.status = true;
+                        }
+                      })
+                      if (temp.status == false) {
+                        tempArray.push(temp)
+                      }
+                    }
+                  })
+                  qualifications.forEach(qualification => {
+                    tempArray.forEach(temp => {
+                      if (qualification.userId == temp._id) {
+                        degrees.forEach(degree => {
+                          if (qualification.degreeID == degree._id) {
+                            temp.qualifications.push(degree.name)
+                          }
+                        })
+                      }
+                    })
+                  })
+                  qualifications.forEach(qualification => {
+                    if (qualification.userId == req.user.id) {
+                      degrees.forEach(degree => {
+                        if (qualification.degreeID == degree._id) {
+                          userDegree.push(degree.name)
+                        }
+                      })
+                    }
+                  })
+                  tempArray.forEach(temp => {
+                    temp.qualifications.forEach(qualification => {
+                      userDegree.forEach(degree => {
+                        if (qualification == degree) {
+                          temp.qualifications[0] = degree;
+                          suggestedArray.push(temp);
+                        }
+                      })
+                    })
+                  })
+                res.json(suggestedArray)
+                })
+                .catch(err => res.status(400).json("Error: " + err));
+            })
+            .catch(err => res.status(400).json("Error: " + err));
+        })
+        .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
 
 router.route("/email/:id").get((req, res) => {
   const email = req.params.id;
@@ -99,10 +241,11 @@ router.route('/add').post((req, res) => {
       bcrypt.hash(newUser.password, salt, (err, hash) => {
           
           newUser.password= hash;
+          console.log(newUser.password);
   newUser
     .save()
-    .then(user => {
-
+    .then(
+      user => {
       crypto.randomBytes(32,(err,buffer)=>{
         if(err){
           console.log(err)
@@ -132,7 +275,14 @@ router.route('/add').post((req, res) => {
                console.log('error',err)
                return res.status(200).json({msg: 'error' });
               }else{
-               return res.status(200).json({msg: 'sucessfull' });
+                axios.post(
+                  'https://api.chatengine.io/projects/people/',
+                  { 'username': user.uwi_email, 'secret': 'dcitConnect', 'first_name': user.first_name, 'last_name': user.last_name },
+                  { headers: { "Private-Key": '6451a947-04bd-4a1f-ad1b-f26ea5f77c3a' } }
+                )
+                .then((response) => console.log(response.data))
+                .catch((error) => console.log(error))
+                return res.status(200).json({msg: 'sucessfull' });
               }
             });
           })
