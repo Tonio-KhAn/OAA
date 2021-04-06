@@ -97,6 +97,7 @@ function Apply(props) {
   </div>
   <textarea class="form-control" aria-label="With textarea"></textarea>
 </div>
+
 <button className='applybtn' type='submit'>
          Apply
           </button>

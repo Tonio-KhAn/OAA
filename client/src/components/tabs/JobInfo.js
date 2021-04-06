@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import {Row, Col, Card, Table, Tabs, Tab, Button} from 'react-bootstrap';
+import '../css/suggestedFriends.css';
+import Aux from "../../hoc/_Aux";
 import '../../App.css';
 import axios from 'axios';
 import {connect} from 'react-redux';
@@ -161,51 +164,97 @@ const submitReview = (index , e) =>{
     return (
      <>
      <div>
-     <div class="card" style={{float : 'left', width : "800px" , marginRight: '100px', marginLeft: '50px', marginTop: '50px'}} >
-     <button type="button" class="contact300-form-btn" onClick={() => close()}>Close Job</button>
+       <br></br>
+     <div class="card" style={{width : "800px" , margin: "0 auto"}} >
             <h5 class="card-header">Job Info</h5>
                 { inputFields.map((inputField,index) =>(
                     <div class="card-body" key={index} style={{borderBottom : '2px solid black', marginTop: '10px'}} >
                         <h5 class="card-title">{inputField.first_name} {inputField.last_name}</h5>
                         <p class="card-text">{inputField.uwi_email}</p>
                         <a href="#" class="card-link">Read More</a>
+                        
+                        <centre><button type="button" class="applybtn" onClick={() => close()}>Close Job</button>
+                        </centre>
                     </div>
                     ))}
             </div>
-          
-</div>
-
-        </>
-    )
-    else 
-    if (applicants.length === 0)
-    return(
-      <>
-      <div>
-            <h5 class="card-header">Successful Applicants</h5>
-                { applicantsToAdd.map((inputField,index) =>(
-
-                        <h5 key={index} class="card-title" >{inputField.first_name} {inputField.last_name}</h5>
-                   
-                    ))}
-                      {
-               applicantsToAdd.length === 0 ? (
-               null
-                ):(
-                  <button type="button" class="contact300-form-btn" onClick={() => submit()}>continue</button>
-                )
-              }
+            </div>
+            </>
+            )
+            else
+            if (applicants.length === 0)
+            return(
+            <>
             <div>
+              <h5 class="card-header">Successful Applicants</h5>
+              <Aux>
+                <div className='test1'>
+                  <Row>
+                    <Col>
+                    <Card className='Suggested-Users'>
+                      { applicantsToAdd.map((inputField,index) =>(
+                      <Card.Body className='x-0 y-2'>
+                        <Table responsive hover>
+                          <tbody>
+                            <tr className="unread">
+                              <td>
+                                <h6 className="mb-1">{inputField.first_name} {inputField.last_name}</h6>
+                                </td>
+                                {
+                                applicantsToAdd.length === 0 ? (
+                                  null
+                                  ):(
+                                  <td>
+                                    <button className="label theme-bg text-white f-12" onClick={() => submit()}>continue
+                                    </button>
+                                    </td>
+                                    )
+                                    }
+                                    </tr>
+                                    </tbody>
+                                    </Table>
+                                    </Card.Body>
+                                    ))}
+                                    </Card>
+                                    </Col>
+                                    </Row>
+                                    </div>
+                                    </Aux>
+                                    <div>
+                                      <h5 class="card-header">
+                                        All Applicants
+                                        </h5>
+                                        <Aux>
+            <div className='test1'>
+                <Row>
+                    <Col>
+                    <Card className='Suggested-Users'>
+                    { inputFields.map((inputField,index) =>(
+                            <Card.Body className='x-0 y-2'>
+                                <Table responsive hover>
+                                    <tbody>
+                                        <tr className="unread">
+                                            <td>
+                                                <h6 className="mb-1">{inputField.first_name} {inputField.last_name}</h6>
+                                                </td>
+                                                <td>
+                                                    <button className="label theme-bg text-white f-12" onClick={() => handleAddCourse(inputField.userID,inputField.first_name,inputField.last_name)}>
+                                                    Choose Applicant <i class="fas fa-plus"></i>
+                                                    </button>
+                                                </td>
+                                                </tr>
+                                    </tbody>
+                                </Table>
+                            </Card.Body>
+                            ))}
+                            </Card>
+                            </Col>
+                            </Row>
+                            </div>
+                            </Aux>
 
-            <h5 class="card-header">All Applicants</h5>
-      { inputFields.map((inputField,index) =>(
-                    <div class="card-body" key={index} style={{borderBottom : '2px solid black', marginTop: '10px'}} >
-                        <span>
-                        <h5 style={{float : 'left'}} class="card-title">{inputField.first_name} {inputField.last_name}</h5>
-                        <button type="button" class="contact300-form-btn" onClick={() => handleAddCourse(inputField.userID,inputField.first_name,inputField.last_name)}>choose applicant</button>
-                    </span>
-                    </div>
-                    ))}
+
+
                     </div>
  </div>
  
@@ -215,13 +264,13 @@ const submitReview = (index , e) =>{
     return(
       <>
      <div>
-     <div class="card" style={{float : 'left', width : "800px" , marginRight: '100px', marginLeft: '50px', marginTop: '50px'}} >
-
+     <br></br>
+     <div class="card" style={{width : "800px" , margin: "0 auto"}} >
             <h5 class="card-header">Review Applicant</h5>
                 { applicants.map((inputField,index) =>(
                     <div class="card-body" key={index} style={{borderBottom : '2px solid black', marginTop: '10px'}} >
                         <h5 class="card-title">{inputField.first_name} {inputField.last_name}</h5>
-                        <form  class="test"  onSubmit={e => submitReview(index, e)} >
+                        <form onSubmit={e => submitReview(index, e)} >
           <div>
             <div class="input-group">
               <input
@@ -235,9 +284,10 @@ const submitReview = (index , e) =>{
             </div>
             
             </div> 
+            <br></br>
             <div class="wrap-contact100-form-btn">
-                  <button className='btnnew' type='submit' >
-                    Add
+                  <button className='contact300-form-btn' type='submit' >
+                    Review
                   </button>
                   </div>
               </form>
