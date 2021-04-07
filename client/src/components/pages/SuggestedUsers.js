@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+
+import { Link } from 'react-router-dom';
 import {Row, Col, Card, Table, Tabs, Tab, Button} from 'react-bootstrap';
 import '../css/suggestedFriends.css';
 import Aux from "../../hoc/_Aux";
@@ -60,25 +62,45 @@ function SuggestedUsers(props) {
     }, []);
     
     return (
+
         <Aux>
-            <div className='test1'>
-            <Row>
-                <Col>
-                        <Card className='Suggested-Users'>
-                            <Card.Header>
-                                <Card.Title as='h5'>
-                                    Suggested Friends
-                                    </Card.Title>
-                                </Card.Header>
-                            { users.map((user, index) => (
-                            <Card.Body className='x-0 y-2'>
+            <div className='page'>
+                <Row>
+                <Col md={6} xl={4}>
+                        <Card>
+                            <Card.Body><Link to='/myfriends'> 
+                            <button className="btnlabel theme-bgg text-white f-122">
+                            <i class="fas fa-users"></i> My Friends</button></Link>
+                            
+                            <Link to='/community'> 
+                            <button className="btnlabel theme-bgg text-white f-122">
+                            <i class="fas fa-users"></i> Community</button></Link>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col>
+                    
+                        <Card class='carddd'>
+                                <div class='biglabel'>Suggested Friends</div>
+                            <Card.Body>
                                 <Table responsive hover>
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Also Studied</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    { users.map((user, index) => (
                                     <tbody>
-                                    <tr className="unread">
+                                    <tr>
+                                        <td class='counterCell'></td>
+                                        <td>{user.first_name}</td>
+                                        <td>{user.last_name}</td>
+                                        <td>{user.qualifications[0]}</td>
                                         <td>
-                                            <h6 className="mb-1">{user.first_name} {user.last_name}</h6>
-                                            <p className="m-0"> Also studied {user.qualifications[0]}</p>
-                                        </td>
                                         {user.status ?
                                         <></>
                                         :
@@ -89,16 +111,19 @@ function SuggestedUsers(props) {
                                                 </td>
                                                 </>
                                                 } 
-                                                </tr>
-                                    </tbody>
+                                                        </td>
+                                    </tr>
+                                    </tbody>     
+                            
+                            ))}
                                 </Table>
                             </Card.Body>
-                            ))}
                         </Card>
-                    </Col>
-                    </Row>
-                    </div>
-                    </Aux>
+                            </Col>
+                            </Row>
+                            </div>
+                            </Aux>
+                       
             )
 }
 

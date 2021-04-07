@@ -83,7 +83,7 @@ function AdminUserEdit({user, setUser, setSet}) {
             <div >
                 <ul>
                     <li value="100">
-                        <div class="card">
+                        <div class="page">
                             <button  onClick={e => handleClick()}> 
                         <h4>
                             Back Again
@@ -123,6 +123,7 @@ function AdminUserEdit({user, setUser, setSet}) {
                 onChange={e => handleSingleChange(index, e)}>
               </input>
             </div>
+            
             <div className='input-group'>
           <label className='form-label'>Date of Birth</label>
           <input
@@ -138,14 +139,14 @@ function AdminUserEdit({user, setUser, setSet}) {
           <div >
         <div className='input-group'>
           <label className='form-label'>Sex</label>
-          <select id="sex" name="sex"   form="form" defaultValue={value.sex} onChange={e => handleSingleChange(index, e)}>
+          <select className="selector" id="sex" name="sex"   form="form" defaultValue={value.sex} onChange={e => handleSingleChange(index, e)}>
             <option value='M' >Male</option>
             <option value='F'>Female</option>
           </select>
         </div>
         <div className='input-group'>
           <label className='form-label'>Type</label>
-          <select id="type" name="type" form="form" defaultValue={value.type} onChange={e => handleSingleChange(index, e)}>
+          <select className="selector"  id="type" name="type" form="form" defaultValue={value.type} onChange={e => handleSingleChange(index, e)}>
             
             <option value='alumni'>Alumni</option>
             <option value='student'>Student</option>

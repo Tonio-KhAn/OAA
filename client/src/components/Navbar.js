@@ -29,22 +29,22 @@ function Navbar(props) {
               </Link>
             </li>
             <li className='nav-item'>
-              <Link to='/communityfeed/community' className='nav-links' onClick={closeMobileMenu}>
+              <Link to='/community' className='nav-links' onClick={closeMobileMenu}>
                 Community
               </Link>
             </li>
             <li className='nav-item'>
-              <Link to='/posts/all' className='nav-links' onClick={closeMobileMenu}>
+              <Link to='/postsall' className='nav-links' onClick={closeMobileMenu}>
                 Posts
               </Link>
             </li>
             <li className='nav-item'>
               <Link
-                to='/jobs/all'
+                to='/all'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                My Job Opportunities
+                Job Opportunities
               </Link>
             </li>
             <li className='nav-item'>

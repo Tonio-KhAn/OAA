@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {Row, Col, Card, Table, Tabs, Tab, Button} from 'react-bootstrap';
 import '../css/suggestedFriends.css';
@@ -61,41 +62,63 @@ function MyUsers(props) {
     
     return (
         <>
-        <Aux>
-            <div className='test1'>
+         <Aux>
+            <div className='page'>
                 <Row>
+                <Col md={6} xl={4}>
+                        <Card>
+                            <Card.Body><Link to='/suggestedfriends'> 
+                            <button className="btnlabel theme-bgg text-white f-122">
+                            <i class="fas fa-users"></i> Suggested Friends</button></Link>
+                            
+                            <Link to='/community'> 
+                            <button className="btnlabel theme-bgg text-white f-122">
+                            <i class="fas fa-users"></i> Community</button></Link>
+                            </Card.Body>
+                        </Card>
+                    </Col>
                     <Col>
-                    <Card className='Suggested-Users'>
-                        <Card.Header>
-                            <Card.Title as='h5'>My Friends</Card.Title>
-                            </Card.Header>
-                            { users.map((user, index) => (
-                            <Card.Body className='x-0 y-2'>
+                    
+                        <Card class='carddd'>
+                                <div class='biglabel'>My Friends</div>
+                            <Card.Body>
                                 <Table responsive hover>
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    { users.map((user, index) => (
                                     <tbody>
-                                        <tr className="unread">
-                                            <td>
-                                                <h6 className="mb-1">{user.first_name} {user.last_name}</h6>
-                                                </td>
-                                                <td>
+                                    <tr>
+                                        <td class='counterCell'></td>
+                                        <td>{user.first_name}</td>
+                                        <td>{user.last_name}</td>
+                                        <td>
                                                     {user.status ?
                                                     <></>
                                                     :
-                                                    <button onClick={() => addUser(user._id)} type="button" class="btn btn-primary btn-sm"  style={{marginBottom: '10px'}}>
+                                                    <button onClick={() => addUser(user._id)} type="button" class="label theme-bg text-white f-12"  style={{marginBottom: '10px'}}>
                                                         Add Friend <i class="fas fa-plus"></i>
                                                         </button>
                                                         }
                                                         </td>
-                                                </tr>
-                                    </tbody>
+                                    </tr>
+                                    </tbody>     
+                            
+                            ))}
                                 </Table>
                             </Card.Body>
-                            ))}
-                            </Card>
+                        </Card>
                             </Col>
                             </Row>
                             </div>
                             </Aux>
+        
+    
         </>
     )
 }

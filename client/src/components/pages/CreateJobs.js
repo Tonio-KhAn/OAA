@@ -220,8 +220,10 @@ function CreateJobs(props) {
         
         <br></br>
         <br></br>
-        <form class="test" onSubmit={handleSubmit}>
+        <form class="page" onSubmit={handleSubmit}>
           <div>
+            
+          <h5 className="biglabel">Create A New Job Post!</h5>
             <div class="input-group">
               <input
                 type="text"

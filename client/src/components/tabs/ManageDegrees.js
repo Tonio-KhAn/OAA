@@ -263,10 +263,12 @@ function ManageDegrees(props) {
          </div> 
 ))} 
 </div>
+<br></br>
 <div class="card">
+  
         {inputFields.map((inputField,indexA) =>(
             <form onSubmit={handleSubmit} key={indexA}>
-            <h5>New Degree</h5>
+            <h5 className="biglabel">New Degree</h5>
             <div class="input-group input-group-lg" >
             <div class="input-group mb-3">
                 
@@ -289,7 +291,7 @@ function ManageDegrees(props) {
   </select>
 </div>
             <div class="input-group-prepend">
-                    <span class="btna" id="inputGroup-sizing-lg">Year Started:</span>
+                    <span class="btna" id="inputGroup-sizing-lg"><h5 className="generallabel">Year Started:</h5></span>
                 </div>
                 
             <input type="date" class="form-control" name="startYear" value ={inputField.startYear}onChange={e => handleAddDegreeChange(indexA, e)}  aria-label="Large" aria-describedby="inputGroup-sizing-sm"></input>
@@ -299,7 +301,7 @@ function ManageDegrees(props) {
             <div class="input-group input-group-lg" key={indexCourses} >
                 
                 <div class="input-group-prepend">
-                    <span class="btnb" id="inputGroup-sizing-lg">Course Name:</span>
+                    <span class="btnb" id="inputGroup-sizing-lg"><h5 className="generallabel">Course Name:</h5></span>
                 </div>
             
             <select class="selector" name="name" id="" onChange={e => handleCourseChange(indexCourses, e)}>
@@ -315,43 +317,39 @@ function ManageDegrees(props) {
             { gradesList.map((gradeList,indexGrades) =>(
            <option key={indexGrades} value={gradeList.grade}>{gradeList.grade}</option>           
         ))}  
-           </select>  
+           </select> 
            
-        <div class="container-contact100-form-btn">
-            <button type="button" class="contact300-form-btn" onClick={() => handleRemoveCourses(indexCourses)}>Remove</button>
-</div>
+            <button type="button" class="btnnew" onClick={() => handleRemoveCourses(indexCourses)}>Remove</button>
+
             </div>
          ))}
 
          <br></br>
-         
-            <button type="button" class="btnnew" onClick={() => handleAddCourse()}>Add Course</button>
-                  <div class="wrap-contact100-form-btn">
-                  <button className='btnnew' type='submit' >
-                    ADD DEGREE
+         <div>
+            <button type="button" class="btnnew" onClick={() => handleAddCourse()}>Add Course <i class="fas fa-plus"></i></button>
+            </div>     
+                  <button className='btnneww' type='submit' >
+                    ADD DEGREE <i class="fas fa-plus"></i>
                   </button>
-                  </div>
             </form>
         ))}
-</div>
-        
-                      <div class="container-contact200-form-btn">
+        <div class="container-contact200-form-btn">
 
-                      <div class="wrap-contact100-form-btn">
-                        <div class="contact100-form-bgbtn"></div>
-                        { !adding ? (
-                        <button class="contact100-form-btn"onClick={() => handleAdd()}>
-                          Add
-                        </button>
-                        ):
-                      (
-                        <button class="contact100-form-btn"onClick={() => handleCancel()}>
-                          Cancel
-                        </button>
-                        )}
-                      </div>
-                    </div>
-                    
+
+  { !adding ? (
+  <button class="btnneww"onClick={() => handleAdd()}>
+    Add 
+  </button>
+  ):
+(
+  <button class="btnneww"onClick={() => handleCancel()}>
+    Cancel 
+  </button>
+  )}
+</div>
+</div>
+
+                    <br></br>
                     </div>
                     </div>
                     </div>
