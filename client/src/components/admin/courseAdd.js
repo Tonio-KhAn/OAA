@@ -103,15 +103,16 @@ function CourseAdd({course, setCourse, setSet}) {
                 <ul>
                     <li value="100">
                         <div class="card">
-                            <button  onClick={e => handleClick()}> 
-                        <h4>
-                            Back Again
-                        </h4>
-                            </button>
                           
                             
-      <form  class="test" onSubmit={handleSubmit}  >
+      <form  class="page" onSubmit={handleSubmit}  >
           <div>
+            
+          <div class="wrap-contact100-form-btn">
+                  <button className='btnnew'  onClick={e => handleClick()}> 
+                            Back Again
+                            </button>
+                            </div>
             <div class="input-group">
               <input
                 type="text"

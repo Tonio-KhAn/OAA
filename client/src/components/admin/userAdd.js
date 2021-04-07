@@ -69,16 +69,16 @@ function UserAdd({user, setUser, setSet}) {
             <div >
                 <ul>
                     <li value="100">
-                        <div class="card">
-                            <button  onClick={e => handleClick()}> 
-                        <h4>
-                            Back Again
-                        </h4>
-                            </button>
+                        <div class="page">
                           
                             
-      <form  class="test" onSubmit={handleSubmit}  >
+      <form  class="page" onSubmit={handleSubmit}  >
           <div>
+          <div class="wrap-contact100-form-btn">
+                  <button className='btnnew'  onClick={e => handleClick()}> 
+                            Back Again
+                            </button>
+                            </div>
             <div class="input-group">
               <input
                 type="text"
@@ -120,27 +120,28 @@ function UserAdd({user, setUser, setSet}) {
                 onChange={handleSingleChange}>
               </input>
             </div>
-            <div className='form-inputs'>
-          <label className='form-label'>Date of Birth</label>
+            <div class="input-group-prepend">
+                    <span class="btna" id="inputGroup-sizing-lg"><h5 className="generallabel">Date Of Birth:</h5></span>
+                    <label className='form-label'>Date of Birth</label>
           <input
-            className='form-input'
+            className='form1-inputs'
             type='date'
             name='dob'
             placeholder='Enter your date of birth (yyyy-mm-dd)'
             value={userToAdd.dob}
             onChange={handleSingleChange}
           />
-        </div>
-            <div className='form-inputs'>
+                </div>
+            <div className='form1-inputs'>
           <label className='form-label'>Sex</label>
-          <select id="sex" name="sex" form="form" onChange={handleSingleChange}>
+          <select class="selector"id="sex" name="sex" form="form" onChange={handleSingleChange}>
             <option value='M'>Male</option>
             <option value='F'>Female</option>
           </select>
         </div>
-        <div className='form-inputs'>
+        <div className='form1-inputs'>
           <label className='form-label'>Type</label>
-          <select id="type" name="type" form="form" onChange={handleSingleChange}>
+          <select  class="selector" id="type" name="type" form="form" onChange={handleSingleChange}>
             <option value='student'>Student</option>
             <option value='alumni'>Alumni</option>
           </select>

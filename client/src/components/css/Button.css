@@ -8,6 +8,7 @@
   outline: none;
   border: none;
   cursor: pointer;
+  background-color: #27cdff;
 }
 
 .btna {
@@ -39,6 +40,12 @@
 
 .btn--primary {
   background-color: var(--primary);
+  color: #242424;
+  border: 1px solid var(--primary);
+}
+
+.btn---primary {
+  background-color: #27cdff;;
   color: #242424;
   border: 1px solid var(--primary);
 }

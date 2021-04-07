@@ -84,8 +84,11 @@ function CreatePosts(props) {
     return (
         <>
                   <br></br>
-        <form class="test" onSubmit={handleSubmit}>
+        <form class="page" onSubmit={handleSubmit}>
           <div>
+            
+            
+          <h5 className="biglabel">Create A New Post!</h5>
             <br></br>
             <div class="input-group">
               <input

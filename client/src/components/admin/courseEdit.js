@@ -88,7 +88,7 @@ function AdminCourseEdit({course, setCourse, setSet}) {
                             </button>
                             {courseChange.map((value,index) =>(
                             
-      <form key={index} class="test" onSubmit={handleSubmit}  >
+      <form key={index} class="page" onSubmit={handleSubmit}  >
           <div>
                 <div class="input-group">
                 <input
