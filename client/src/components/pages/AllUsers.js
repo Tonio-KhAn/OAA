@@ -66,21 +66,9 @@ function AllUsers(props) {
         <Aux>
             <div className='page'>
                 <Row>
-                <Col md={6} xl={4}>
-                        <Card>
-                            <Card.Body><Link to='/suggestedfriends'> 
-                            <button className="btnlabel theme-bgg text-white f-122">
-                            <i class="fas fa-users"></i> Suggested Friends</button></Link>
-                            
-                            <Link to='/myfriends'> 
-                            <button className="btnlabel theme-bgg text-white f-122">
-                            <i class="fas fa-users"></i> My Friends</button></Link>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                    <Col>
-                    
-                        <Card class='carddd'>
+                    <Col md={6} xl={8}>
+
+                        <Card class='Recent-Users'>
                                 <div class='biglabel'>Community</div>
                             <Card.Body>
                                 <Table responsive hover>
@@ -116,6 +104,18 @@ function AllUsers(props) {
                             </Card.Body>
                         </Card>
                             </Col>
+                            <Col md={6} xl={4}>
+                      <Card className='card-event'>
+                            <Card.Body><Link to='/suggestedfriends'> 
+                            <button className="btnlabel theme-bgg text-white f-122">
+                            <i class="fas fa-users"></i> Suggested Friends</button></Link>
+                            
+                            <Link to='/myfriends'> 
+                            <button className="btnlabel theme-bgg text-white f-122">
+                            <i class="fas fa-users"></i> My friends</button></Link>
+                            </Card.Body></Card>
+                    
+                    </Col>
                             </Row>
                             </div>
                             </Aux>
