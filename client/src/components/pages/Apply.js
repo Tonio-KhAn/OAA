@@ -6,7 +6,7 @@ import '../css/CreateJobs.css';
 
 function Apply(props) {
     const[ values] = useState(
-        {jobtitle: 'IT Manager', company: 'A Company', description:'A Job description goes here'},
+        {jobtitle: 'IT Manage', company: 'A Company', description:'A Job description goes here'},
     )
     const[ inputFields, setInputFields] = useState([
     ])
@@ -71,7 +71,7 @@ function Apply(props) {
     return (
      <>
      <div>
-     <div class="page" style={{marginTop: "20px"}}>
+     <div class="test" style={{marginTop: "20px"}}>
         <div class="card" style={{ margin : "auto"}}>
           <div>
      <h1>{values.jobtitle}</h1>
@@ -119,5 +119,3 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
 )(Apply);
-
-

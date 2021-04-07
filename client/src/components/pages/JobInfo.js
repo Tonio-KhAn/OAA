@@ -5,6 +5,7 @@ import Aux from "../../hoc/_Aux";
 import '../../App.css';
 import axios from 'axios';
 import {connect} from 'react-redux';
+
 function JobInfo(props) {
  
     const[ inputFields, setInputFields] = useState([
@@ -166,15 +167,14 @@ const submitReview = (index , e) =>{
        <br></br>
      <div class="card" style={{width : "800px" , margin: "0 auto"}} >
             <h5 class="card-header">Job Info</h5>
-            
-            <button type="button" class="applybtn" onClick={() => close()}>Close Job</button>
                 { inputFields.map((inputField,index) =>(
                     <div class="card-body" key={index} style={{borderBottom : '2px solid black', marginTop: '10px'}} >
                         <h5 class="card-title">{inputField.first_name} {inputField.last_name}</h5>
                         <p class="card-text">{inputField.uwi_email}</p>
                         <a href="#" class="card-link">Read More</a>
-                      
                         
+                        <centre><button type="button" class="applybtn" onClick={() => close()}>Close Job</button>
+                        </centre>
                     </div>
                     ))}
             </div>
@@ -186,75 +186,72 @@ const submitReview = (index , e) =>{
             return(
             <>
             <div>
-              <div className='page'>
-                <Row>
-                        <Card class='carddd'>
-                                <div class='biglabel'>Successful Applicants</div>
-                            <Card.Body>
-                                <Table responsive hover>
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    { applicantsToAdd.map((inputField,index) =>(
-                                    <tbody>
-                                    <tr>
-                                        <td class='counterCell'></td>
-                                        <td>{inputField.first_name} </td>
-                                        <td>{inputField.last_name} </td>
-                                        <td>
-                                          <button className="label theme-bg text-white f-12" onClick={() => submit()}>continue
+              <h5 class="card-header">Successful Applicants</h5>
+              <Aux>
+                <div className='test1'>
+                  <Row>
+                    <Col>
+                    <Card className='Suggested-Users'>
+                      { applicantsToAdd.map((inputField,index) =>(
+                      <Card.Body className='x-0 y-2'>
+                        <Table responsive hover>
+                          <tbody>
+                            <tr className="unread">
+                              <td>
+                                <h6 className="mb-1">{inputField.first_name} {inputField.last_name}</h6>
+                                </td>
+                                {
+                                applicantsToAdd.length === 0 ? (
+                                  null
+                                  ):(
+                                  <td>
+                                    <button className="label theme-bg text-white f-12" onClick={() => submit()}>continue
                                     </button>
-                                                        </td>
+                                    </td>
+                                    )
+                                    }
                                     </tr>
-                                    </tbody>     
-                            
-                            ))}
-                                </Table>
-                            </Card.Body>
-                        </Card>
-                            </Row>
-                            </div>
-               
+                                    </tbody>
+                                    </Table>
+                                    </Card.Body>
+                                    ))}
+                                    </Card>
+                                    </Col>
+                                    </Row>
+                                    </div>
+                                    </Aux>
                                     <div>
-                                    <div className='page'> 
-                                    <Row>
-                        <Card class='carddd'>
-                                <div class='biglabel'>All Applicants</div>
-                            <Card.Body>
+                                      <h5 class="card-header">
+                                        All Applicants
+                                        </h5>
+                                        <Aux>
+            <div className='test1'>
+                <Row>
+                    <Col>
+                    <Card className='Suggested-Users'>
+                    { inputFields.map((inputField,index) =>(
+                            <Card.Body className='x-0 y-2'>
                                 <Table responsive hover>
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    { applicantsToAdd.map((inputField,index) =>(
                                     <tbody>
-                                    <tr>
-                                        <td class='counterCell'></td>
-                                        <td>{inputField.first_name} </td>
-                                        <td>{inputField.last_name} </td>
-                                        <td>
+                                        <tr className="unread">
+                                            <td>
+                                                <h6 className="mb-1">{inputField.first_name} {inputField.last_name}</h6>
+                                                </td>
+                                                <td>
                                                     <button className="label theme-bg text-white f-12" onClick={() => handleAddCourse(inputField.userID,inputField.first_name,inputField.last_name)}>
                                                     Choose Applicant <i class="fas fa-plus"></i>
                                                     </button>
-                                                        </td>
-                                    </tr>
-                                    </tbody>     
-                            
-                            ))}
+                                                </td>
+                                                </tr>
+                                    </tbody>
                                 </Table>
                             </Card.Body>
-                        </Card>
+                            ))}
+                            </Card>
+                            </Col>
                             </Row>
                             </div>
+                            </Aux>
 
 
 
@@ -313,5 +310,3 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
 )(JobInfo);
-
-

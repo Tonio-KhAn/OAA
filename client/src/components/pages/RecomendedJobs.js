@@ -97,7 +97,7 @@ function RecomendedJobs(props) {
            <Col md={6} xl={8}>
                         <Card className='Recent-Users'>
                             <Card.Header>
-                                <Card.Title as='h5'><i class="far fa-bookmark"></i> Recommended Jobs</Card.Title>
+                                <Card.Title as='h5'><i class="far fa-bookmark"></i> My Jobs</Card.Title>
                             </Card.Header>
                             { myJobOpportunity.map((job,index) =>(
                             <Card.Body className='px-0 py-2'>
@@ -115,9 +115,9 @@ function RecomendedJobs(props) {
                                              <dt className="cl-sm-3"> Description:</dt>
                                              <dd className="cl-sm-3"><em>{job.description}</em></dd>
                                             <p className="mm-h"><a href="#" class="card-link">Read More</a></p>
-                                            <p><Link to={'/apply/'+ job._id}>
+                                            <p> <Link to={'/info/'+ job._id}className='nav-links'>
                                               <button className="btnlabell theme-bgg text-white f-122">
-                                                <i class="fas fa-envelope-open-text"></i> Apply</button></Link></p>
+                                                <i class="fas fa-envelope-open-text"></i> Go to Job</button></Link></p>
                                         </td>
 
                                         </tr>
