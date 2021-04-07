@@ -30,10 +30,10 @@ function AdminHome() {
                 <a href = "/admin/skill" class="dashLink">Skills<br></br><i class="fas fa-hammer"></i></a>
                 </div>
                 <div class="col-md-3 card dash">
-                <a href = "/admin/reports" class="dashLink">Reports<br></br><i class="fas fa-hammer"></i></a>
+                <a href = "/admin/reports" class="dashLink">Reports<br></br><i class="fas fa-chart-bar"></i></a>
                 </div>
                 <div class="col-md-3 card dash">
-                <a href = "/admin/grade" class="dashLink">Grade<br></br><i class="fas fa-hammer"></i></a>
+                <a href = "/admin/grade" class="dashLink">Grade<br></br><i class="fas fa-award"></i></a>
                 </div>
             </div>
 
