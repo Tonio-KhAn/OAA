@@ -4,7 +4,7 @@ import '../../App.css';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import '../css/CreateJobs.css';
-import {Row, Col, Card, Table, Tabs, Tab} from 'react-bootstrap';
+import {Row, Col, Card, Table, Tabs, Tab, Button, Modal} from 'react-bootstrap';
 import Aux from "../../hoc/_Aux";
 
 
@@ -12,6 +12,20 @@ function AllJobs(props) {
     const[ jobOpportunity, setJobOpportunity] = useState([])
     
     const[ applyiedJobs, setApplyiedJobs] = useState([])
+    
+    const[ modalJob, setModalJobs] = useState({
+      title: "",
+      company:"",
+      description:"",
+      skills:[],
+      degrees:[],
+       })
+    
+    const[ modalSkills, setModalSkills] = useState([])
+    
+    const[ modalDegrees, setModalDegrees] = useState([])
+    
+    const[ show, setShow] = useState(false)
 
     function loadUser(){
       const token = props.auth.token;
@@ -94,6 +108,61 @@ function AllJobs(props) {
 
   }
 
+  function getSkills(jobId) {
+
+    const token = props.auth.token;
+
+    const config = {
+        headers: {}
+      };
+
+      if (token) {
+        config.headers["x-auth-token"] = token;
+      }
+
+    axios.get('/jobOpportunity/skills/' + jobId, config)
+    .then(
+        res => { console.log(res.data)
+          setModalSkills(res.data)
+        },
+      )
+      .catch(err => console.log(err));
+
+}
+
+function getDegrees(jobId) {
+
+  const token = props.auth.token;
+
+  const config = {
+      headers: {}
+    };
+
+    if (token) {
+      config.headers["x-auth-token"] = token;
+    }
+
+  axios.get('/jobOpportunity/degrees/' + jobId, config)
+  .then(
+      res => { console.log(res.data)
+        setModalDegrees(res.data)
+      },
+    )
+    .catch(err => console.log(err));
+
+}
+
+  const openModal = (job) =>{
+    setModalJobs(job)
+    getSkills(job._id)
+    getDegrees(job._id)
+    setShow(true)
+  }
+
+  const closeModal = e =>{
+    setShow(false)
+  }
+
     useEffect(() => {
         
         loadUser();
@@ -101,7 +170,34 @@ function AllJobs(props) {
 
     return (
      <> 
-
+    <div>
+    <div >
+     
+     <Modal show = {show}>
+         <Modal.Header>
+         <h3 class="card-title" style={{color: "grey"}}>{modalJob.title}</h3>
+         <Button onClick={()=> closeModal()}> close</Button>
+         
+         </Modal.Header>
+         <Modal.Body>
+         <h6 class="card-subtitle mb-2 text-muted">{modalJob.company}</h6>
+                        <p class="card-text" style={{fontFamily:"initial"}}>{modalJob.description}</p>
+                        <h4>Requires Skills</h4>
+                        {modalSkills.map((skill,index3) =>(
+                          <h4 key={index3} style={skill.has ? {color: 'blue'}:{}} >{skill.skillName}{skill.has ? (<i class="fas fa-check"></i>):(null)}</h4>
+                          ))}
+                          <h4>Requires Degrees</h4>
+                        {modalDegrees.map((degree,index4) =>(
+                          <h4 key={index4} style={degree.has ? {color: 'blue'}:{}}>{degree.degreeName} {degree.has ? (<i class="fas fa-check"></i>):(null)}</h4>
+                          ))}
+                        </Modal.Body>
+                        <Modal.Footer>
+                        <p><Link to={'/apply/'+ modalJob._id}>
+                                              <button className="btnlabell theme-bgg text-white f-122">
+                                                <i class="fas fa-envelope-open-text"></i> Apply</button></Link></p>
+                        </Modal.Footer>
+     </Modal>
+    </div>
      <div class='page'>
        <Aux>
          <Row>
@@ -125,7 +221,7 @@ function AllJobs(props) {
                                              
                                              <dt className="cl-sm-3"> Description:</dt>
                                              <dd className="cl-sm-3"><em>{job.description}</em></dd>
-                                            <p className="mm-h"><a href="#" class="card-link">Read More</a></p>
+                                             <Button onClick={()=> openModal(job)}>Read More</Button>
                                             <p><Link to={'/apply/'+ job._id}>
                                               <button className="btnlabell theme-bgg text-white f-122">
                                                 <i class="fas fa-envelope-open-text"></i> Apply</button></Link></p>
@@ -177,6 +273,7 @@ function AllJobs(props) {
                     
                     </Row>
             </Aux>
+            </div>
             </div>
         </>
     )

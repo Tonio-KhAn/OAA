@@ -43,7 +43,7 @@ router.route("/all/:id").get((req, res) => {
             })
             count++;
             if (count === applications.length){
-                console.log("here")
+                console.log(applied)
                 res.json(applied)
             }
             })
