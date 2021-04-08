@@ -173,10 +173,11 @@ const submitReview = (index , e) =>{
                         <p class="card-text">{inputField.uwi_email}</p>
                         <a href="#" class="card-link">Read More</a>
                         
-                        <centre><button type="button" class="applybtn" onClick={() => close()}>Close Job</button>
-                        </centre>
+                       
                     </div>
                     ))}
+                     <centre><button type="button" class="applybtn" onClick={() => close()}>Close Job</button>
+                        </centre>
             </div>
             </div>
             </>
@@ -193,14 +194,19 @@ const submitReview = (index , e) =>{
                     <Col>
                     <Card className='Suggested-Users'>
                       { applicantsToAdd.map((inputField,index) =>(
-                      <Card.Body className='x-0 y-2'>
+                      <Card.Body  className='x-0 y-2'>
                         <Table responsive hover>
                           <tbody>
                             <tr className="unread">
                               <td>
                                 <h6 className="mb-1">{inputField.first_name} {inputField.last_name}</h6>
                                 </td>
-                                {
+                                    </tr>
+                                    </tbody>
+                                    </Table>
+                                    </Card.Body>
+                                    ))}
+                                     {
                                 applicantsToAdd.length === 0 ? (
                                   null
                                   ):(
@@ -210,11 +216,6 @@ const submitReview = (index , e) =>{
                                     </td>
                                     )
                                     }
-                                    </tr>
-                                    </tbody>
-                                    </Table>
-                                    </Card.Body>
-                                    ))}
                                     </Card>
                                     </Col>
                                     </Row>
