@@ -8,7 +8,21 @@
   outline: none;
   border: none;
   cursor: pointer;
-  background-color: #27cdff;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100% 
+  );
+}
+
+.btn:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
 }
 
 .btna {
@@ -45,9 +59,23 @@
 }
 
 .btn---primary {
-  background-color: #27cdff;;
+  background-color:linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100% 
+  );
   color: #242424;
   border: 1px solid var(--primary);
+}
+
+.btn---primary:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
 }
 
 
