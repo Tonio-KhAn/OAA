@@ -9,7 +9,6 @@
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
-
 .cl-sm-3 {
   padding-left: 5px;
   flex: 25%;
@@ -81,8 +80,22 @@
 }
 
 .theme-bgg {
-  background: #27cdff;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100% 
+  );
   width:100%;
+}
+
+.theme-bgg:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
 }
 
 .f-122 {
@@ -95,6 +108,17 @@
   font-size: 18px;
 }
 
+
+.btnlabell:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
+}
+
 .btnlabel {
   justify-content: center;
   align-items: center;
@@ -105,11 +129,26 @@
   font-size: 16px;
   font-weight: bold;
   color: rgb(255, 255, 255);
-  background-color: #27cdff;
+  background-color: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100% 
+  );;
   line-height: 1.2;
   text-transform: uppercase;
   margin: auto;
   margin-top: 5px;
+}
+
+
+.btnlabell:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
 }
 
 .btnlabell {
@@ -122,17 +161,36 @@
   font-size: 16px;
   font-weight: bold;
   color: rgb(255, 255, 255);
-  background-color: #27cdff;
+  background-color: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100% 
+  );
   line-height: 1.2;
   text-transform: uppercase;
   margin: auto;
   margin-top: 5px;
 }
 
+
+.btnneww:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
+}
+
 .btnneww {
   width: 100%;
   height: 62px;
-  background: #27cdff;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100% 
+  );
   border-radius: 2px;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -456,13 +514,28 @@ textarea.input100 {
   justify-items: center;
 }
 
+
+.contact100-form-bgbtn:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
+}
+
 .contact100-form-bgbtn {
   word-spacing: 2px;
   position: absolute;
   z-index: -1;
   width: 300%;
   height: 100%;
-  background: #27cdff;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100% 
+  );
   margin-right: 5px !important;
   margin-bottom: 5px !important;
   top: 0;
@@ -490,6 +563,17 @@ textarea.input100 {
   text-transform: uppercase;
 }
 
+.contact300-form-btn:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
+}
+
+
 .contact300-form-btn {
   display: -webkit-box;
   display: -webkit-flex;
@@ -505,7 +589,11 @@ textarea.input100 {
   font-size: 16px;
   font-weight: bold;
   color: rgb(255, 255, 255);
-  background-color: #27cdff;
+  background-color: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100% 
+  );;
   line-height: 1.2;
   text-transform: uppercase;
 }
@@ -583,6 +671,16 @@ textarea.input100 {
   text-transform: capitalize;
 }
 
+.applybtn:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
+}
+
 .applybtn{
   display: -webkit-box;
   display: -webkit-flex;
@@ -598,11 +696,25 @@ textarea.input100 {
   font-size: 16px;
   font-weight: bold;
   color: rgb(255, 255, 255);
-  background-color: #27cdff;
+  background-color: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100% 
+  );;
   line-height: 1.2;
   text-transform: uppercase;
   margin: auto;
   margin-top: 5px;
+}
+
+.applybtnn:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
 }
 
 .applybtnn{
@@ -621,11 +733,25 @@ textarea.input100 {
   font-size: 16px;
   font-weight: bold;
   color: rgb(255, 255, 255);
-  background-color: #27cdff;
+  background-color: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100% 
+  );
   line-height: 1.2;
   text-transform: uppercase;
   margin: auto;
   margin-top: 5px;
+}
+
+.createbtn:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(39, 143, 255) 0%,
+    rgb(12, 99, 250) 100%
+  );
+  transition: all 0.4s ease-out;
 }
 
 .createbtn{
@@ -643,7 +769,12 @@ textarea.input100 {
   font-size: 16px;
   font-weight: bold;
   color: rgb(255, 255, 255);
-  background-color: #27cdff;
+  
+  background-color: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100% 
+  );
   line-height: 1.2;
   text-transform: uppercase;
 }

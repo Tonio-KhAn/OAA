@@ -4,20 +4,23 @@ import {connect} from 'react-redux';
 import axios from "axios";
 import { Bar } from 'react-chartjs-2';
 
-function Reports(props) {
+import {Row, Col, Card} from 'react-bootstrap';
 
+import Aux from "../../hoc/_Aux/index";
+
+function Reports(props) {
+    
     const [chartUser, setUser] = useState({
         labels: ['Users'],
         datasets:[
-            {
-                label: 'No. of Users',
-                data:[
-                ],
-                backgroundColor:[ 
-                ]
+            {label: "No. Of Users",
+            data: [],
+            color: "#3ebfea"
             }
         ]
     })
+
+    
 
     const [chartCourse, setCourse] = useState({
         labels: ['Courses'],
@@ -87,11 +90,11 @@ function Reports(props) {
                             }
                         ]
                     });
+                    
                 }
             )
             .catch(error => console.log(error));       
     }
-
     function courseData() {
         const config = {
             headers: {}
@@ -222,24 +225,32 @@ function Reports(props) {
     }, []);
     
     return (
-        <div>
-            <h1>Reports Page</h1>
-            <div className='chart'>
-                <Bar
+        <div className='page'>
+            <Card><Card.Header><h1 className='hh'>Reports </h1></Card.Header></Card>
+            <Aux>
+                <Row>
+                    <Col md={6}>
+                        <Card>
+                            <Card.Header>
+                                <Card.Title as="h5">Types Of Users</Card.Title>
+                            </Card.Header>
+                            <Card.Body>
+            <div type="discreteBarChart">
+                <Bar type="discreteBarChart"
                     data={chartUser}
                     options={{
                         maintainAspectRatio: false
                     }}
                 />
             </div>
-            <div className='chart'>
-                <Bar
-                    data={chartCourse}
-                    options={{
-                        maintainAspectRatio: false
-                    }}
-                />
-            </div>
+            </Card.Body>
+            </Card></Col>
+            <Col md={6}>
+                        <Card>
+                            <Card.Header>
+                                <Card.Title as="h5">Types Of Skills</Card.Title>
+                            </Card.Header>
+                            <Card.Body>
             <div className='chart'>
                 <Bar
                     data={chartSkill}
@@ -248,6 +259,27 @@ function Reports(props) {
                     }}
                 />
             </div>
+            </Card.Body>
+            </Card></Col>
+            
+            <Col sm={12}>
+                        <Card>
+                            
+                        <Card.Header>
+                                <Card.Title as="h5">Enrolled Courses</Card.Title>
+                            </Card.Header>
+            <div className='chart'>
+                <Bar
+                    data={chartCourse}
+                    options={{
+                        maintainAspectRatio: false
+                    }}
+                />
+            </div>
+            
+            </Card>
+                            </Col>
+            </Row></Aux>
         </div>
     );
 }

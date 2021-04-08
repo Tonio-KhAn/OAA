@@ -208,7 +208,7 @@ const submitReview = (index , e) =>{
                                         <td>{inputField.first_name}</td>
                                         <td>{inputField.last_name}</td>
                                         <td>
-                                          <button className="label theme-bg text-white f-12" onClick={() => submit()}>Review <i class="fas fa-pencil-alt"></i> 
+                                          <button className="label theme-bg text-white f-12" onClick={() => submit()}>Review Applicant <i class="fas fa-pencil-alt"></i> 
                                     </button>
                                     </td>
                                     </tr>

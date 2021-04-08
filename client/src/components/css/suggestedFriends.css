@@ -147,19 +147,38 @@ table {
     margin-bottom: .25rem!important;
 }
 .theme-bg {
-    background: -webkit-linear-gradient(
-225deg
-,#1de9b6,#1dc4e9);
     background: linear-gradient(
--135deg
-,#1de9b6,#1dc4e9);
+      90deg,
+      rgb(39, 176, 255) 0%,
+      rgb(0, 232, 236) 100% 
+    );
 }
+
+.theme-bg:hover {
+    cursor: pointer;
+    background: linear-gradient(
+      90deg,
+      rgb(39, 143, 255) 0%,
+      rgb(12, 99, 250) 100%
+    );
+    transition: all 0.4s ease-out;
+  }
  
 .theme-bg2 {
-    background: -webkit-linear-gradient(
-225deg
-,#d489b5,#e6085d);
-    background: linear-gradient(
--135deg
-,#d489b5,#e6085d);
+    
+  background: linear-gradient(
+    90deg,
+    rgb(39, 176, 255) 0%,
+    rgb(0, 232, 236) 100% 
+  );
 }
+
+.theme-bg2:hover {
+    cursor: pointer;
+    background: linear-gradient(
+      90deg,
+      rgb(39, 143, 255) 0%,
+      rgb(12, 99, 250) 100%
+    );
+    transition: all 0.4s ease-out;
+  }

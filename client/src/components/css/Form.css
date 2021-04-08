@@ -155,7 +155,7 @@
   background: linear-gradient(
     90deg,
     rgb(39, 176, 255) 0%,
-    rgb(0, 232, 236) 100%
+    rgb(0, 232, 236) 100% 
   );
   outline: none;
   border: none;
@@ -183,7 +183,7 @@
 
 .form-input-login a {
   text-decoration: none;
-  color: #27cdff;
+  color: #24B6FE;
   font-weight: 600;
 }
 
