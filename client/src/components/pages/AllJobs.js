@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../css/suggestedFriends.css';
 import {Link } from 'react-router-dom';
 import '../../App.css';
 import axios from 'axios';
@@ -175,27 +176,28 @@ function getDegrees(jobId) {
      
      <Modal show = {show}>
          <Modal.Header>
-         <h3 class="card-title" style={{color: "grey"}}>{modalJob.title}</h3>
-         <Button onClick={()=> closeModal()}> close</Button>
+         <h3 class='biglabel'>{modalJob.title}</h3>
+         <button type="label theme-bg text-white f-12" class="label theme-bg text-white f-12"onClick={()=> closeModal()}>X</button>
          
          </Modal.Header>
          <Modal.Body>
-         <h6 class="card-subtitle mb-2 text-muted">{modalJob.company}</h6>
-                        <p class="card-text" style={{fontFamily:"initial"}}>{modalJob.description}</p>
-                        <h4>Requires Skills</h4>
+         <h6 className='companylabel'>{modalJob.company}</h6>
+                        <h6 className='desclabel'>{modalJob.description}</h6>
+                        <h6 className='skillsetclabel'>Requires Skills:</h6>
                         {modalSkills.map((skill,index3) =>(
-                          <h4 key={index3} style={skill.has ? {color: 'blue'}:{}} >{skill.skillName}{skill.has ? (<i class="fas fa-check"></i>):(null)}</h4>
+                          <h7 className='listlabel' key={index3} >{skill.skillName}{skill.has ? (<i class="fas fa-check"></i>):(null)}</h7>
                           ))}
-                          <h4>Requires Degrees</h4>
+                          <h6 className='skillsetclabel'>Requires Degrees:</h6>
                         {modalDegrees.map((degree,index4) =>(
-                          <h4 key={index4} style={degree.has ? {color: 'blue'}:{}}>{degree.degreeName} {degree.has ? (<i class="fas fa-check"></i>):(null)}</h4>
+                          <h7 className='listlabel' key={index4} >{degree.degreeName} {degree.has ? (<i class="fas fa-check"></i>):(null)}</h7>
                           ))}
-                        </Modal.Body>
-                        <Modal.Footer>
-                        <p><Link to={'/apply/'+ modalJob._id}>
+                          <div>
+                        <Link to={'/apply/'+ modalJob._id}>
+
                                               <button className="btnlabell theme-bgg text-white f-122">
-                                                <i class="fas fa-envelope-open-text"></i> Apply</button></Link></p>
-                        </Modal.Footer>
+                                                 Apply</button></Link>
+                                                </div>
+                        </Modal.Body>
      </Modal>
     </div>
      <div class='page'>
@@ -221,10 +223,23 @@ function getDegrees(jobId) {
                                              
                                              <dt className="cl-sm-3"> Description:</dt>
                                              <dd className="cl-sm-3"><em>{job.description}</em></dd>
-                                             <Button onClick={()=> openModal(job)}>Read More</Button>
-                                            <p><Link to={'/apply/'+ job._id}>
-                                              <button className="btnlabell theme-bgg text-white f-122">
-                                                <i class="fas fa-envelope-open-text"></i> Apply</button></Link></p>
+                                             
+                                             <div class="container-contact200-form-btn">
+                                               <div class="wrap-contact100-form-btn">
+                                                 <div class="contact100-form-bgbtn"></div>  
+                                                 <button class="contact100-form-btn theme-bgg text-white f-122" onClick={()=> openModal(job)}>
+                                                  Read More
+                                                        </button>
+                                                      </div>
+                                                    <div class="wrap-contact100-form-btn">  
+                                                  <div class="contact100-form-bgbtn"></div>
+                                                  <Link to={'/apply/'+ job._id}>
+                                                <p><button class="contact100-form-btn theme-bgg text-white f-122">
+                                                       Apply
+                                                      </button></p>
+                                                      </Link>
+                                                    </div>
+                                                  </div>
                                         </td>
 
                                         </tr>
@@ -261,9 +276,8 @@ function getDegrees(jobId) {
                                 
                                 { applyiedJobs.map((applyiedJob,index2) =>(
                                 <div class="border-bottom">
-                                <h2 className="mt-2 f-w-300"><sub className="text-muted f-14">Title: {applyiedJob.title}</sub></h2>
-                                <h5 className="text-muted mt-3 f-w-300">Company: {applyiedJob.company}</h5>
-                                <h6><span className='text-muted mt-3 f-w-300'><a href="#" class="card-link">Read More...<br></br></a></span></h6>
+                                <h4 className="cl-sm-3"><sub className="cl-sm-3">Title: <em>{applyiedJob.title}</em></sub></h4>
+                                <h5 className="cl-sm-3"><sub className="cl-sm-3">Company: <em>{applyiedJob.company}</em></sub></h5>
                                     </div>
                                 ))}
                             </Card.Body>
