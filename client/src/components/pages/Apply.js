@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import '../../App.css';
 import axios from 'axios';
+
+import {Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import '../css/CreateJobs.css';
 
@@ -71,12 +73,12 @@ function Apply(props) {
     return (
      <>
      <div>
-     <div class="test" style={{marginTop: "20px"}}>
+     <div class="page" style={{marginTop: "20px"}}>
         <div class="card" style={{ margin : "auto"}}>
           <div>
-     <h1>{values.jobtitle}</h1>
-     <h2>{values.company}</h2>
-     <p>{values.description}</p>
+     <h1 class='firstlabel'><em>{values.jobtitle}</em></h1>
+     <h2 class='secondlabel'>{values.company}</h2>
+     <p class='thirdlabel'>{values.description}</p>
      </div>
      <br></br>
       <div>
@@ -96,11 +98,19 @@ function Apply(props) {
     <span class="input-group-text">Comments:</span>
   </div>
   <textarea class="form-control" aria-label="With textarea"></textarea>
+
 </div>
 
-<button className='applybtn' type='submit'>
-         Apply
-          </button>
+<div>
+          <div class="container-contact100-form-btn">
+            <div class="wrap-contact100-form-btn">  
+            <div class="contact100-form-bgbtn"></div>
+            <button class="contact100-form-btn theme-bgg text-white f-122" type='submit'>
+              Apply
+              </button>
+              </div>
+              </div>          
+              </div>
           
 </form> 
 </div>

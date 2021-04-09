@@ -659,6 +659,57 @@ textarea.input100 {
   text-transform: uppercase;
 }
 
+.firstlabel {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 150px;
+  height: 48px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(59, 59, 59);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.secondlabel {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 150px;
+  height: 48px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: rgb(59, 59, 59);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.thirdlabel {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 150px;
+  height: 48px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(59, 59, 59);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
 .biglabel {
   display: -webkit-box;
   display: -webkit-flex;
@@ -712,6 +763,16 @@ textarea.input100 {
   color: rgb(59, 59, 59);
   line-height: 1.2;
   text-transform: uppercase;
+}
+
+.f-1122 {
+  font-size: 18px;
+}
+
+.theme-bbgg {
+  background: linear-gradient( 
+90deg
+, rgb(39, 176, 255) 0%, rgb(0, 232, 236) 100% );
 }
 
 .skillsetclabel {
@@ -813,7 +874,7 @@ textarea.input100 {
     90deg,
     rgb(39, 176, 255) 0%,
     rgb(0, 232, 236) 100% 
-  );;
+  );
   line-height: 1.2;
   text-transform: uppercase;
   margin: auto;
