@@ -1,27 +1,68 @@
 /* CHAT STYLES */
 * {
-  font-family: Avenir, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
-    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   letter-spacing: 0.5px;
 }
 
+.ce-input{
+  
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif !important;
+  text-transform: capitalize !important;
+
+}
+
+.ce-section-title .ce-photo-title{
+  
+  text-transform: capitalize !important;
+
+}
+
+.ce-section-title-container{
+
+  
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif !important;
+  text-transform: capitalize !important;
+
+  
+}
+
+.ce-text-input{
+
+  
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif !important;
+  text-transform: capitalize !important;
+  font-size: 24px  !important;
+}
+
 .ce-chat-list {
-  background-color: rgb(240, 240, 240) !important;
+  background-color: rgb(255, 255, 255) !important;
 }
 
 .ce-chats-container {
-  background-color: rgb(240, 240, 240) !important;
+  background-color: rgb(255, 255, 255) !important;
 }
 
 .ce-active-chat-card {
-  background-color: #cabcdc !important;
-  border: 4px solid #cabcdc !important;
+  background-color: rgb(188, 211, 220) !important;
+  border: 4px solid rgb(188, 211, 220) !important;
   border-radius: 0px !important;
 }
 
 .ce-chat-subtitle-text {
-  color: #595959 !important;
+  color: #727272 !important;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif !important;
+}
+
+
+.ce-chat-title-text {
+  color: #727272 !important;
+  font-weight: bolder !important; 
+  text-transform: uppercase;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif !important;
 }
 
 .ce-chat-form-container {
@@ -30,14 +71,19 @@
 
 .ce-text-input {
   border-radius: 6px !important;
-  border: 1px solid #3b2a50 !important;
+  border: 1px solid 
+  rgb(12, 99, 250) 100% !important;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif !important;
 }
 
 .ce-primary-button {
   border-radius: 6px !important;
-  background-color: #7554a0 !important;
+  background-color: 
+  rgb(0, 232, 236) 100%  !important;
   position: relative;
   bottom: 1px;
+  padding-bottom: 25pt !important;
 }
 
 .ce-danger-button {
@@ -46,22 +92,43 @@
 }
 
 .ce-settings {
-  background-color: rgb(240, 240, 240) !important;
+  background-color: rgb(255, 255, 255) !important;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif !important;
+
 }
 
 .ce-autocomplete-input {
-  border-radius: 6px !important;
-  border: 1px solid #3b2a50 !important;
+  border-radius: 0px !important;
+  border: 1px solid 
+  rgb(12, 99, 250) 100% !important;
 }
 
 .ce-autocomplete-options {
-  border-radius: 6px !important;
-  border: 1px solid #3b2a50 !important;
+  border-radius: 0px !important;
+  border: 1px solid 
+  rgb(12, 99, 250) 100% !important;
   background-color: white !important;
 }
 
 .ce-chat-settings-container {
   padding-top: 12px !important;
+  text-transform: uppercase !important;
+}
+
+.ce-section-title-container {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif !important;
+
+
+}
+
+
+.ce-chat-title-form{
+  text-transform: uppercase !important;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif !important;
+
 }
 
 .ce-chat-avatars-row {
@@ -74,26 +141,33 @@
   height: 100%;
   width: 100%;
   overflow: scroll;
-  background-color: rgb(240, 240, 240);
+  background-color: #ffffff i !important;
 }
 
 .chat-title-container {
-  width: calc(100% - 36px);
   padding: 18px;
   text-align: center;
 }
 
 .chat-title {
-  color: #7554a0;
-  font-weight: 800;
-  font-size: 24px;
+  color:#000000 !important;
+  font-weight: bold;
+  font-size: 28px;
+  font-style: italic;
+  text-transform: uppercase;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif !important;
+  
 }
 
 .chat-subtitle {
-  color: #7554a0;
+  color:#000000 !important;
   font-weight: 600;
+  text-transform: uppercase !important;
   font-size: 12px;
   padding-top: 4px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif !important;
 }
 
 .message-row {
@@ -124,6 +198,11 @@
   font-size: 16px;
   border-radius: 6px;
   max-width: 60%;
+  background:rgb(12, 99, 250) 100% !important;
+  color: white;
+  
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+  'Lucida Sans', Arial, sans-serif !important;
 }
 
 .message-image {
@@ -157,14 +236,15 @@
   position: absolute;
   bottom: 0px;
   width: calc(100% - 36px);
-  padding: 18px;
+  padding: 4px;
   background-color: rgb(240, 240, 240);
 }
 
 .message-form {
   overflow: hidden;
   border-radius: 6px;
-  border: 1px solid #3b2a50;
+  border: 1px solid 
+  rgb(12, 99, 250) 100% i !important;
   background-color: white;
 }
 
@@ -217,19 +297,7 @@
 .wrapper {
   height: 100vh;
   width: 100%;
-  background: rgb(117, 84, 160);
-  background: linear-gradient(
-    90deg,
-    rgba(117, 84, 160, 1) 7%,
-    rgba(117, 84, 160, 1) 17%,
-    rgba(106, 95, 168, 1) 29%,
-    rgba(99, 103, 174, 1) 44%,
-    rgba(87, 116, 184, 1) 66%,
-    rgba(70, 135, 198, 1) 83%,
-    rgba(44, 163, 219, 1) 96%,
-    rgba(22, 188, 237, 1) 100%,
-    rgba(0, 212, 255, 1) 100%
-  );
+  background: rgb(117, 84, 160) !important;
   display: flex;
   justify-content: center;
   align-items: center;
