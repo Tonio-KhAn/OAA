@@ -39,9 +39,44 @@ router.route('/').get(auth, (req, res) => {
 });
 
 router.route('/addfriend/').put(auth, (req, res) => {
+  var count = 0;
   User.findById(req.user.id)
     .then(user => {
       user.friends.push(req.body.id);
+
+      User.find()
+        .then(users => {
+          users.forEach(person => {
+            count++;
+            if(person._id == req.body.id) {
+              person.friends.push(req.user.id)
+            }
+
+            if(count == users.length) {
+              user
+                .save()
+                .then(() => {
+                  person
+                    .save()
+                    .then(() => res.json(user))
+                    .catch(err => res.status(400).json("Error: " + err));
+                })
+                .catch(err => res.status(400).json("Error: " + err));
+            }
+          })
+        })
+        .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
+router.route('/deletefriend/').put(auth, (req, res) => {
+  User.findById(req.user.id)
+    .then(user => {
+      var index = user.friends.indexOf(req.body.id);
+      if (index > -1) {
+        user.friends.splice(index, 1);
+      }
       
       user
         .save()
@@ -186,17 +221,23 @@ router.route("/email/:id").get((req, res) => {
   const uwi_email3 = email.replace('!','.');
   const uwi_email2 = uwi_email3.replace('!','.');
   const uwi_email = uwi_email2.replace('!','.');
-  console.log(uwi_email)
-    User.findOne({uwi_email: uwi_email})
+  
+  User.findOne({uwi_email: uwi_email})
     .then(user => {
-      if(user) return res.status(200).json(
-          {msg: 'User with same username already exist'}
-      )
-      return res.status(200).json(
-        {msg: 'User does not exist'}
-     );
-
-}); 
+      if(user) {
+        console.log('User already exists.')
+        return res.status(200).json(
+          {msg: 'User with same username already exist.'}
+        )
+      }
+      else {
+        console.log('User does not exist.')
+        return res.status(200).json(
+          {msg: 'User does not exist.'}
+        )
+      }
+    })
+    .catch(err => res.status(400).json("Error: " + err))
 });
 
 

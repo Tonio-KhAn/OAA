@@ -194,6 +194,8 @@ function CreateJobs(props) {
           if (token) {
             config.headers["x-auth-token"] = token;
           }
+
+
           axios
             .post(
               "/jobOpportunity/add",
@@ -201,7 +203,11 @@ function CreateJobs(props) {
               config
             )
             .then(
-              res => console.log(res.data),
+              res => {
+                console.log('Job opportunity created!')
+                alert('Job opportunity created!')
+                window.location.href = 'http://localhost:3000/my';
+              }
             )
             .catch(err => console.log(err));
           

@@ -1,6 +1,11 @@
+// Imported Modules
 import React from 'react';
+
+// Imported Components
 import validate from '../validate/validateInfoSignUp';
 import useForm from '../useforms/useFormSignup';
+
+// Imported CSS
 import '../css/Form.css';
 
 
@@ -9,7 +14,6 @@ const FormSignup = ({ submitForm, name }) => {
     submitForm,
     validate
   );
-  console.log(name);
   
   return (
     <div className='form-content-right'>
@@ -111,8 +115,8 @@ const FormSignup = ({ submitForm, name }) => {
         <div className='form-inputs'>
           <label className='form-label'>Type</label>
           <select id="type" name="type" form="form" onChange={handleChange}>
-            <option value='student'>Student</option>
-            <option value='alumni'>Alumni</option>
+            <option value='Student'>Student</option>
+            <option value='Alumni'>Alumni</option>
           </select>
         </div>
         <button className='form-input-btn' type='submit'>

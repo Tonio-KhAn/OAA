@@ -1,5 +1,8 @@
+// Imported Modules
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+// Imported CSS
 import '../App.css';
 import './css/HeroSection.css';
 import './css/Form.css';

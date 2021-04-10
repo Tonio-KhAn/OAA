@@ -1,6 +1,11 @@
+// Imported Modules
 import React from 'react';
-import './css/Cards.css';
+
+// Imported Components
 import CardItem from './CardItem';
+
+// Imported CSS
+import './css/Cards.css';
 
 function Cards() {
   return (

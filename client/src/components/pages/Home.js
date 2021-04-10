@@ -1,6 +1,11 @@
+// Imported Modules
 import React from 'react';
-import '../../App.css';
+
+// Imported Components
 import HeroSection from '../HeroSection';
+
+// Imported CSS
+import '../../App.css';
 
 function Home() {
   return (

@@ -75,7 +75,7 @@ function RecomendedJobs(props) {
           config.headers["x-auth-token"] = token;
         }
 
-      axios.get('/jobOpportunity/applyiedJobs/' + userID, config)
+      axios.get('/jobOpportunity/appliedJobs/' + userID, config)
       .then(
           res => { console.log(res.data)
           setApplyiedJobs(res.data)

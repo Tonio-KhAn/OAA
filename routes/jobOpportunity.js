@@ -36,9 +36,11 @@ let transporter = nodemailer.createTransport({
     var jobsList = null;
     var count = 0
 
-    JobApplications.find({userId: req.param.id})
+    JobApplications.find({userId: req.params.id})
       .then(applications => 
         {
+          console.log(req.params.id)
+          console.log(applications)
           jobsList = [];
           applications.forEach (application => {
           JobOpportunity.findById(application.jobOpportunityID)
@@ -317,7 +319,7 @@ router.route("/add").post(auth, (req, res) => {
     var count2 = 0
     var count3 = 0
     var count4 = 0
-    var ckeck = false
+    var check = false
     var skillsToSend =[]
     JobSkill.find({jobOpportunityID: req.params.id})
     .then(skills =>{
@@ -341,7 +343,7 @@ router.route("/add").post(auth, (req, res) => {
               count4 = 0
               if (mySkills.length == 0){
                 
-                temp = {
+                var temp = {
                   skillName: skill.skillName,
                   has: check
                 }
