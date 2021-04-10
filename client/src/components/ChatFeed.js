@@ -1,3 +1,4 @@
+// Imported Components
 import ChatForm from './ChatForm';
 import MyMessage from './MyMessage';
 import TheirMessage from './TheirMessage';

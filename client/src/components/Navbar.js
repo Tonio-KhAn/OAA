@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './css/Navbar.css';
 import {connect} from 'react-redux';
 
 function Navbar(props) {
   const [click, setClick] = useState(false);
+  const [auth, setAuth] = useState(false);
+  
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-
-  if (props.isAuthenicated) {
+  useEffect(() => {
+    
+  }, []);
+  if (props.isAuthenticated) {
   return (
     <>
       <div className='navbar navbar-fixed-top'>
@@ -113,8 +117,8 @@ function Navbar(props) {
 }
 
 const mapStateToProps = state =>({
-  isAuthenicated: state.auth.isAuthenticated,
-  error:state.error
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error
 }); 
 
 

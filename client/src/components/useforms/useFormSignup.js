@@ -1,17 +1,18 @@
+// Imported Modules
 import { useState, useEffect } from 'react';
+
 const useForm = (callback, validate) => {
   const [values, setValues] = useState({
     password: '',
     password2: '',
     dob: '',
-    type: 'student',
-    alt: '',
+    type: 'Student',
+    alt_email: '',
     sex: 'M'
   });
  
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
   
   const handleChange = e => {
     const { name, value } = e.target;

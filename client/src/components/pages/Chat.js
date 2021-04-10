@@ -1,22 +1,22 @@
+// Imported Modules
 import React, { useEffect, useState } from 'react';
 import { ChatEngine } from 'react-chat-engine';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+// Imported Components
 import ChatFeed from '../ChatFeed';
 
+// Imported CSS
 import '../css/Chat.css';
 
 function Chat(props) {
-    const authObject = { 'Project-ID': 'b8359b3b-6fff-4134-8a19-277b38c77e07', 'User-Name': 'username', 'User-Secret': 'password' }
-
     const [values, setValues ] = useState({
         uwi_email: ''
     });
 
     function loadUser() {
         const token = props.auth.token;
-        
         const config = {
             headers: {}
         };
@@ -30,7 +30,8 @@ function Chat(props) {
                 config
             )
             .then(
-                res => { console.log(res.data)
+                res => { 
+                    console.log('Chat page data pulled.')
                     setValues({
                         'uwi_email': res.data.uwi_email
                     });

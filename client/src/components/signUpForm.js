@@ -1,8 +1,13 @@
+// Imported Modules
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './css/Form.css';
+
+// Imported Components
 import FormSignup from './FormSignup';
 import FormSuccess from './FormSuccess';
+
+// Imported CSS
+import './css/Form.css';
 
 const Form = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
