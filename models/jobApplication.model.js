@@ -13,11 +13,19 @@ const jobApplicationSchema = new Schema({
         required: true,
         trim: true
     },
-    
+    comment: {
+        type: String,
+        trim: true
+    },
+    media: {
+        type: Array,
+        trim: true
+    },
     rank: {
         type: Number,
         trim: true
     },
+
 
     
 }, {

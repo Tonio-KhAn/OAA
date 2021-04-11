@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './css/Navbar.css';
 import {connect} from 'react-redux';
 
 function Navbar(props) {
   const [click, setClick] = useState(false);
-
+  const [auth, setAuth] = useState(false);
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-
-  if (props.isAuthenicated) {
+ 
+ 
   return (
     <>
+    {
+    props.auth.isAuthenticated ?(
       <div className='navbar navbar-fixed-top'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
@@ -63,13 +65,8 @@ function Navbar(props) {
           </Link>
         </div>
       </div>
-    </>
-  )
-}
-
-  return (
-    <>
-      <nav className='navbar navbar-fixed-top'>
+  ) : (
+      <div className='navbar navbar-fixed-top'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             DCIT Connect
@@ -107,19 +104,16 @@ function Navbar(props) {
           {<button className='bbutton'>SIGN UP</button>}
           </Link>
         </div>
-      </nav>
-    </>
-  );
+      </div>
+   ) 
+  }
+  </>
+  )
 }
-
 const mapStateToProps = state =>({
-  isAuthenicated: state.auth.isAuthenticated,
+  auth: state.auth,
   error:state.error
 }); 
-
-
-
-
 export default connect(
-  mapStateToProps)
-  (Navbar)
+  mapStateToProps,
+)(Navbar);

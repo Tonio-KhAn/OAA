@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Row, Col, Card, Table, Tabs, Tab, Button} from 'react-bootstrap';
+import {Row, Col, Card, Table, Tabs, Tab, Button, Modal} from 'react-bootstrap';
 import '../css/suggestedFriends.css';
 import Aux from "../../hoc/_Aux";
 import '../../App.css';
@@ -16,6 +16,29 @@ function JobInfo(props) {
     const[ applicants, setApplicants] = useState([])
     
     const[ applicantsToAdd, setApplicantsToAdd] = useState([])
+
+    const[ modalSkills, setModalSkills] = useState([])
+    
+    const[ modalDegrees, setModalDegrees] = useState([])
+
+    const[ documents, setDocuments] = useState([])
+
+    const [resume, setResume] = useState({
+      location: null
+    });
+
+    const[ modalInfo, setModalInfo] = useState({
+      first_name:'',
+      last_name: '',
+      uwi_email: '',
+      type:'',
+      sex:'',
+      dob:'',
+      comment:''
+    })
+
+    const[ show, setShow] = useState(false)
+
 
     function getJobOpportunity() {
 
@@ -102,6 +125,115 @@ function JobInfo(props) {
   const handleAddCourse = (id, f_name, l_name) => {
     setApplicantsToAdd([...applicantsToAdd, {userID:id, first_name:f_name, last_name:l_name, review:""} ]);
 }
+function loadResume(userId){
+  const token = props.auth.token;
+
+  const config = {
+    headers: {}
+  };
+
+  if (token) {
+    config.headers["x-auth-token"] = token;
+  }
+
+  axios
+  .get(
+    "/media/resume2/"+userId,
+    config
+  )
+  .then(
+    res => { console.log(res.data)
+      if (res.data.location == null){
+        setResume({
+          "location": null});
+        }
+      else{
+        setResume({
+      "location": res.data.location });
+    }
+  }
+  )
+  .catch(err => console.log(err));
+  };
+
+function getDegrees(userId) {
+
+  const token = props.auth.token;
+
+  const config = {
+      headers: {}
+    };
+
+    if (token) {
+      config.headers["x-auth-token"] = token;
+    }
+ 
+  axios.get('/jobOpportunity/degrees2/' + props.match.params.id +'/'+ userId, config)
+  .then(
+      res => { console.log(res.data)
+        setModalDegrees(res.data)
+      },
+    )
+    .catch(err => console.log(err));
+
+}
+
+function getSkills(userId) {
+
+  const token = props.auth.token;
+
+  const config = {
+      headers: {}
+    };
+
+    if (token) {
+      config.headers["x-auth-token"] = token;
+    }
+
+  axios.get('/jobOpportunity/skills2/' + props.match.params.id +'/'+ userId, config)
+  .then(
+      res => { console.log(res.data)
+        setModalSkills(res.data)
+      },
+    )
+    .catch(err => console.log(err));
+
+}
+
+function getDocuments(applicationId) {
+
+  const token = props.auth.token;
+
+  const config = {
+      headers: {}
+    };
+
+    if (token) {
+      config.headers["x-auth-token"] = token;
+    }
+
+  axios.get('/media/document/' + applicationId, config)
+  .then(
+      res => { console.log(res.data)
+        setDocuments(res.data)
+      },
+    )
+    .catch(err => console.log(err));
+
+}
+
+const openModal = (applicant) =>{
+  getDegrees(applicant.userID)
+  getSkills(applicant.userID)
+  getDocuments(applicant._id)
+  loadResume(applicant.userID)
+  setModalInfo(applicant)
+  setShow(true)
+}
+
+const closeModal = e =>{
+  setShow(false)
+}
 
 const submit = () =>{
   const token = props.auth.token;
@@ -155,6 +287,8 @@ const submitReview = (index , e) =>{
   .catch(err => console.log(err));
 }
 
+
+
   useEffect(() => {
     getMedias();
     getJobOpportunity();
@@ -166,12 +300,12 @@ const submitReview = (index , e) =>{
      <div>
        <br></br>
      <div class="card" style={{width : "800px" , margin: "0 auto"}} >
-            <h5 class="card-header">Applicant Info</h5>
+            <h5 class="card-header">Applicants Info</h5>
                 { inputFields.map((inputField,index) =>(
                     <div class="card-body" key={index} style={{borderBottom : '2px solid black', marginTop: '10px'}} >
                         <h5 class="card-title">{inputField.first_name} {inputField.last_name}</h5>
                         <p class="card-text">{inputField.uwi_email}</p>
-                        
+                        <Button onClick={()=> openModal(inputField)}>Read More</Button>
                        
                     </div>
                     ))}
@@ -179,6 +313,63 @@ const submitReview = (index , e) =>{
                         </centre>
             </div>
             </div>
+            <Modal show = {show} size="lg">
+         <Modal.Header>
+         <h3 class="card-title" style={{color: "grey", textTransform: "capitalize"}}>{modalInfo.first_name} {modalInfo.last_name}</h3>
+         <Button onClick={()=> closeModal()}> close</Button>
+         
+         </Modal.Header>
+         <Modal.Body>
+         <h6 class="card-subtitle mb-2 text-muted">{modalInfo.uwi_email}</h6>
+         <h4 class="card-subtitle mb-2 text-muted" style={{color: 'black', textTransform: "capitalize"}}>{modalInfo.type}</h4>
+         <h6 class="card-subtitle mb-2 text-muted">date-of-birth: {modalInfo.dob}</h6>
+         <h6 class="card-subtitle mb-2 text-muted">sex: {modalInfo.sex}</h6>
+         <h6 class="card-subtitle mb-2 text-muted">Additional Comments: {modalInfo.comment}</h6>
+                        <p class="card-text" style={{fontFamily:"initial"}}></p>
+                        <h4>Degree</h4>
+                        {modalDegrees.map((degree,index4) =>(
+                          <h6 key={index4} style={degree.has ? {color: 'green'}:{}}>{degree.degreeName} {degree.has ? (<i class="fas fa-check-circle"></i>):(null)}</h6>
+                          ))}
+                           <h4>Skills</h4>
+                        {modalSkills.map((skill,index3) =>(
+                          <h6 key={index3} style={skill.has ? {color: 'green'}:{}} >{skill.skillName}{skill.has ? (<i class="fas fa-check-circle"></i>):(null)}</h6>
+                          ))}
+                          { resume.location != null ? (
+                            <div>
+                        <h4>Resume</h4>
+                        <iframe
+              width="727"
+              height="409"
+              src={"http://localhost:8080/" + resume.location}
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              style={{ outline : "none", borderColor : "#7198b8", boxShadow : "0 0 30px #62a3d8", margin: "auto"}}
+             
+            ></iframe>
+            {documents.map((document,index4) =>(
+              <div>
+                           <h4>{document.title}</h4>
+                           <iframe
+                 width="727"
+                 height="409"
+                 src={"http://localhost:8080/" + document.location}
+                 frameborder="0"
+                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                 allowfullscreen
+                 style={{ outline : "none", borderColor : "#7198b8", boxShadow : "0 0 30px #62a3d8", margin: "auto"}}
+                
+               ></iframe>
+               </div>
+                          ))}
+            </div>
+            ):(<></>)
+            }
+                        </Modal.Body>
+                        <Modal.Footer>
+                        </Modal.Footer>
+     </Modal>
+
             </>
             )
             else

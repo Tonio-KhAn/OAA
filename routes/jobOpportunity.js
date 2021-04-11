@@ -31,25 +31,54 @@ let transporter = nodemailer.createTransport({
       .catch(err => res.status(400).json("Error: " + err));
   });
 
+  router.route("/media2/:id").get((req, res) => {
+    var mediaArray = [];
+    var temp = null;
+    var count = 0;
+    JobOpportunityMedia.find({jobOpportunityID: req.params.id})
+      .then(jobOpportunityMedias => {
+        if (jobOpportunityMedias.length == 0){
+          return res.json(mediaArray)
+        }
+        jobOpportunityMedias.forEach(jobOpportunityMedia =>{
+          temp ={
+            jobOpportunityID: jobOpportunityMedia.jobOpportunityID,
+            mediaName: jobOpportunityMedia.mediaName,
+            file: null         
+          }
+          mediaArray.push(temp)
+          count= count + 1
+          if (count == jobOpportunityMedias.length){
+            return res.json(mediaArray)
+          }
+        })
+      })
+      .catch(err => res.status(400).json("Error: " + err));
+  });
   
   router.route("/applyiedJobs/:id").get(auth, (req, res) => {
-    var jobsList = null;
-    var count = 0
-
-    JobApplications.find({userId: req.param.id})
+    var jobsList = [];
+    var count = 0;
+    JobApplications.find({userID: req.params.id})
       .then(applications => 
         {
-          jobsList = [];
+          if(applications.length == 0){
+            res.json(jobsList)
+          }
+          else
+          {
           applications.forEach (application => {
           JobOpportunity.findById(application.jobOpportunityID)
           .then (Opportunity => {
             jobsList.push(Opportunity)
             count = count + 1
             if (count === applications.length){
-              res.json(jobsList)
+              res.json(jobsList.reverse())
             }
           })
+          .catch(err => res.status(400).json("Error: " + err));
         })
+        }
         }
         )
       .catch(err => res.status(400).json("Error: " + err));
@@ -57,11 +86,12 @@ let transporter = nodemailer.createTransport({
 
   router.route("/allJobs/:id").get(auth ,(req, res) => {
     var jobsList = [];
+    var jobsListAlt = [];
     var count = 0
     var count2 = 0
     JobOpportunity.find()
     .then(jobs => {
-      JobApplications.find({userId: req.param.id})
+      JobApplications.find({userID: req.params.id})
       .then(applications => {
        jobs.forEach(job =>{
         let check = 0;
@@ -72,18 +102,31 @@ let transporter = nodemailer.createTransport({
           }
           count = count + 1
           if (count == applications.length && check == 0){
+            if(job.userId != req.params.id){
             jobsList.push(job)
-            console.log(jobsList)
+            }
           }
           
         })
-        count2 = count2 + 1
-        if (count2 === jobs.length){
-          res.json(jobsList)
+        if (job.userId != req.params.id){
+          jobsListAlt.push(job)
         }
+
+        count2 = count2 + 1
+        if (count2 == jobs.length){
+          if (applications.length == 0){
+            console.log("1")
+            return res.json(jobsListAlt.reverse())
+          }
+          else{
+          res.json(jobsList.reverse())
+        }
+        }
+        
       }) 
       })
-      .catch(err => res.status(400).json("Error: " + err));
+      .catch(err => {
+        res.status(400).json("Error: " + err)});
     })
     .catch(err => res.status(400).json("Error: " + err));
   });
@@ -252,6 +295,66 @@ router.route("/add").post(auth, (req, res) => {
   });
 
 
+  router.route("/degrees2/:jobId/:userId").get(auth, (req, res) => {
+    var degreesArray = [];
+    var temp = null;
+    var count2 = 0;
+    var count1 = 0;
+      JobQualifications.find({jobID: req.params.jobId})
+      .then(degrees => {
+        if(degrees.length == 0 ){
+          res.json(degreesArray)
+        }
+        Qualification.find({userId: req.params.userId})
+        .then(myDegrees => {
+          degrees.forEach(singleDegree=>{
+            count2=0
+            var check=false
+              if (myDegrees.length == 0){
+                DegreeName.findById(singleDegree.qualificationID)
+                .then(degreeToSave => {
+                temp = {
+                  degreeName: degreeToSave.name,
+                  has: check
+                }
+                degreesArray.push(temp)
+                count1 = count1 + 1
+                if (count1 == degrees.length){
+                  res.json(degreesArray)
+                }
+              })
+              .catch(err => res.status(400).json("Error: " + err));
+              }
+
+              myDegrees.forEach(mySingleDegree =>{
+              if(singleDegree.qualificationID == mySingleDegree.degreeID){
+              check=true
+              }
+            count2= count2 + 1
+              if (count2 == myDegrees.length){
+                DegreeName.findById(singleDegree.qualificationID)
+                .then(degreeToSave => {
+                temp = {
+                  degreeName: degreeToSave.name,
+                  has: check
+                }
+                degreesArray.push(temp)
+                count1 = count1 + 1
+                if (count1 == degrees.length){
+                  res.json(degreesArray)
+                }
+              })
+              .catch(err => res.status(400).json("Error: " + err));
+            }
+          })
+         
+        })
+      })
+        .catch(err => res.status(400).json("Error: " + err));
+      })
+      .catch(err => res.status(400).json("Error: " + err));
+  });
+
   router.route("/degrees/:id").get(auth, (req, res) => {
     var degreesArray = [];
     var temp = null;
@@ -259,13 +362,15 @@ router.route("/add").post(auth, (req, res) => {
     var count1 = 0;
       JobQualifications.find({jobID: req.params.id})
       .then(degrees => {
+        if(degrees.length == 0 ){
+          res.json(degreesArray)
+        }
         Qualification.find({userId: req.user.id})
         .then(myDegrees => {
           degrees.forEach(singleDegree=>{
             count2=0
             var check=false
               if (myDegrees.length == 0){
-                console.log("inside")
                 DegreeName.findById(singleDegree.qualificationID)
                 .then(degreeToSave => {
                 temp = {
@@ -321,10 +426,26 @@ router.route("/add").post(auth, (req, res) => {
     var skillsToSend =[]
     JobSkill.find({jobOpportunityID: req.params.id})
     .then(skills =>{
+      if(skills.length == 0 ){
+        res.json(skillsToSend)
+      }
       Qualification.find({userId: req.user.id})
         .then(myDegrees => {
-        myDegrees.forEach(myDegree =>{
-
+          if(myDegrees.length == 0){
+            skills.forEach(skill =>{
+              count4 = 0
+                temp = {
+                  skillName: skill.skillName,
+                  has: false
+                }
+                skillsToSend.push(temp)
+                count3 = count3 + 1
+                if (count3 == skills.length){
+                  res.json(skillsToSend)
+                }
+              })
+          }
+          myDegrees.forEach(myDegree =>{
           count2 = 0
           count1 = count1 + 1
           myDegree.courses.forEach(course =>{
@@ -334,8 +455,8 @@ router.route("/add").post(auth, (req, res) => {
           })
           .catch(err => res.status(400).json("Error: " + err));
           count2 = count2 + 1
-
-          if (count1 == myDegrees.length && count2 == myDegree.courses.length){
+          })
+               if (count1 == myDegrees.length && count2 == myDegree.courses.length){
             skills.forEach(skill =>{
               check= false
               count4 = 0
@@ -346,10 +467,9 @@ router.route("/add").post(auth, (req, res) => {
                   has: check
                 }
                 skillsToSend.push(temp)
-                console.log(skillsToSend)
                 count3 = count3 + 1
                 if (count3 == skills.length){
-                  res.json(skillsToSend)
+                  return res.json(skillsToSend)
                 }
               }
               mySkills.forEach(mySkill =>{
@@ -366,14 +486,96 @@ router.route("/add").post(auth, (req, res) => {
                 count3 = count3 + 1
               }
               if (count3 == skills.length){
-                res.json(skillsToSend)
+                return res.json(skillsToSend)
               }
               })
             })
     
           }
         })
-        
+      })
+        .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+
+  });
+
+  router.route("/skills2/:jobId/:userId").get(auth, (req, res) => {
+    var mySkills = []
+    var count1 = 0
+    var count2 = 0
+    var count3 = 0
+    var count4 = 0
+    var ckeck = false
+    var skillsToSend =[]
+    JobSkill.find({jobOpportunityID: req.params.jobId})
+    .then(skills =>{
+      if(skills.length == 0 ){
+        res.json(skillsToSend)
+      }
+      Qualification.find({userId: req.params.userId})
+        .then(myDegrees => {
+          if(myDegrees.length == 0){
+            skills.forEach(skill =>{
+              count4 = 0
+                temp = {
+                  skillName: skill.skillName,
+                  has: false
+                }
+                skillsToSend.push(temp)
+                count3 = count3 + 1
+                if (count3 == skills.length){
+                  res.json(skillsToSend)
+                }
+              })
+          }
+          myDegrees.forEach(myDegree =>{
+          count2 = 0
+          count1 = count1 + 1
+          myDegree.courses.forEach(course =>{
+            CourseName.find({courseTitle: course.name})
+            .then(courseInfo =>{
+            mySkills.concat(courseInfo.skills)
+          })
+          .catch(err => res.status(400).json("Error: " + err));
+          count2 = count2 + 1
+          })
+               if (count1 == myDegrees.length && count2 == myDegree.courses.length){
+            skills.forEach(skill =>{
+              check= false
+              count4 = 0
+              if (mySkills.length == 0){
+                
+                temp = {
+                  skillName: skill.skillName,
+                  has: check
+                }
+                skillsToSend.push(temp)
+                count3 = count3 + 1
+                if (count3 == skills.length){
+                  return res.json(skillsToSend)
+                }
+              }
+              mySkills.forEach(mySkill =>{
+              if (skill.skillName == mySkill.name){
+              check= true
+              }
+              count4 = count4 + 1
+              if (count4 == mySkills.length ){
+                temp = {
+                  skillName: skill.skillName,
+                  has: check
+                }
+                skillsToSend.push(temp)
+                count3 = count3 + 1
+              }
+              if (count3 == skills.length){
+                return res.json(skillsToSend)
+              }
+              })
+            })
+    
+          }
         })
       })
         .catch(err => res.status(400).json("Error: " + err));

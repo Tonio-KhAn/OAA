@@ -173,7 +173,7 @@ function getDegrees(jobId) {
     <div>
     <div >
      
-     <Modal show = {show}>
+     <Modal show = {show} >
          <Modal.Header>
          <h3 class="card-title" style={{color: "grey"}}>{modalJob.title}</h3>
          <Button onClick={()=> closeModal()}> close</Button>
@@ -184,11 +184,11 @@ function getDegrees(jobId) {
                         <p class="card-text" style={{fontFamily:"initial"}}>{modalJob.description}</p>
                         <h4>Requires Skills</h4>
                         {modalSkills.map((skill,index3) =>(
-                          <h4 key={index3} style={skill.has ? {color: 'blue'}:{}} >{skill.skillName}{skill.has ? (<i class="fas fa-check"></i>):(null)}</h4>
+                          <h4 key={index3} style={skill.has ? {color: 'green'}:{}} >{skill.skillName}{skill.has ? (<i class="fas fa-check-circle"></i>):(null)}</h4>
                           ))}
                           <h4>Requires Degrees</h4>
                         {modalDegrees.map((degree,index4) =>(
-                          <h4 key={index4} style={degree.has ? {color: 'blue'}:{}}>{degree.degreeName} {degree.has ? (<i class="fas fa-check"></i>):(null)}</h4>
+                          <h4 key={index4} style={degree.has ? {color: 'green'}:{}}>{degree.degreeName} {degree.has ? (<i class="fas fa-check-circle"></i>):(null)}</h4>
                           ))}
                         </Modal.Body>
                         <Modal.Footer>
@@ -206,13 +206,13 @@ function getDegrees(jobId) {
                             <Card.Header>
                                 <Card.Title as='h5'><i class="fas fa-list"></i> All Jobs</Card.Title>
                             </Card.Header>
-                            { jobOpportunity.map((job,index) =>(
-                            <Card.Body className='px-0 py-2'>
+                            {jobOpportunity.map((job,indexJob) =>(
+                            <Card.Body key={indexJob} className='px-0 py-2'>
                                 <Table responsive hover>
                                     <tbody>
                                     <tr className="unread">
                                         <td>
-                                             <dt className="cl-sm-3"> Title:</dt>
+                                             <dt className="cl-sm-3">{indexJob} Title:</dt>
                                              <dd className="cl-sm-3"><em>{job.title}</em></dd>
         
                                              

@@ -1,0 +1,66 @@
+
+        myDegrees.forEach(myDegree =>{
+          
+          count2 = 0
+          count1 = count1 + 1
+          if(myDegrees.length == 0){
+            skills.forEach(skill =>{
+              count4 = 0
+                temp = {
+                  skillName: skill.skillName,
+                  has: false
+                }
+                skillsToSend.push(temp)
+                count3 = count3 + 1
+                if (count3 == skills.length){
+                  res.json(skillsToSend)
+                }
+              })
+          }
+          myDegree.courses.forEach(course =>{
+            CourseName.find({courseTitle: course.name})
+            .then(courseInfo =>{
+            mySkills.concat(courseInfo.skills)
+          })
+          .catch(err => res.status(400).json("Error: " + err));
+          count2 = count2 + 1
+          
+          if (count1 == myDegrees.length && count2 == myDegree.courses.length){
+            skills.forEach(skill =>{
+              check= false
+              count4 = 0
+              if (mySkills.length == 0){
+                
+                temp = {
+                  skillName: skill.skillName,
+                  has: check
+                }
+                skillsToSend.push(temp)
+                count3 = count3 + 1
+                if (count3 == skills.length){
+                  return res.json(skillsToSend)
+                }
+              }
+              mySkills.forEach(mySkill =>{
+              if (skill.skillName == mySkill.name){
+              check= true
+              }
+              count4 = count4 + 1
+              if (count4 == mySkills.length ){
+                temp = {
+                  skillName: skill.skillName,
+                  has: check
+                }
+                skillsToSend.push(temp)
+                count3 = count3 + 1
+              }
+              if (count3 == skills.length){
+                return res.json(skillsToSend)
+              }
+              })
+            })
+    
+          }
+        })
+        
+        })
