@@ -11,7 +11,7 @@ import Aux from "../../hoc/_Aux";
 // Imported CSS
 import '../../App.css';
 
-function AllPosts(props) {
+function CommunityPosts(props) {
   const[ Posts, setPosts] = useState([])
   
   function getPosts() {
@@ -24,10 +24,10 @@ function AllPosts(props) {
       config.headers["x-auth-token"] = token;
     }
     
-    axios.get('/Posts/allposts', config)
+    axios.get('/Posts/communityposts', config)
       .then(
         res => {
-          console.log(`All posts pulled.`)
+          console.log(`User's community posts pulled.`)
           setPosts(res.data);
         }
       )
@@ -68,7 +68,7 @@ function AllPosts(props) {
           <Col md={6} xl={8}>
             <Card className='Recent-Users'>
               <Card.Header>
-                <Card.Title as='h5'><i class="fas fa-list"></i> All Posts</Card.Title>
+                <Card.Title as='h5'><i class="fas fa-list"></i> Posts from your Community</Card.Title>
               </Card.Header>
               <Card.Body className='px-0 py-2'>
                 { Posts.map((thispost,index) =>(
@@ -123,4 +123,4 @@ const mapStateToProps = state => ({
   
 export default connect(
   mapStateToProps,
-)(AllPosts);
+)(CommunityPosts);

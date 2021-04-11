@@ -113,9 +113,9 @@ function loadUser(){
               </Link>
             </li>
             <li class="nav-item">
-              <Link to='/profile/posts' className='nav-links'>
+              <Link to='/profile/myPosts' className='nav-links'>
                 <button class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true" >
-                  Posts
+                  My Posts
                 </button>
               </Link>
             </li>

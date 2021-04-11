@@ -27,8 +27,28 @@ router.route('/').get(auth, (req, res) => {
     User.find()
       .then(user => res.json(user))
       .catch(err => res.status(400).json("Error: " + err));
-  });
+});
 
+router.route('/userdata/:id').get(auth, (req, res) => {
+  var userdata = [];
+  User.find()
+    .then(users => {
+      users.forEach(user => {
+        if(user._id == req.params.id) {
+          var temp = {
+            first_name: user.first_name,
+            last_name: user.last_name,
+            uwi_email: user.uwi_email,
+            sex: user.sex,
+            type: user.type
+          }
+          userdata.push(temp);
+        }
+      })
+      res.json(userdata)
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
   
   router.route('/user').get(auth, (req, res) => {
     User.findById(req.user.id)

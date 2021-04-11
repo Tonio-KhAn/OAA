@@ -11,7 +11,7 @@ import Aux from "../../hoc/_Aux";
 // Imported CSS
 import '../../App.css';
 
-function AllPosts(props) {
+function MyPosts(props) {
   const[ Posts, setPosts] = useState([])
   
   function getPosts() {
@@ -24,10 +24,10 @@ function AllPosts(props) {
       config.headers["x-auth-token"] = token;
     }
     
-    axios.get('/Posts/allposts', config)
+    axios.get('/Posts/myposts', config)
       .then(
         res => {
-          console.log(`All posts pulled.`)
+          console.log(`User's posts pulled.`)
           setPosts(res.data);
         }
       )
@@ -68,7 +68,7 @@ function AllPosts(props) {
           <Col md={6} xl={8}>
             <Card className='Recent-Users'>
               <Card.Header>
-                <Card.Title as='h5'><i class="fas fa-list"></i> All Posts</Card.Title>
+                <Card.Title as='h5'><i class="fas fa-list"></i> My Posts</Card.Title>
               </Card.Header>
               <Card.Body className='px-0 py-2'>
                 { Posts.map((thispost,index) =>(
@@ -80,15 +80,9 @@ function AllPosts(props) {
                         <dd className="cl-sm-3"><em>{thispost.title}</em></dd>
                         <dt className="cl-sm-3"> Body:</dt>
                         <dd className="cl-sm-3"><em>{thispost.body}</em></dd>
-                        <dt className="cl-sm-3"> by:</dt>
-                        <dd className="cl-sm-3"><em>{thispost.first_name}</em></dd>
-                        {thispost.owner == 1 ?
-                          <button onClick={() => deletePost(thispost._id)} type="button" class="label theme-bg text-white f-12"  style={{marginBottom: '10px'}}>
+                        <button onClick={() => deletePost(thispost._id)} type="button" class="label theme-bg text-white f-12"  style={{marginBottom: '10px'}}>
                             Delete <i class="fas fa-plus"></i>
-                          </button>
-                        :
-                        <></>
-                        }
+                        </button>
                         <dt className="cl-sm-3"> Posted at:</dt>
                         <dd className="cl-sm-3"><em>{thispost.createdAt}</em></dd>
                       </td>
@@ -123,4 +117,4 @@ const mapStateToProps = state => ({
   
 export default connect(
   mapStateToProps,
-)(AllPosts);
+)(MyPosts);

@@ -63,21 +63,25 @@ function CreatePosts(props) {
     if(token) {
       config.headers["x-auth-token"] = token;
     }
-    
-    axios
-      .post(
-        "/posts/add",
-        data,
-        config
-      )
-      .then(
-        res => {
-          console.log('Post created!')
-          alert('Post created!')
-          window.location.href = 'http://localhost:3000/postsall';
-        }
-      )
-      .catch(err => console.log(err));
+
+    if(data.title.trim() == '') alert("Enter a title!")
+    else if(data.body.trim() == '') alert("Enter a body!")
+    else{
+      axios
+        .post(
+          "/posts/add",
+          data,
+          config
+        )
+        .then(
+          res => {
+            console.log('Post created!')
+            alert('Post created!')
+            window.location.href = 'http://localhost:3000/postsall';
+          }
+        )
+        .catch(err => console.log(err));
+    }
   }
 
   useEffect(() => {

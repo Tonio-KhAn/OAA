@@ -8,10 +8,8 @@ import Chat from './components/pages/Chat';
 import Register from './components/pages/Register';
 import Login from './components/pages/Login';
 import Reset from './components/pages/ResetPassword';
-import createPost from './components/pages/createPost';
 import Profile from './components/pages/Profile';
 import ConfirmEmail from './components/pages/ConfirmEmail';
-import JobOpportunity from './components/pages/JobOpportunityFeed';
 import LogOut from './components/pages/LogOut';
 import AllJobs from './components/pages/AllJobs';
 import RecomendedJobs from './components/pages/RecomendedJobs';
@@ -38,11 +36,11 @@ import AdminSkill from './components/admin/skill';
 import friends from './components/pages/friends';
 import AdminGrade from './components/admin/grade';
 import AdminReports from './components/admin/reports';
-import CommunityFeed from './components/pages/CommunityFeed';
 import AllUsers from './components/pages/AllUsers';
 import MyUsers from './components/pages/MyUsers';
 import SuggestedUsers from './components/pages/SuggestedUsers';
-
+import MyPosts from './components/tabs/MyPosts';
+import CommunityPosts from './components/pages/CommunityPosts';
 
 class App extends Component {
 
@@ -57,13 +55,12 @@ class App extends Component {
           <Route path='/about' component={About} />
           <Route path='/register' component={Register} />
           <Route path='/login' component={Login} />
-          <Route path='/createPost' component={createPost} />
           <Route path='/profile' component={Profile} />
           <Route path='/profile/manageDegrees' component={ManageDegree} />
           <Route path='/profile/editProfile' component={EditProfile} />
+          <Route path='/profile/myPosts' component={MyPosts} />
           <Route path='/profile/resume' component={Resume} />
           <Route path='/confirm/' component={ConfirmEmail} />
-          <Route path='/jobs' component={JobOpportunity} />
           <Route path='/all' component={AllJobs} />
           <Route path='/my' component={RecomendedJobs} />
           <Route path='/info/:id' component={JobInfo} />
@@ -76,10 +73,10 @@ class App extends Component {
           <Route path='/postsall' component={AllPosts} />
           <Route path='/postscreate' component={CreatePosts} />
           <Route path='/chat' component={Chat}/>
-          <Route path='/communityfeed' component={CommunityFeed} />
           <Route path='/community' component={AllUsers} />
           <Route path='/myfriends' component={MyUsers} />
           <Route path='/suggestedfriends' component={SuggestedUsers} />
+          <Route path='/postscommunity' component={CommunityPosts} />
            
           <Route path='/admin' exact component={AdminHome} />
           <Route path='/admin/job'  component={AdminJob} />
