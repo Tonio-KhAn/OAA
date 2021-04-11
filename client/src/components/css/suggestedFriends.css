@@ -123,6 +123,48 @@ table {
     margin-bottom: 5px;
 }
 
+.label1 {
+    padding: 4px 10px;
+    min-height: auto;
+    position: relative;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    width: 82pt;
+}
+
+.theme-bg1 {
+    background: linear-gradient( 
+90deg
+, rgb(197, 44, 44) 0%, rgb(255, 52, 52) 100% );
+}
+
+.theme-bg1:hover {
+    cursor: pointer;
+    background: linear-gradient(
+      90deg,
+      rgb(170, 38, 38) 0%,
+      rgb(241, 17, 17) 100%
+    );
+    transition: all 0.4s ease-out;
+  }
+ 
+.theme-bg22 {
+    background: linear-gradient( 
+90deg
+, rgb(27, 150, 68) 0%, rgb(51, 190, 39) 100% );
+}
+
+.theme-bg22:hover {
+    cursor: pointer;
+    background: linear-gradient(
+      90deg,
+      rgb(17, 102, 52) 0%,
+      rgb(25, 141, 10) 100%
+    );
+    transition: all 0.4s ease-out;
+  }
+ 
+
 .f-12 {
     float:right;
     font-size: 12px;

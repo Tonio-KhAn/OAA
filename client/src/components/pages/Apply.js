@@ -110,7 +110,7 @@ function Apply(props) {
      <>
      <div>
      <div class="page" style={{marginTop: "20px"}}>
-        <div class="card" style={{ margin : "auto"}}>
+        <div style={{ margin : "auto"}}>
           <div>
      <h1 class='firstlabel'><em>{values.jobtitle}</em></h1>
      <h2 class='secondlabel'>{values.company}</h2>
@@ -121,13 +121,13 @@ function Apply(props) {
         <form onSubmit={handleSubmit} >
       { inputFields.map((inputField,index) =>(
       <div class="input-group" key={index}>
-          <span >{inputField.mediaName}</span>
+          <span class='thirdlabel'>{inputField.mediaName}:</span>
   
 
 <div class="input-group">
     <input
       type="file"
-      class="input100" 
+      class="padtop" 
       name={inputField.mediaName}
       placeholder='Select Profile Picture'
       onChange={(e) => handleSingleChange(index,e)}>
@@ -138,7 +138,7 @@ function Apply(props) {
 ))}
 <div class="input-group">
   <div class="input-group-prepend">
-    <span class="input-group-text">Comments:</span>
+    <span class='thirdlabel'>Comments:</span>
 
   </div>
               <textarea
@@ -160,7 +160,6 @@ function Apply(props) {
               </div>
               </div>          
               </div>
-          
 </form> 
 </div>
 </div>
