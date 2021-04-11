@@ -39,9 +39,7 @@ function CreateJobs(props) {
         }, 
     )
 
-    const[ inputFields, setInputFields] = useState([
-        {name:'', type:''} 
-    ])
+    const[ inputFields, setInputFields] = useState([])
     const[ qualifications, setQualifications] = useState([
     ])
 
@@ -108,7 +106,7 @@ function CreateJobs(props) {
     }
 
     const handleAdd = () => {
-        setInputFields([...inputFields, {firstname:'', lastName:''} ])
+        setInputFields([...inputFields, {name:'', type:''} ])
     }
     
     
@@ -285,19 +283,21 @@ function CreateJobs(props) {
 
           <div class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn"></div>
-						<button class="contact100-form-btn theme-bgg text-white f-122"onClick={() => handleRemove(index)}>
+						<button class="contact100-form-btn theme-bgg text-white" type="button"onClick={() => handleRemove(index)}>
 							Remove
 						</button>
 					</div>
-          <div class="wrap-contact100-form-btn">
-						<div class="contact100-form-bgbtn"></div>
-            <button class="contact100-form-btn theme-bgg text-white f-122"onClick={() => handleAdd()}>
-							Add Document
-						</button>
-					</div>
+          
 				</div>
             </div>
             ))}
+            <div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+            <button class="contact100-form-btn theme-bgg text-white" type="button"onClick={() => handleAdd()}>
+							Add Document
+						</button>
+					</div>
+            
           </div>
           <br></br>
           { degrees.map((degree,index) =>(

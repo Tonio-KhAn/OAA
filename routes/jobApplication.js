@@ -13,7 +13,11 @@ const JWT = require('jsonwebtoken');
 const config = require('config');
 const auth = require('../middleware/auth');
 
-router.route("/all/:id").get((req, res) => {
+
+
+
+
+router.route("/all/:id").get(auth,(req, res) => {
     var count = 0;
     JobApplication.find({jobOpportunityID:req.params.id})
       .then(applications => {
@@ -24,16 +28,18 @@ router.route("/all/:id").get((req, res) => {
           .then(users => {
             applications.forEach(application => {
                 users.forEach( user => {
-                    console.log(application.userID)
-                    console.log(user._id)
                 if (application.userID == user._id){
-                    console.log("helloo")
                    var temp = {
                     _id: application._id,
                     userID: user._id,
                     uwi_email: user.uwi_email,
                     first_name: user.first_name,
                     last_name: user.last_name,
+                    sex: user.sex,
+                    type: user.type,
+                    dob: user.dob,
+                    comment: application.comment,
+                    media: application.media,
                     counter: count,
                 }
                 applied.push(temp)
@@ -43,7 +49,6 @@ router.route("/all/:id").get((req, res) => {
             })
             count++;
             if (count === applications.length){
-                console.log(applied)
                 res.json(applied)
             }
             })
@@ -52,39 +57,29 @@ router.route("/all/:id").get((req, res) => {
       .catch(err => res.status(400).json("Error: " + err));
   });
 
-router.route("/add").post(auth, (req, res) => {
+router.route("/add").post(auth,(req, res) => {
+    console.log(req.body)
     const jobOpportunityID = req.body.jobId;
     const userID = req.user.id;
     var rank = 0;
     var count = 0;
-    
+    const media =[];
+    const comment = req.body.comment;
     Grades.find()
     .then(grades => {
-        console.log(grades);
      Qualification.find({userId: userID})
         .then(degrees => {
           const userDegrees = degrees;
-          console.log(userDegrees);
-
           JobSkill.find({jobOpportunityID:jobOpportunityID})
             .then(jobSkills => {
-                console.log("3");
-
                 jobSkills.forEach(jobSkill => {
-                console.log(jobSkill);
-
                 CourseName.find({'skills.name': jobSkill.skillName})
                     .then (course => {
-                        console.log(course)  
                         userDegrees.forEach(degree => {
-                            console.log(degree)  
                         degree.courses.forEach(userCourse => {
                         course.forEach(jobCourse => {
-                            console.log(userCourse)
-                            console.log(jobCourse.courseTitle)
                             if (jobCourse.courseTitle == userCourse.name) {
                                for (let x=0 ; x<grades.length; x=x+1){
-                                   console.log(grades[x].grade)
                                    if (grades[x].grade == userCourse.grade){
                                        rank = rank + grades[x].amount;
                                        x = grades.length;
@@ -99,19 +94,20 @@ router.route("/add").post(auth, (req, res) => {
                         const newJobApplication = new JobApplication({
                             jobOpportunityID,
                             userID,
+                            comment,
                             rank,
+                            media,
                         });
 
                         newJobApplication
                         .save()
-                        .then(application => {return res.status(200).json({msg: 'sucessfull' });})
+                        .then(application => {return res.status(200).json(application._id);})
                         .catch(err => res.status(400).json("Error: " + err));
                     }
                     
                 })
                 .catch(err => res.status(400).json("Error: " + err));
             })
-            console.log(rank);
         })
         .catch(err => res.status(400).json("Error: " + err));
        

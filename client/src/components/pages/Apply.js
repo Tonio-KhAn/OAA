@@ -12,7 +12,19 @@ function Apply(props) {
     )
     const[ inputFields, setInputFields] = useState([
     ])
-    
+
+    const[ comment, setComment] = useState('')
+
+    const handleSingleChange = (index,e) =>{
+      const value = [...inputFields];
+        value[index]["file"] = e.target.files[0];
+        setInputFields(value);
+  }
+
+  const handleSingleChangeComment = e =>{
+    setComment(e.target.value);
+}
+
     function getMedias(){
       const token = props.auth.token;
       const config = {
@@ -25,7 +37,7 @@ function Apply(props) {
 
       axios
       .get(
-        "/jobOpportunity/media/"+ props.match.params.id,
+        "/jobOpportunity/media2/"+ props.match.params.id,
         config
       )
       .then(
@@ -38,10 +50,15 @@ function Apply(props) {
 
   const handleSubmit = e => {
     e.preventDefault();
+    var count=0
+    var tempArray =[];
     const token = props.auth.token;
     const data = {
-        jobId: props.match.params.id
+        jobId: props.match.params.id,
+        comment:comment,
       };
+    
+     
       
       const config = {
         headers: {}
@@ -58,7 +75,26 @@ function Apply(props) {
           config
         )
         .then(
-          res => console.log(res.data),
+          res => {
+            console.log("successful upload")
+            inputFields.forEach(file => {
+              let formdata2 = new FormData();
+              formdata2.append("files", file.file);
+              formdata2.append("title", file.mediaName);
+              formdata2.append("applicationId", res.data);
+
+              axios
+                .post(
+                "/media/jobApplication/",
+                formdata2,
+                config
+              )
+              .then(
+                res => console.log("successful upload")
+              )
+              .catch(err => console.log(err));
+            })
+          },
         )
         .catch(err => console.log(err));
       
@@ -86,19 +122,32 @@ function Apply(props) {
       { inputFields.map((inputField,index) =>(
       <div class="input-group" key={index}>
           <span >{inputField.mediaName}</span>
-  <div class="custom-file">
   
-    <input type="file" class="custom-file-input" id="inputGroupFile04"></input>
-    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+
+<div class="input-group">
+    <input
+      type="file"
+      class="input100" 
+      name={inputField.mediaName}
+      placeholder='Select Profile Picture'
+      onChange={(e) => handleSingleChange(index,e)}>
+    
+    </input>
   </div>
-</div> 
+  </div> 
 ))}
 <div class="input-group">
   <div class="input-group-prepend">
     <span class="input-group-text">Comments:</span>
-  </div>
-  <textarea class="form-control" aria-label="With textarea"></textarea>
 
+  </div>
+              <textarea
+                class="input100"
+                name="description"
+                placeholder='Any Additional Comments'
+                value={comment}
+                onChange={handleSingleChangeComment}>
+              </textarea>
 </div>
 
 <div>

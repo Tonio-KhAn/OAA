@@ -42,10 +42,12 @@ import CommunityFeed from './components/pages/CommunityFeed';
 import AllUsers from './components/pages/AllUsers';
 import MyUsers from './components/pages/MyUsers';
 import SuggestedUsers from './components/pages/SuggestedUsers';
-
+import { loadUser } from "./actions/authActions";
 
 class App extends Component {
-
+    componentDidMount() {
+      loadUser();
+    }
 
   render() {
   return (

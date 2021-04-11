@@ -9,9 +9,10 @@ import{
     REGISTER_FAIL
 } from"../actions/types";
 
+
 const initialState = {
     token: localStorage.getItem('token'),
-    isAuthenticated: null,
+    isAuthenticated: localStorage.getItem('isAuthenticated'),
     isLoading: false,
     users: null
 };
@@ -33,18 +34,20 @@ export default function(state= initialState, action){
         };
         case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
-            localStorage.setItem('token', action.payload.token)
-            return{
-                ...state,
-                ...action.payload,
-                isAuthenticated: true,
-                isLoading: false,
-            };
+        localStorage.setItem('token', action.payload.token)
+        localStorage.setItem('isAuthenticated', true)
+        return{
+            ...state,
+            ...action.payload,
+            isAuthenticated: true,
+            isLoading: false,
+        };
         case AUTH_ERROR:
         case LOGIN_FAIL:
         case LOGOUT_SUCCESS:
         case REGISTER_FAIL:
             localStorage.removeItem('token');
+            localStorage.removeItem('isAuthenticated');
             return{
                 ...state,
                 token: null,
