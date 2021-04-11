@@ -49,8 +49,67 @@ router.route("/").get(auth, (req, res) => {
   })
 });
 
+router.route("/userposts/:id").get(auth, (req, res) => {
+  var userposts = []
+  Post.find()
+    .then(posts => {
+      posts.forEach(post => {
+        if(post.userId == req.params.id) {
+          var temp = {
+            _id: post._id,
+            title: post.title,
+            body: post.body,
+            createdAt: post.createdAt,
+            userId: post.userId
+          }
+          userposts.push(temp)
+        }
+      })
+      userposts.sort((a, b) => b.createdAt - a.createdAt)
+      res.json(userposts);
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
+router.route("/allposts").get(auth, (req, res) => {
+  var allposts = []
+
+  User.find()
+    .then(users => {
+      Post.find()
+        .then(posts => {
+          users.forEach(user => {
+            posts.forEach(post => {
+              if(post.userId == user._id) {
+                var temp = {
+                  _id: post._id,
+                  title: post.title,
+                  body: post.body,
+                  createdAt: post.createdAt,
+                  userId: post.userId,
+                  first_name: user.first_name,
+                  owner: 0
+                }
+                allposts.push(temp)
+              }
+            })
+          })
+          allposts.forEach(individualpost => {
+            if(individualpost.userId == req.user.id) {
+              individualpost.owner = 1
+            }
+          })
+          allposts.sort((a, b) => b.createdAt - a.createdAt)
+          res.json(allposts);
+        })
+        .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
 router.route("/communityposts").get(auth, (req, res) => {
   var communityposts = []
+
   User.findById(req.user.id)
     .then(user => {
       Post.find()
@@ -58,18 +117,90 @@ router.route("/communityposts").get(auth, (req, res) => {
           user.friends.forEach(friend => {
             posts.forEach(post => {
               if(post.userId == friend) {
-                communityposts.push(post)
+                var temp = {
+                  _id: post._id,
+                  title: post.title,
+                  body: post.body,
+                  createdAt: post.createdAt,
+                  userId: post.userId,
+                  first_name: '',
+                  owner: 0
+                }
+                communityposts.push(temp)
               }
             })
           })
           posts.forEach(post => {
-            if(post.userId == user._id) communityposts.push(post)
+            if(post.userId == user._id) {
+              var temp = {
+                _id: post._id,
+                title: post.title,
+                body: post.body,
+                createdAt: post.createdAt,
+                userId: post.userId,
+                first_name: '',
+                owner: 1
+              }
+              communityposts.push(temp)
+            }
           })
           communityposts.sort((a, b) => b.createdAt - a.createdAt)
-          
-          res.json(communityposts)
+
+          User.find()
+            .then(users => {
+              users.forEach(person => {
+                communityposts.forEach(communitypost => {
+                  if(person._id == communitypost.userId) communitypost.first_name = person.first_name;
+                })
+              })
+              res.json(communityposts)
+            })
+            .catch(err => res.status(400).json("Error: " + err));  
         })
         .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
+router.route("/myposts").get(auth, (req, res) => {
+  var myposts = []
+
+  User.findById(req.user.id)
+    .then(user => {
+      Post.find()
+        .then(posts => {
+          posts.forEach(post => {
+            if(post.userId == user._id) {
+              var temp = {
+                _id: post._id,
+                title: post.title,
+                body: post.body,
+                createdAt: post.createdAt,
+                userId: post.userId,
+              }
+              myposts.push(temp)
+            }
+          })
+          myposts.sort((a, b) => b.createdAt - a.createdAt)
+          
+          res.json(myposts)
+        })
+        .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => res.status(400).json("Error: " + err));
+});
+
+router.route("/deletepost/:id").delete(auth, (req, res) => {
+  Post.findById(req.params.id)
+    .then(post => {
+      if(post.userId == req.user.id) {
+        Post.findByIdAndDelete(req.params.id)
+          .then(res.json('Post deleted.'))
+          .catch(err => res.status(400).json("Error: " + err));
+      }
+      else {
+        res.json('Post delete attempt failed. Invalid user.')
+      }
     })
     .catch(err => res.status(400).json("Error: " + err));
 });

@@ -78,7 +78,7 @@ function AllJobs(props) {
               }
             count ++  
             if (count === res.data.length)
-            setJobOpportunity(tempArray);
+              setJobOpportunity(tempArray);
             })
             
             },
