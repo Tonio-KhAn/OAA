@@ -144,26 +144,23 @@ function AllUsers(props) {
             <div>
                 {userData.map((user,index) => (
                     <>
-                        <h5>Type: {user.type}</h5>
-                        <h5>Sex: {user.sex}</h5>
-                        <h5>Contact: {user.uwi_email}</h5>
+                        <h6 className='setclabel'>Type: {user.type}</h6>
+                        <h6 className='setclabel'>Sex: {user.sex}</h6>
+                        <h6 className='setclabel'>Contact: {user.uwi_email}</h6>
                     </>
                 ))}
                 </div>
-                <h6>Posts</h6>
+                <h6 className='setclabel'>Posts: </h6>
                 {posts.map((post,index) =>(
                     <Table responsive hover>
                     <tbody>
                       <tr className="unread">
                         <td>
-                          <dt className="cl-sm-3"> Title:</dt>
-                          <dd className="cl-sm-3"><em>{post.title}</em></dd>
-                          <dt className="cl-sm-3"> Body:</dt>
-                          <dd className="cl-sm-3"><em>{post.body}</em></dd>
-                          <dt className="cl-sm-3"> by:</dt>
-                          <dd className="cl-sm-3"><em>{post.first_name}</em></dd>
-                          <dt className="cl-sm-3"> Posted at:</dt>
-                          <dd className="cl-sm-3"><em>{post.createdAt}</em></dd>
+                        <dt className="cl-sm-3">{post.title}</dt>
+                        <dd className="cl-sm-3"><em>{post.body}</em></dd>
+                        <dt className="cl-sm-400"> Posted at:</dt>
+                        <br></br>
+                        <dd className="cl-sm-400"><em>{post.createdAt}</em></dd>
                         </td>
                       </tr>
                     </tbody>
@@ -185,6 +182,7 @@ function AllUsers(props) {
                                             <th>First Name</th>
                                             <th>Last Name</th>
                                             <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -194,17 +192,17 @@ function AllUsers(props) {
                                         <td>{user.first_name}</td>
                                         <td>{user.last_name}</td>
                                         <td>
-                                            <button onClick={() => viewProfile(user._id)} type="button" class="label theme-bg text-white f-12"  style={{marginBottom: '10px'}}>
-                                                View Profile <i class="fas fa-plus"></i>
+                                            <button onClick={() => viewProfile(user._id)} type="button" class="label1 theme-bg text-white f-12"  style={{marginBottom: '10px'}}>
+                                                View Profile <i class="fas fa-search"></i>
                                             </button>
                                         </td>
                                         <td>
                                             {user.status ?
-                                                <button onClick={() => deleteUser(user._id)} type="button" class="label theme-bg text-white f-12"  style={{marginBottom: '10px'}}>
-                                                    Unfriend <i class="fas fa-plus"></i>
+                                                <button onClick={() => deleteUser(user._id)} type="button" class="label1 theme-bg1 text-white f-12"  style={{marginBottom: '10px'}}>
+                                                    Unfriend <i class="fas fa-minus"></i>
                                                 </button>
                                                 :
-                                                <button onClick={() => addUser(user._id)} type="button" class="label theme-bg text-white f-12"  style={{marginBottom: '10px'}}>
+                                                <button onClick={() => addUser(user._id)} type="button" class="label1 theme-bg22 text-white f-12"  style={{marginBottom: '10px'}}>
                                                     Add Friend <i class="fas fa-plus"></i>
                                                 </button>
                                             }

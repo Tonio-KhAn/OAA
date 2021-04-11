@@ -55,6 +55,7 @@ function AllPosts(props) {
       )
       .catch(err => console.log(err));
   }
+  
 
   useEffect(() => {
     getPosts();
@@ -76,21 +77,19 @@ function AllPosts(props) {
                   <tbody>
                     <tr className="unread">
                       <td>
-                        <dt className="cl-sm-3"> Title:</dt>
-                        <dd className="cl-sm-3"><em>{thispost.title}</em></dd>
-                        <dt className="cl-sm-3"> Body:</dt>
-                        <dd className="cl-sm-3"><em>{thispost.body}</em></dd>
-                        <dt className="cl-sm-3"> by:</dt>
-                        <dd className="cl-sm-3"><em>{thispost.first_name}</em></dd>
                         {thispost.owner == 1 ?
-                          <button onClick={() => deletePost(thispost._id)} type="button" class="label theme-bg text-white f-12"  style={{marginBottom: '10px'}}>
-                            Delete <i class="fas fa-plus"></i>
+                          <button onClick={() => deletePost(thispost._id)} type="button" class="label theme-bg1 text-white f-12"  style={{marginBottom: '10px'}}>
+                            Delete <i class="far fa-trash-alt"></i>
                           </button>
                         :
                         <></>
                         }
-                        <dt className="cl-sm-3"> Posted at:</dt>
-                        <dd className="cl-sm-3"><em>{thispost.createdAt}</em></dd>
+                        <dd className="cl-sm-3"><em> <div className='cap'>{thispost.first_name} {thispost.last_name} </div>posted...</em></dd>
+                        <dt className="cl-sm-3">{thispost.title}</dt>
+                        <dd className="cl-sm-3"><em>{thispost.body}</em></dd>
+                        <dt className="cl-sm-400"> Posted at:</dt>
+                        <br></br>
+                        <dd className="cl-sm-400"><em>{thispost.createdAt}</em></dd>
                       </td>
                     </tr>
                   </tbody>
@@ -105,6 +104,11 @@ function AllPosts(props) {
                 <Link to='/postscreate'>
                   <button className="btnlabel theme-bgg text-white f-122">
                   <i class="fas fa-plus"></i> Create Post
+                  </button>
+                </Link>
+                <Link to='/myPosts'>
+                  <button className="btnlabel theme-bgg text-white f-122">
+                  <i class="far fa-bookmark"></i> My Posts
                   </button>
                 </Link>
               </Card.Body>

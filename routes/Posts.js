@@ -88,6 +88,7 @@ router.route("/allposts").get(auth, (req, res) => {
                   createdAt: post.createdAt,
                   userId: post.userId,
                   first_name: user.first_name,
+                  last_name: user.last_name,
                   owner: 0
                 }
                 allposts.push(temp)

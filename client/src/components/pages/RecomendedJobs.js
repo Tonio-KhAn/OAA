@@ -132,13 +132,13 @@ function RecomendedJobs(props) {
                     
                     <Col md={6} xl={4}>
                       <Card className='card-event'>
-                            <Card.Body><Link to='/all'> 
-                            <button className="btnlabel theme-bgg text-white f-122">
-                            <i class="fas fa-list"></i> All Jobs</button></Link>
-                            
+                            <Card.Body>
                             <Link to='/jobscreate'> 
                             <button className="btnlabel theme-bgg text-white f-122">
-                            <i class="fas fa-plus"></i> Create Job</button></Link>
+                            <i class="fas fa-plus"></i> Create Job</button></Link>  
+                            <Link to='/all'> 
+                            <button className="btnlabel theme-bgg text-white f-122">
+                            <i class="fas fa-list"></i> All Jobs</button></Link>
                             </Card.Body></Card>
                         <Card className='card-event'> <Card.Body>
                                 <div className="row align-items-center justify-content-center">

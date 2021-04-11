@@ -185,11 +185,11 @@ function getDegrees(jobId) {
                         <h6 className='desclabel'>{modalJob.description}</h6>
                         <h6 className='skillsetclabel'>Requires Skills:</h6>
                         {modalSkills.map((skill,index3) =>(
-                          <h4 key={index3} style={skill.has ? {color: 'green'}:{}} >{skill.skillName}{skill.has ? (<i class="fas fa-check-circle"></i>):(null)}</h4>
+                          <h6 className='options ital' key={index3} style={skill.has ? {color: 'green'}:{}} >{skill.skillName}{skill.has ? (<i class="fas fa-check-circle"></i>):(null)}</h6>
                           ))}
                           <h6 className='skillsetclabel'>Requires Degrees:</h6>
                         {modalDegrees.map((degree,index4) =>(
-                          <h4 key={index4} style={degree.has ? {color: 'green'}:{}}>{degree.degreeName} {degree.has ? (<i class="fas fa-check-circle"></i>):(null)}</h4>
+                          <h6 className='options ital' key={index4} style={degree.has ? {color: 'green'}:{}}>{degree.degreeName} {degree.has ? (<i class="fas fa-check-circle"></i>):(null)}</h6>
                           ))}
                           <div>
                         <Link to={'/apply/'+ modalJob._id}>
@@ -214,7 +214,7 @@ function getDegrees(jobId) {
                                     <tbody>
                                     <tr className="unread">
                                         <td>
-                                             <dt className="cl-sm-3">{indexJob} Title:</dt>
+                                             <dt className="cl-sm-3">#{indexJob} Job:</dt>
                                              <dd className="cl-sm-3"><em>{job.title}</em></dd>
         
                                              
@@ -254,13 +254,16 @@ function getDegrees(jobId) {
                     
                     <Col md={6} xl={4}>
                       <Card className='card-event'>
-                            <Card.Body><Link to='/my'> 
+                            <Card.Body>
+                            <Link to='/jobscreate'> 
+                            <button className="btnlabel theme-bgg text-white f-122">
+                            <i class="fas fa-plus"></i> Create Job</button></Link>  
+                              
+                            <Link to='/my'> 
                             <button className="btnlabel theme-bgg text-white f-122">
                             <i class="far fa-bookmark"></i> My Jobs</button></Link>
                             
-                            <Link to='/jobscreate'> 
-                            <button className="btnlabel theme-bgg text-white f-122">
-                            <i class="fas fa-plus"></i> Create Job</button></Link>
+                            
                             </Card.Body></Card>
                         <Card className='card-event'> <Card.Body>
                                 <div className="row align-items-center justify-content-center">

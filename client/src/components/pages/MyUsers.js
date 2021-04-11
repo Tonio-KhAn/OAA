@@ -159,6 +159,7 @@ function MyUsers(props) {
                                             <th>First Name</th>
                                             <th>Last Name</th>
                                             <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -168,14 +169,14 @@ function MyUsers(props) {
                                         <td>{user.first_name}</td>
                                         <td>{user.last_name}</td>
                                         <td>
-                                            <button onClick={() => viewProfile(user._id)} type="button" class="label theme-bg text-white f-12"  style={{marginBottom: '10px'}}>
-                                                View Profile <i class="fas fa-plus"></i>
+                                            <button onClick={() => viewProfile(user._id)} type="button" class="label1 theme-bg text-white f-12"  style={{marginBottom: '10px'}}>
+                                                View Profile <i class="fas fa-search"></i>
                                             </button>
                                         </td>
                                         <td>
                                             {user.status ?
-                                                <button onClick={() => deleteUser(user._id)} type="button" class="label theme-bg text-white f-12"  style={{marginBottom: '10px'}}>
-                                                    Unfriend <i class="fas fa-plus"></i>
+                                                <button onClick={() => deleteUser(user._id)} type="button" class="label1 theme-bg1 text-white f-12"  style={{marginBottom: '10px'}}>
+                                                    Unfriend <i class="fas fa-minus"></i>
                                                 </button>
                                                 :
                                                 <>

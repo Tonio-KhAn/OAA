@@ -102,7 +102,7 @@ function Resume(props) {
   <div class="input-group">
     <input
       type="file"
-      class="input100" 
+      class="padtop" 
       name="image"
       placeholder='Select Profile Picture'
       onChange={handleSingleChange}>
@@ -111,9 +111,6 @@ function Resume(props) {
   </div>
  
 </div>
-<br></br>
-
-<br></br>
 <div>
 <div class="container-contact100-form-btn">
   <div class="wrap-contact100-form-btn">  

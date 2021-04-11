@@ -94,7 +94,7 @@ function loadUser(){
       <div class= "page">
         <div class= "profile__card card">
           <div>
-            <img alt="user" style ={{width:"180px",height:"160px",borderRadius:"20px"}} 
+            <img alt="user" className='pic' 
               src={profile.location}/>
           </div>
           <div>
