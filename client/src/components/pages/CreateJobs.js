@@ -109,7 +109,12 @@ function CreateJobs(props) {
         setInputFields([...inputFields, {name:'', type:''} ])
     }
     
-    
+    const handleQualificationDelete = (index) => {
+      const values = [...qualifications];
+          values.splice(index, 1);
+          setQualifications(values);
+  }
+  
     const handleQualificationAdd = () => {
         console.log(qualifications)
         console.log(qualificationValue)
@@ -127,6 +132,13 @@ function CreateJobs(props) {
         setqualificationValue(e.target.value);
         console.log(qualificationValue)
     }
+
+    const handleDegreeDelete = (index) => {
+      const values = [...degrees];
+          values.splice(index, 1);
+          setDegrees(values);
+
+  }
 
     const handleDegreeAdd = () => {
         
@@ -302,7 +314,7 @@ function CreateJobs(props) {
           <br></br>
           { degrees.map((degree,index) =>(
             <div key={index}>
-              <h5>{degree.name}</h5></div>   
+              <h5>{degree.name}<button class="label1 theme-bg1 text-white f-12" type="button" onClick={() => handleDegreeDelete(index)}>delete <i class="fas fa-minus"></i></button></h5></div>   
           ))}
           <div class="input-group mb-3">
             <select class="selector" name="qualificationSelect" id="" onChange={handleDegreeChange}>
@@ -317,7 +329,7 @@ function CreateJobs(props) {
           </div>
           { qualifications.map((qualification,index) =>(
             <div key={index}>
-              <h5>{qualification.name}</h5></div>
+              <h5>{qualification.name}<button class="label1 theme-bg1 text-white f-12" type="button" onClick={() => handleQualificationDelete(index)}>delete <i class="fas fa-minus"></i></button></h5></div>
           ))}
           <div class="input-group mb-3">
             

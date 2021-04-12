@@ -5,8 +5,12 @@ import './adminCss.css';
 import axios from "axios";
 
 function AdminCourseEdit({course, setCourse, setSet}) {
+  const[ qualificationValue, setqualificationValue] = useState("no change")
     const [courseChange, setCourseChange] = useState([]);
-    
+    const[ qualifications, setQualifications] = useState([
+    ])
+    const[ skillsList, setSkillsList] = useState([
+    ])
 
     const handleClick = (courseId) => {
         setSet(1);
@@ -28,6 +32,7 @@ function AdminCourseEdit({course, setCourse, setSet}) {
       .then(
         res => { console.log(res.data)
           setCourseChange([res.data])
+          setQualifications(res.data.skills)
         },
       )
       .catch(err => console.log(err));
@@ -41,6 +46,29 @@ function AdminCourseEdit({course, setCourse, setSet}) {
           console.log(courseChange)
     }
 
+    const handleQualificationAdd = () => {
+      console.log(qualifications)
+      console.log(qualificationValue)
+      if (qualificationValue === "no change"){
+          setQualifications([...qualifications, {name: skillsList[0].name} ]) 
+      }else{
+                  setQualifications([...qualifications, {name: qualificationValue} ])
+      }
+      
+      console.log(qualifications)
+  }
+
+  const handleQualificationDelete = (index) => {
+    const values = [...qualifications];
+        values.splice(index, 1);
+        setQualifications(values);
+}
+  
+  const handleQualificationChange = e => {
+    setqualificationValue(e.target.value);
+    console.log(qualificationValue)
+} 
+
     const handleSubmit = e => {
       e.preventDefault();
       console.log("hello")
@@ -52,7 +80,7 @@ function AdminCourseEdit({course, setCourse, setSet}) {
       const data = {
         courseCode: courseChange[0].courseCode,
         courseTitle: courseChange[0].courseTitle,
-        courses: courseChange[0].courses,
+        courses: qualifications,
       };
       console.log(data)
       axios
@@ -69,10 +97,30 @@ function AdminCourseEdit({course, setCourse, setSet}) {
       )
       .catch(err => console.log(err));
       }
+      
+      function getSkills(){
 
+        const config = {
+            headers: {}
+          };
+
+
+        axios
+        .get(
+          "/adminroute/skill/",
+          config
+        )
+        .then(
+          res => { console.log(res.data)
+          setSkillsList(res.data);
+          },
+        )
+        .catch(err => console.log(err));
+    }
      
     useEffect(() => {
       loadCourses();
+      getSkills();
     }, []);
 
     return (
@@ -110,6 +158,23 @@ function AdminCourseEdit({course, setCourse, setSet}) {
                     onChange={e => handleSingleChange(index, e)}>
                 </input>
                 </div>
+            </div> 
+            <div class="input-group mb-3"><div >
+            { qualifications.map((skill,index) =>(
+            <div key={index}>
+              <h5> {skill.name}<button class="label1 theme-bg1 text-white f-12" type="button" onClick={() => handleQualificationDelete(index)}>delete <i class="fas fa-minus"></i></button></h5>
+             
+              </div>
+          ))} 
+          </div>
+            <select class="selector" name="qualificationSelect" id="" onChange={handleQualificationChange}>
+                { skillsList.map((skillList,index2) =>(
+                <option key={index2} value={skillList.name}>{skillList.name}</option>           
+                ))}
+              </select>
+              <div class="sel">
+                <button class="btnnew" type="button" onClick={() => handleQualificationAdd()}>Add Required Skill</button>
+              </div>
             </div> 
             <div class="wrap-contact100-form-btn">
                   <button className='btnnew' type='submit' >

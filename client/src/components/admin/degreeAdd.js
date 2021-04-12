@@ -34,15 +34,25 @@ function DegreeAdd({degree, setDegree, setSet}) {
     const handleClick = () => {
         setSet(0);
      }
+     const handleCourseDelete = (index) => {
+      const values = [...courses];
+          values.splice(index, 1);
+          setCourses(values);
+  }
 
+  const handleCourseChange2 = (index, e) =>{
+    const value = [...courses];
+    value[index][e.target.name] = e.target.value;
+    setCourses(value);
+  }
      const handleCourseAdd = () => {
        console.log(courseValue)
       if (courseValue === "no change"){
-          setCourses([...courses, {id: coursesList[0]._id, courseCode: coursesList[0].courseCode} ]) 
+          setCourses([...courses, {id: coursesList[0]._id, courseCode: coursesList[0].courseCode, startYear:'',endYear:''} ]) 
       }else{
         coursesList.forEach(courseSingle => {
               if (courseValue === courseSingle._id){
-                setCourses([...courses, {id: courseValue, courseCode: courseSingle.courseCode} ])
+                setCourses([...courses, {id: courseValue, courseCode: courseSingle.courseCode , startYear:'',endYear:''} ])
               }
           })
       
@@ -119,7 +129,12 @@ function DegreeAdd({degree, setDegree, setSet}) {
             </div>
             {courses.map((course,index2) =>(
             <div key={index2}>
-              <h5>{course.courseCode}</h5></div>
+              <h5>{course.courseCode}</h5>
+              <h6 className="generallabel">Start Period</h6>
+              <input type="date" class="form-control" name="startYear" value ={course.startYear} onChange={e => handleCourseChange2(index2, e)}  ></input>
+              <h6 className="generallabel">End Period</h6>
+              <input type="date" class="form-control" name="endYear" value ={course.endYear} onChange={e => handleCourseChange2(index2, e)}></input>
+              <button class="label1 theme-bg1 text-white f-12" type="button" onClick={() => handleCourseDelete(index2)}>delete <i class="fas fa-minus"></i></button></div>
           ))}
           <select class="selector" name="name" id="" onChange={handleCourseChange}>
               { coursesList.map((courseList,indexCourse) =>(
