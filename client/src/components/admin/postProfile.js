@@ -15,21 +15,19 @@ function PostProfile({post, setSet, setPost}) {
                 <ul>
                     <li value="100">
                         <div class="card">
-                            <div class="card" style={{ margin : "auto"}}>
+                            <div class="page" style={{ margin : "auto"}}>
                             <div>
-                            <h1>Title</h1>
-                            <h3>{post.title}</h3>
+                            <h1 class='biglabel'>Title:</h1>
+                            <h3  class='generallabel'>{post.title}</h3>
                             </div>
                             <div>
-                            <h1>Post</h1>
-                            <h3>{post.body}</h3>
+                            <h1 class='biglabel'>Body:</h1>
+                            <h3  class='generallabel'>{post.body}</h3>
                             </div>
                             
-                            <button className="adminbackbtn"  onClick={e => handleClick()}> 
-                        <h4>
-                            Back
-                        </h4>
+                            <button className="btnneww"  onClick={e => handleClick()}> 
                         
+                            Back
                             </button>
                             </div>
                         </div>

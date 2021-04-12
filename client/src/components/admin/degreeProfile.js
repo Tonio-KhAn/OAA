@@ -18,24 +18,21 @@ function DegreeProfile({degree, setSet, setDegree}) {
                 <ul>
                     <li value="100">
                         <div class="card">
-                            <div class="card" style={{ margin : "auto"}}>
+                            <div class="page" style={{ margin : "auto"}}>
                             <div>
-                            <h1>Title</h1>
-                            <h3>{degree.name}</h3>
+                            <h1 class='biglabel'>Title</h1>
+                            <h3  class='generallabel'>{degree.name}</h3>
                             </div>
                             
                             <div>
-                            <h1>Courses</h1>
+                            <h1 class='biglabel'>Courses</h1>
                             {degree.courses.map((value,index) =>(
-                            <h3 key={index}>{value.courseCode}</h3>
+                            <h3  class='generallabel' key={index}>{value.courseCode}</h3>
                             ))} 
                             </div>
                             
-                            <button className="adminbackbtn" onClick={e => handleClick()}> 
-                        <h4>
+                            <button className="btnneww" onClick={e => handleClick()}> 
                             Back
-                        </h4>
-                        
                             </button>
                             </div>
                         </div>

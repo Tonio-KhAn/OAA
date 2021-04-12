@@ -81,15 +81,14 @@ function AdminCourseEdit({course, setCourse, setSet}) {
                 <ul>
                     <li value="100">
                         <div class="card">
-                            <button  onClick={e => handleClick()}> 
-                        <h4>
-                            Back Again
-                        </h4>
-                            </button>
                             {courseChange.map((value,index) =>(
                             
       <form key={index} class="page" onSubmit={handleSubmit}  >
           <div>
+            
+          <button  className='btnneww' onClick={e => handleClick()}> 
+                            Back Again
+                            </button>
                 <div class="input-group">
                 <input
                     type="text"
@@ -112,7 +111,7 @@ function AdminCourseEdit({course, setCourse, setSet}) {
                 </div>
             </div> 
             <div class="wrap-contact100-form-btn">
-                  <button className='btnnew' type='submit' >
+                  <button className='btnneww' type='submit' >
                     Update
                   </button>
                   </div>

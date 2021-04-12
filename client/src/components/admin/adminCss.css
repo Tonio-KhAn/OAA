@@ -7,6 +7,31 @@
   color: black;
 }
 
+.da{
+position: relative;
+display: flex;
+flex-direction: column;
+min-width: 0;
+max-width: 300px;
+min-height: 200px;
+word-wrap: break-word;
+background-color: #fff;
+background-clip: border-box;
+border: 1px solid rgba(0,0,0,.125);
+border-radius: .25rem;
+justify-content: space-around;
+margin-bottom: 20px;
+}
+
+.tem{
+  display:flex;
+  justify-content:space-around;
+}
+
+.wid{
+width: auto !important
+}
+
 .hh{
   text-align: center;
 }
@@ -39,6 +64,45 @@
   transition: all 0.4s ease-out;
 }
 
+
+.blabel {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  min-width: 150px;
+  height: 48px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(59, 59, 59);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.blabell {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  min-width: 150px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(59, 59, 59);
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+
 .adminbackbtn{
   display: -webkit-box;
   display: -webkit-flex;
@@ -65,7 +129,7 @@
   );
   color: #fff;
   line-height: 1.2;
-  text-transform: uppercase;
+  text-transform: capitalize;
   margin: auto;
   margin-top: 5px;
 }

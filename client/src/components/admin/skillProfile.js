@@ -15,17 +15,14 @@ function SkillProfile({skill, setSet, setSkill}) {
                 <ul>
                     <li value="100">
                         <div class="card">
-                            <div class="card" style={{ margin : "auto"}}>
+                            <div class="page" style={{ margin : "auto"}}>
                             <div>
-                            <h1>Title</h1>
-                            <h3>{skill.name}</h3>
+                            <h1 class='biglabel'>Skill:</h1>
+                            <h3  class='generallabel'>{skill.name}</h3>
                             </div>
                             
                             <button className="adminbackbtn"   onClick={e => handleClick()}> 
-                        <h4>
                             Back
-                        </h4>
-                        
                             </button>
                             </div>
                         </div>

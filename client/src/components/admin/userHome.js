@@ -43,10 +43,10 @@ function UserHome({setUser, setSet}) {
                     <li key={index} value={value._id}>
                         <div class="card">
                             <button onClick={e => handleClick(value)}> 
-                        <h1>
+                        <h1  class='biglabel'>
                            {value.first_name} {value.last_name}
                         </h1>
-                        <h4>
+                        <h4 class='generallabel'>
                             antonio.khan@my.uwi.edu 
                         </h4>
                             </button>

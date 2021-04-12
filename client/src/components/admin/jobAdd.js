@@ -189,15 +189,14 @@ function JobAdd({setSet} , props) {
 
     return (
         <>
-         <button  onClick={e => handleClick()}> 
-                        <h4>
-                            Back Again
-                        </h4>
-                            </button>
+         
         <br></br>
         <br></br>
-        <form class="test" onSubmit={handleSubmit}>
+        <form class="page" onSubmit={handleSubmit}>
           <div>
+          <button className='btnneww' onClick={e => handleClick()}> 
+                            Back Again
+                            </button>
           <div class="input-group">
               <input
                 type="text"

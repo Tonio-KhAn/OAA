@@ -83,20 +83,21 @@ function AdminUserEdit({user, setUser, setSet}) {
             <div >
                 <ul>
                     <li value="100">
+                      <br></br>
                         <div class="page">
-                            <button  onClick={e => handleClick()}> 
-                        <h4>
-                            Back Again
-                        </h4>
-                            </button>
                             {userChange.map((value,index) =>(
                             
-      <form key={index} class="test" onSubmit={handleSubmit}  >
+      <form key={index} onSubmit={handleSubmit}  >
+          
           <div>
+            
+          <button className='btnneww' onClick={e => handleClick()}> 
+                            Back Again
+                            </button>
             <div class="input-group">
               <input
                 type="text"
-                class="input100"
+                class="input100 cap"
                 name="first_name"
                 placeholder='First Name'
                 value={value.first_name}
@@ -106,7 +107,7 @@ function AdminUserEdit({user, setUser, setSet}) {
             <div class="input-group">
               <input
                 type="text"
-                class="input100"
+                class="input100 cap"
                 name="last_name"
                 placeholder='Last Name'
                 value={value.last_name}
@@ -158,7 +159,7 @@ function AdminUserEdit({user, setUser, setSet}) {
 
             </div> 
             <div class="wrap-contact100-form-btn">
-                  <button className='btnnew' type='submit' >
+                  <button className='btnneww' type='submit' >
                     Update
                   </button>
                   </div>

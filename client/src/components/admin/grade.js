@@ -8,6 +8,11 @@ import GradeHome from './gradeHome';
 import GradeEdit from './gradeEdit';
 import GradeAdd from './gradeAdd';
 
+import {Row, Col, Card, Table, Tabs, Tab, Button, Modal} from 'react-bootstrap';
+
+// Imported Components
+import Aux from "../../hoc/_Aux";
+
 function AdminGrade() {
     const [grade, setGrade] = useState([]);
     const [set, setSet] = useState(0); 
@@ -36,18 +41,19 @@ function AdminGrade() {
     return (
      <>
             <div >
-                <div class="row">
-                        <div class="col-md-3 card dash" >
-                            <a href = "#" class="dashLink" onClick={e => {setSet(3)}} >Add Grade<br></br><i class="fas fa-plus"></i></a>
+                <br></br>
+                <div class="row tem">
+                <div class="col-md-3 da dash" >
+                            <a href = "#" class="dashLink blabell" onClick={e => {setSet(3)}} >Add Grade<br></br><i class="fas fa-plus"></i></a>
                         </div>
-                        <div class="col-md-3 card dash">
-                            <a href = "#"  class="dashLink"  onClick={e => {if(set === 1){setSet(2)}}} >Edit Grade<br></br><i class="fas fa-edit"></i></a>
+                        <div class="col-md-3 da dash" >
+                            <a href = "#"  class="dashLink blabell"  onClick={e => {if(set === 1){setSet(2)}}} >Edit Grade<br></br><i class="fas fa-edit"></i></a>
                         </div>
-                        <div class="col-md-3 card dash">
-                            <a href = "#" class="dashLink"  onClick={e => {if(set === 1){deleteGrade()}}} >Delete Grade<br></br><i class="fas fa-trash"></i></a>
+                        <div class="col-md-3 da dash" >
+                            <a href = "#" class="dashLink blabell"  onClick={e => {if(set === 1){deleteGrade()}}} >Delete Grade<br></br><i class="fas fa-trash"></i></a>
                         </div>
-                        <div class="col-md-3 card dash">
-                            <a href = "/admin/grade/verify" class="dashLink"  onClick={e => {if(set === 1){setSet(2)}}} ><br></br><i class="fas fa-check"></i></a>
+                        <div class="col-md-3 da dash" >
+                            <a href = "/admin/grade/verify" class="dashLink blabell"  onClick={e => {if(set === 1){setSet(2)}}} ><br></br><i class="fas fa-check"></i></a>
                         </div>
                 </div>
 

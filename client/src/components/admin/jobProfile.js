@@ -16,21 +16,21 @@ function JobProfile({job, setSet, setJob}) {
                 <ul>
                     <li value="100">
                         <div class="card">
-                            <div class="card" style={{ margin : "auto"}}>
+                            <div class="page" style={{ margin : "auto"}}>
                             <div>
-                            <h1>Title</h1>
-                            <h3>{job.title}</h3>
+                            <h1 class='biglabel'>Title</h1>
+                            <h3  class='generallabel'>{job.title}</h3>
                             </div>
                             <div>
-                            <h1>Company</h1>
-                            <h3>{job.company}</h3>
+                            <h1 class='biglabel'>Company</h1>
+                            <h3  class='generallabel'>{job.company}</h3>
                             </div>
                             <div>
-                            <h1>Description</h1>
-                            <h3>{job.description}</h3>
+                            <h1 class='biglabel'>Description</h1>
+                            <h3  class='generallabel'>{job.description}</h3>
                             </div>
                             
-                            <button className="adminbackbtn" onClick={e => handleClick()}> 
+                            <button className="btnneww" onClick={e => handleClick()}> 
                         <h5>
                             Back
                         </h5>

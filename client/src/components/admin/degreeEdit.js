@@ -119,19 +119,18 @@ function AdminDegreeEdit({degree, setDegree, setSet}) {
                 <ul>
                     <li value="100">
                         <div class="card">
-                            <button  onClick={e => handleClick()}> 
-                        <h4>
-                            Back Again
-                        </h4>
-                            </button>
                             {degreeChange.map((value,index) =>(
                             
-      <form key={index} class="test" onSubmit={handleSubmit}  >
+      <form key={index} class="page" onSubmit={handleSubmit}  >
           <div>
+            
+          <button className='btnneww' onClick={e => handleClick()}> 
+                            Back Again
+                            </button>
                 <div class="input-group">
                 <input
                     type="text"
-                    class="input100"
+                    class="input100 inp"
                     name="name"
                     placeholder='Name'
                     value={value.name}
@@ -139,9 +138,9 @@ function AdminDegreeEdit({degree, setDegree, setSet}) {
                 </input>
                 </div>
            <div>
-                            <h1>Courses</h1>
+                            <h1 class='biglabel'>Courses</h1>
                             {courses.map((course,index2) =>(
-                            <h5 key={index2}>{course.courseCode}</h5>
+                            <h5 class ='generallabel'key={index2}>{course.courseCode}</h5>
                             ))} 
                             </div>
                             <select class="selector" name="name" id="" onChange={handleCourseChange}>
