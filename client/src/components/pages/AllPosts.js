@@ -67,7 +67,7 @@ function AllPosts(props) {
       <Aux>
         <Row>
           <Col md={6} xl={8}>
-            <Card className='Recent-Users'>
+            <Card className='Recent-Users mar'>
               <Card.Header>
                 <Card.Title as='h5'><i class="fas fa-list"></i> All Posts</Card.Title>
               </Card.Header>
@@ -81,7 +81,7 @@ function AllPosts(props) {
                           <button onClick={() => deletePost(thispost._id)} type="button" class="label theme-bg1 text-white f-12"  style={{marginBottom: '10px'}}>
                             Delete <i class="far fa-trash-alt"></i>
                           </button>
-                        :
+                        : 
                         <></>
                         }
                         <dd className="cl-sm-3"><em> <div className='cap'>{thispost.first_name} {thispost.last_name} </div>posted...</em></dd>

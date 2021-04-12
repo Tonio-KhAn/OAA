@@ -2,6 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import {Link } from 'react-router-dom';
+import {Row, Col, Card, Table, Tabs, Tab} from 'react-bootstrap';
+
+// Imported Components
+import Aux from "../../hoc/_Aux";
 
 // Imported CSS
 import '../css/CreateJobs.css';
@@ -90,12 +95,17 @@ function CreatePosts(props) {
   
   return (
     <>
-    <br></br>
+    
     <form class="page" onSubmit={handleSubmit}>
-      <div>
-        <h5 className="biglabel">Create A New Post!</h5>
-        <br></br>
-        <div class="input-group">
+      <Aux>
+        <Row>
+          <Col md={6} xl={8}>
+            <Card className='Recent-Users mar'>
+              <Card.Header>
+                <Card.Title class='biglabel'><i class="fas fa-pencil-alt"></i> Create A New Post!</Card.Title>
+              </Card.Header>
+              <Card.Body className='px-0 py-2'>
+              <div class="input-group">
           <input
             type="text"
             class="input100" 
@@ -105,8 +115,6 @@ function CreatePosts(props) {
             onChange={handleSingleChange}>
           </input>
         </div>
-        <br></br>
-        <br></br>
         <div class="input-group">
           <textarea
             class="input100"
@@ -116,10 +124,7 @@ function CreatePosts(props) {
             onChange={handleSingleChange}>
           </textarea>
         </div>
-      </div>
-      <br></br>
-      <br></br>
-      <div>
+        <div>
         <div class="container-contact100-form-btn">
           <div class="wrap-contact100-form-btn">  
             <div class="contact100-form-bgbtn"></div>
@@ -129,16 +134,28 @@ function CreatePosts(props) {
           </div>
         </div>          
       </div>
+        </Card.Body>
+            </Card>
+          </Col>
+          <Col md={6} xl={4}>
+            <Card className='card-event'>
+              <Card.Body>
+              <Link to='/postsall'>
+                  <button className="btnlabel theme-bgg text-white f-122">
+                  <i class="far fa-sticky-note"></i> All Posts
+                  </button>
+                </Link>
+                <Link to='/myPosts'>
+                  <button className="btnlabel theme-bgg text-white f-122">
+                  <i class="far fa-bookmark"></i> My Posts
+                  </button>
+                </Link>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Aux>
     </form>
-    <div class="row">
-      <br></br>
-    </div>
-    <div class="row">
-      <br></br>
-    </div>
-    <div class="row">
-      <br></br>
-    </div>
     </>
   )
 }

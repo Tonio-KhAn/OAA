@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import {Link } from 'react-router-dom';
+import {Row, Col, Card, Table, Tabs, Tab} from 'react-bootstrap';
+
+// Imported Components
+import Aux from "../../hoc/_Aux";
 
 import '../css/CreateJobs.css';
 
@@ -224,10 +229,19 @@ function CreateJobs(props) {
         
         <br></br>
         <br></br>
-        <form class="page" onSubmit={handleSubmit}>
+
+        
+    <div class='page'>
+      <Aux>
+        <Row>
+          <Col md={6} xl={8}>
+            <Card className='Recent-Users mar'>
+              <Card.Header>
+                <Card.Title class='biglabel'><i class="fas fa-pencil-alt"></i> Create A New Job Post!</Card.Title>
+              </Card.Header>
+              <Card.Body className='px-0 py-2'>
+              <form class="page" onSubmit={handleSubmit}>
           <div>
-            
-          <h5 className="biglabel">Create A New Job Post!</h5>
             <div class="input-group">
               <input
                 type="text"
@@ -341,10 +355,25 @@ function CreateJobs(props) {
               </div>          
               </div>        
               </form>
-        
-        <br></br>
-        
-        <br></br>
+        </Card.Body>
+            </Card>
+          </Col>
+          <Col md={6} xl={4}>
+            <Card className='card-event'>
+              <Card.Body>
+              <Link to='/all'> 
+                            <button className="btnlabel theme-bgg text-white f-122">
+                            <i class="far fa-folder-open"></i> All Jobs</button></Link>  
+                              
+                            <Link to='/my'> 
+                            <button className="btnlabel theme-bgg text-white f-122">
+                            <i class="far fa-bookmark"></i> My Jobs</button></Link>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Aux>
+    </div>
       </>
     )
   }
