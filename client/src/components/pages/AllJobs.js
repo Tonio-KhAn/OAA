@@ -214,7 +214,7 @@ function getDegrees(jobId) {
                                     <tbody>
                                     <tr className="unread">
                                         <td>
-                                             <dt className="cl-sm-3">#{indexJob} Job:</dt>
+                                             <dt className="cl-sm-3">Job:</dt>
                                              <dd className="cl-sm-3"><em>{job.title}</em></dd>
         
                                              
