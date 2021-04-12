@@ -110,7 +110,7 @@ router.route('/courseUpdate/:id').put((req, res) => {
     .then(course => {
       course.courseCode = req.body.courseCode;
       course.courseTitle = req.body.courseTitle;
-      course.courses = req.body.courses;
+      course.skills = req.body.courses;
       course
         .save()
         .then(() => res.json(course))

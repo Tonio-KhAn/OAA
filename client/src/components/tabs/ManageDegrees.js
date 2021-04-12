@@ -142,7 +142,7 @@ function ManageDegrees(props) {
       .catch(err => console.log(err));
   }
 
-  function getCoursesList(){
+  function getCoursesList(year){
     const token = props.auth.token;
     const config = {
       headers: {}
@@ -151,14 +151,16 @@ function ManageDegrees(props) {
     if(token) {
       config.headers["x-auth-token"] = token;
     }
-
+  console.log(inputFields[0].startYear)
+  console.log(year)
     axios
       .get(
-        "/courseName/",
+        "/courseName/" + inputFields[0].id + "/" + year,
         config
       )
       .then(
         res => {
+          console.log(res.data)
           setCoursesList(res.data);
         }
       )
@@ -189,6 +191,10 @@ function ManageDegrees(props) {
     setAdding(false)
   }
   const handleAddDegreeChange = (index, e) =>{
+    if (e.target.name == 'startYear'){
+      getCoursesList(e.target.value)
+      setCourses([])
+    }
     const value = [...inputFields];
     value[index][e.target.name] = e.target.value;
     setInputFields(value);
@@ -233,11 +239,9 @@ function ManageDegrees(props) {
     loadUser();
     getDegreesList();
     getGradesList();
-    getCoursesList()
   }, []);
   
   return (
-    <>
     <div class= "page-back">
       <div class= "page">
         <div>
@@ -294,14 +298,20 @@ function ManageDegrees(props) {
               </div>
               ))}
               <br></br>
+              { !inputField.startYear == '' ? (
               <div>
                 <button type="button" class="btnnew" onClick={() => handleAddCourse()}>Add Course <i class="fas fa-plus"></i></button>
               </div>
+              ):(
+              <></>
+              )}
+              
               <button className='btnneww' type='submit' >ADD DEGREE<i class="fas fa-plus"></i>
               </button>
             </form>
             ))}
             <div class="container-contact200-form-btn">
+              
               { !adding ? (
               <button class="btnneww"onClick={() => handleAdd()}>
                 Add 
@@ -317,7 +327,6 @@ function ManageDegrees(props) {
         </div>
       </div>
     </div>
-    </>
   )
 }
 
