@@ -204,7 +204,7 @@ function getDegrees(jobId) {
        <Aux>
          <Row>
            <Col md={6} xl={8}>
-                        <Card className='Recent-Users'>
+                        <Card className='Recent-Users mar'>
                             <Card.Header>
                                 <Card.Title as='h5'><i class="fas fa-list"></i> All Jobs</Card.Title>
                             </Card.Header>

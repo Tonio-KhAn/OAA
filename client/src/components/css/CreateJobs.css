@@ -18,6 +18,11 @@
   max-height: 150px;
 }
 
+.mar{
+  
+  margin-bottom: 20pt;
+}
+
 .bold{
 font-weight: bold;
 }

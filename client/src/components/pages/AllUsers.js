@@ -224,7 +224,8 @@ function AllUsers(props) {
                                 </Link>
                                 <Link to='/myfriends'> 
                                     <button className="btnlabel theme-bgg text-white f-122">
-                                    <i class="fas fa-users"></i> My Friends</button>
+                                    <i class="fas fa-users"></i> My Friends
+                                    </button>
                                 </Link>
                             </Card.Body>
                         </Card>

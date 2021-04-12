@@ -66,7 +66,7 @@ function MyPosts(props) {
       <Aux>
         <Row>
           <Col md={6} xl={8}>
-            <Card className='Recent-Users'>
+            <Card className='Recent-Users mar'>
               <Card.Header>
                 <Card.Title as='h5'><i class="fas fa-list"></i> My Posts</Card.Title>
               </Card.Header>
@@ -76,9 +76,13 @@ function MyPosts(props) {
                   <tbody>
                     <tr className="unread">
                       <td>
+                        {thispost.owner == 1 ?
                           <button onClick={() => deletePost(thispost._id)} type="button" class="label theme-bg1 text-white f-12"  style={{marginBottom: '10px'}}>
                             Delete <i class="far fa-trash-alt"></i>
                           </button>
+                        :
+                        <></>
+                        }
                         <dt className="cl-sm-3">{thispost.title}</dt>
                         <dd className="cl-sm-3"><em>{thispost.body}</em></dd>
                         <dt className="cl-sm-400"> Posted at:</dt>
