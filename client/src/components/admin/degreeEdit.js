@@ -95,14 +95,25 @@ function AdminDegreeEdit({degree, setDegree, setSet}) {
         setCourseValue(e.target.value);
     }
 
+    const handleCourseDelete = (index) => {
+      const values = [...courses];
+          values.splice(index, 1);
+          setCourses(values);
+  }
+
+  const handleCourseChange2 = (index, e) =>{
+    const value = [...courses];
+    value[index][e.target.name] = e.target.value;
+    setCourses(value);
+  }
     const handleCourseAdd = () => {
       console.log(courseValue)
      if (courseValue === "no change"){
-         setCourses([...courses, {id: coursesList[0]._id, courseCode: coursesList[0].courseCode} ]) 
+         setCourses([...courses, {id: coursesList[0]._id, courseCode: coursesList[0].courseCode, startYear:'',endYear:''} ]) 
      }else{
        coursesList.forEach(courseSingle => {
              if (courseValue === courseSingle._id){
-               setCourses([...courses, {id: courseValue, courseCode: courseSingle.courseCode} ])
+               setCourses([...courses, {id: courseValue, courseCode: courseSingle.courseCode, startYear:'',endYear:''} ])
              }
          })
      
@@ -118,14 +129,15 @@ function AdminDegreeEdit({degree, setDegree, setSet}) {
             <div >
                 <ul>
                     <li value="100">
-                        <div class="card">
+                        <div>
                             {degreeChange.map((value,index) =>(
                             
       <form key={index} class="page" onSubmit={handleSubmit}  >
           <div>
             
+                  
           <button className='btnneww' onClick={e => handleClick()}> 
-                            Back Again
+          Back Again
                             </button>
                 <div class="input-group">
                 <input
@@ -138,14 +150,23 @@ function AdminDegreeEdit({degree, setDegree, setSet}) {
                 </input>
                 </div>
            <div>
-                            <h1 class='biglabel'>Courses</h1>
+             <br></br>
+                            <h1 className='biglabel'>Courses</h1>
                             {courses.map((course,index2) =>(
-                            <h5 class ='generallabel'key={index2}>{course.courseCode}</h5>
+                              <div>
+                            <h5 className="generallabel" key={index2}>{course.courseCode}</h5>
+                             <h6 className="generallabel">Start Period</h6>
+              <input type="date" class="form-control generallabel" name="startYear" value ={course.startYear} onChange={e => handleCourseChange2(index2, e)}></input>
+              <h6 className="generallabel">End Period</h6>
+              <input type="date" class="form-control generallabel" name="endYear" value ={course.endYear} onChange={e => handleCourseChange2(index2, e)}></input>
+                            <button className='btnnewww' type="button" onClick={() => handleCourseDelete(index2)}>delete <i class="fas fa-minus"></i></button>
+                          
+                            </div>
                             ))} 
                             </div>
-                            <select class="selector" name="name" id="" onChange={handleCourseChange}>
+                            <select class="selector generallabel" name="name" id="" onChange={handleCourseChange}>
               { coursesList.map((courseList,indexCourse) =>(
-                <option key={indexCourse} value={courseList._id}>{courseList.courseTitle}</option>           
+                <option  key={indexCourse} value={courseList._id}>{courseList.courseTitle}</option>           
                 ))}  
           </select> 
           <div class="sel">
@@ -153,11 +174,10 @@ function AdminDegreeEdit({degree, setDegree, setSet}) {
             </div>
                 
             </div> 
-            <div class="wrap-contact100-form-btn">
-                  <button className='btnnew' type='submit' >
+                  <button className='btnneww' type='submit' >
                     Update
                   </button>
-                  </div>
+                  
               </form>
               ))}  
                         </div>
