@@ -109,7 +109,7 @@ function CourseAdd({course, setCourse, setSet}) {
           <div>
             
           <div class="wrap-contact100-form-btn">
-                  <button className='btnnew'  onClick={e => handleClick()}> 
+                  <button className='btnneww'  onClick={e => handleClick()}> 
                             Back Again
                             </button>
                             </div>
@@ -152,8 +152,8 @@ function CourseAdd({course, setCourse, setSet}) {
             </div> 
             </div> 
             <div class="wrap-contact100-form-btn">
-                  <button className='btnnew' type='submit' >
-                    Add
+                  <button className='btnneww' type='submit' >
+                    Add Course
                   </button>
                   </div>
               </form>

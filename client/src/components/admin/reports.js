@@ -232,7 +232,7 @@ function Reports(props) {
                     <Col md={6}>
                         <Card>
                             <Card.Header>
-                                <Card.Title as="h5">Types Of Users</Card.Title>
+                                <Card.Title className='biglabel'>Types Of Users</Card.Title>
                             </Card.Header>
                             <Card.Body>
             <div type="discreteBarChart">
@@ -248,7 +248,7 @@ function Reports(props) {
             <Col md={6}>
                         <Card>
                             <Card.Header>
-                                <Card.Title as="h5">Types Of Skills</Card.Title>
+                                <Card.Title className='biglabel'>Types Of Skills</Card.Title>
                             </Card.Header>
                             <Card.Body>
             <div className='chart'>
@@ -266,7 +266,7 @@ function Reports(props) {
                         <Card>
                             
                         <Card.Header>
-                                <Card.Title as="h5">Enrolled Courses</Card.Title>
+                                <Card.Title className='biglabel'>Enrolled Courses</Card.Title>
                             </Card.Header>
             <div className='chart'>
                 <Bar

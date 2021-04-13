@@ -75,7 +75,7 @@ function UserAdd({user, setUser, setSet}) {
       <form  class="page" onSubmit={handleSubmit}  >
           <div>
           <div class="wrap-contact100-form-btn">
-                  <button className='btnnew'  onClick={e => handleClick()}> 
+                  <button className='btnneww'  onClick={e => handleClick()}> 
                             Back Again
                             </button>
                             </div>
@@ -149,7 +149,7 @@ function UserAdd({user, setUser, setSet}) {
             
             </div> 
             <div class="wrap-contact100-form-btn">
-                  <button className='btnnew' type='submit' >
+                  <button className='btnneww' type='submit' >
                     Add
                   </button>
                   </div>

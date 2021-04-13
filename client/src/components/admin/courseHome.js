@@ -43,10 +43,10 @@ function CourseHome({setCourse, setSet}) {
                     <li key={index} value={value._id}>
                         <div class="card">
                             <button onClick={e => handleClick(value)}> 
-                        <h1>
+                        <h1 class='biglabel'>
                             {value.courseTitle}
                         </h1>
-                        <h4>
+                        <h4 class='generallabel'>
                         {value.courseCode}
                         </h4>
                             </button>

@@ -15,29 +15,27 @@ function AdminUserProfile({user, setSet, setUser}) {
                 <ul>
                     <li value="100">
                         <div class="card">
-                            <div class="card" style={{ margin : "auto"}}>
+                            <div class="page" style={{ margin : "auto"}}>
                             <div>
-                            <h1>Name</h1>
-                            <h3>{user.first_name} {user.last_name}</h3>
+                            <h1 class='biglabel'>Name:</h1>
+                            <h3 class='generallabel'>{user.first_name} {user.last_name}</h3>
                             </div>
                             <div>
-                            <h1>UWI Email</h1>
-                            <h3>{user.uwi_email}</h3>
+                            <h1 class='biglabel'>UWI Email:</h1>
+                            <h3  class='generallabel'>{user.uwi_email}</h3>
                             </div>
                             <div>
-                            <h1>Sex</h1>
-                            <h3>{user.sex}</h3>
+                            <h1 class='biglabel'>Sex:</h1>
+                            <h3  class='generallabel'>{user.sex}</h3>
                             </div>
                             <div>
-                            <h1>Type</h1>
-                            <h3>{user.type}</h3>
+                            <h1 class='biglabel'>Type:</h1>
+                            <h3  class='generallabel'>{user.type}</h3>
                             </div>
                             
-                            <button className="adminbackbtn"   onClick={e => handleClick()}> 
-                        <h4>
-                            Back
-                        </h4>
+                            <button className="btnneww"   onClick={e => handleClick()}> 
                         
+                            Back
                             </button>
                             </div>
                         </div>

@@ -304,6 +304,35 @@ font-weight: bold;
   margin-bottom: 10px;
 }
 
+.btnnewww {
+  width: 100%;
+  height: 62px;
+  background: linear-gradient( 
+90deg
+, rgb(197, 44, 44) 0%, rgb(255, 52, 52) 100% );
+  border-radius: 2px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 20px;
+  color: #f2f2f2;
+  line-height: 1.2;
+  padding: 0 28px;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.btnnewww:hover {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    rgb(170, 38, 38) 0%,
+    rgb(241, 17, 17) 100%
+  );
+}
 
 
 /*//////////////////////////////////////////////////////////////////
@@ -544,6 +573,10 @@ iframe {
   transition: all 0.4s;
 
   margin-top: 10px;
+}
+
+.inp {
+  text-align: center;
 }
 
 .input200 {

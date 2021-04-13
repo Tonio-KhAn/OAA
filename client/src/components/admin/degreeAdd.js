@@ -112,7 +112,7 @@ function DegreeAdd({degree, setDegree, setSet}) {
           
             
           <div class="wrap-contact100-form-btn">
-                  <button className='btnnew'  onClick={e => handleClick()}> 
+                  <button className='btnneww'  onClick={e => handleClick()}> 
                             Back Again
                             </button>
                             </div>
@@ -145,11 +145,9 @@ function DegreeAdd({degree, setDegree, setSet}) {
               <button class="btnnew" type="button" onClick={() => handleCourseAdd()}>Add Degree Courses</button>
             </div>
             </div> 
-            <div class="wrap-contact100-form-btn">
-                  <button className='btnnew' type='submit' >
-                    Add
+                  <button className='btnneww' type='submit' >
+                    Add Degree
                   </button>
-                  </div>
               </form>
                         </div>
                     </li>

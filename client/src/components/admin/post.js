@@ -7,6 +7,11 @@ import PostProfile from './postProfile';
 import PostHome from './postHome';
 import UserEdit from './userEdit';
 
+import {Row, Col, Card, Table, Tabs, Tab, Button, Modal} from 'react-bootstrap';
+
+// Imported Components
+import Aux from "../../hoc/_Aux";
+
 function AdminPost() {
     const [post, setPost] = useState([]);
     const [set, setSet] = useState(0); 
@@ -35,17 +40,19 @@ function AdminPost() {
     return (
      <>
             <div >
-                <div class="row">
-                        <div class="col-md-3 card dash" >
-                            <a href = "#" class="dashLink">Add User<br></br><i class="fas fa-plus"></i></a>
+                <br></br>
+                <div class="row tem">
+                        <div class="col-md-3 da dash" >
+
+                            <a href = "#" class="dashLink">Add Post<br></br><i class="fas fa-plus"></i></a>
                         </div>
-                        <div class="col-md-3 card dash">
+                        <div class="col-md-3 da dash" >
                             <a href = "#"  class="dashLink"  onClick={e => {if(set === 1){setSet(2)}}} >Edit Post<br></br><i class="fas fa-edit"></i></a>
                         </div>
-                        <div class="col-md-3 card dash">
+                        <div class="col-md-3 da dash" >
                             <a href = "#" class="dashLink"  onClick={e => {if(set === 1){deleteUser()}}} >Delete Post<br></br><i class="fas fa-trash"></i></a>
                         </div>
-                        <div class="col-md-3 card dash">
+                        <div class="col-md-3 da dash" >
                             <a href = "/admin/user/verify" class="dashLink"  onClick={e => {if(set === 1){setSet(2)}}} ><br></br><i class="fas fa-check"></i></a>
                         </div>
                 </div>

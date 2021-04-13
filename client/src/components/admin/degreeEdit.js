@@ -129,20 +129,20 @@ function AdminDegreeEdit({degree, setDegree, setSet}) {
             <div >
                 <ul>
                     <li value="100">
-                        <div class="card">
-                            <button  onClick={e => handleClick()}> 
-                        <h4>
-                            Back Again
-                        </h4>
-                            </button>
+                        <div>
                             {degreeChange.map((value,index) =>(
                             
-      <form key={index} class="test" onSubmit={handleSubmit}  >
+      <form key={index} class="page" onSubmit={handleSubmit}  >
           <div>
+            
+                  
+          <button className='btnneww' onClick={e => handleClick()}> 
+          Back Again
+                            </button>
                 <div class="input-group">
                 <input
                     type="text"
-                    class="input100"
+                    class="input100 inp"
                     name="name"
                     placeholder='Name'
                     value={value.name}
@@ -150,21 +150,23 @@ function AdminDegreeEdit({degree, setDegree, setSet}) {
                 </input>
                 </div>
            <div>
-                            <h1>Courses</h1>
+             <br></br>
+                            <h1 className='biglabel'>Courses</h1>
                             {courses.map((course,index2) =>(
                               <div>
-                            <h5 key={index2}>{course.courseCode}</h5>
+                            <h5 className="generallabel" key={index2}>{course.courseCode}</h5>
                              <h6 className="generallabel">Start Period</h6>
-              <input type="date" class="form-control" name="startYear" value ={course.startYear} onChange={e => handleCourseChange2(index2, e)}></input>
+              <input type="date" class="form-control generallabel" name="startYear" value ={course.startYear} onChange={e => handleCourseChange2(index2, e)}></input>
               <h6 className="generallabel">End Period</h6>
-              <input type="date" class="form-control" name="endYear" value ={course.endYear} onChange={e => handleCourseChange2(index2, e)}></input>
-                            <button class="label1 theme-bg1 text-white f-12" type="button" onClick={() => handleCourseDelete(index2)}>delete <i class="fas fa-minus"></i></button>
+              <input type="date" class="form-control generallabel" name="endYear" value ={course.endYear} onChange={e => handleCourseChange2(index2, e)}></input>
+                            <button className='btnnewww' type="button" onClick={() => handleCourseDelete(index2)}>delete <i class="fas fa-minus"></i></button>
+
                             </div>
                             ))} 
                             </div>
-                            <select class="selector" name="name" id="" onChange={handleCourseChange}>
+                            <select class="selector generallabel" name="name" id="" onChange={handleCourseChange}>
               { coursesList.map((courseList,indexCourse) =>(
-                <option key={indexCourse} value={courseList._id}>{courseList.courseTitle}</option>           
+                <option  key={indexCourse} value={courseList._id}>{courseList.courseTitle}</option>           
                 ))}  
           </select> 
           <div class="sel">
@@ -172,11 +174,10 @@ function AdminDegreeEdit({degree, setDegree, setSet}) {
             </div>
                 
             </div> 
-            <div class="wrap-contact100-form-btn">
-                  <button className='btnnew' type='submit' >
+                  <button className='btnneww' type='submit' >
                     Update
                   </button>
-                  </div>
+                  
               </form>
               ))}  
                         </div>

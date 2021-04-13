@@ -15,26 +15,24 @@ function CourseProfile({course, setSet, setCourse}) {
                 <ul>
                     <li value="100">
                         <div class="card">
-                            <div class="card" style={{ margin : "auto"}}>
+                            <div class="page" style={{ margin : "auto"}}>
                             <div>
-                            <h1>Title</h1>
-                            <h3>{course.courseTitle}</h3>
+                            <h1 class='biglabel'>Title:</h1>
+                            <h3 class='generallabel'>{course.courseTitle}</h3>
                             </div>
                             <div>
-                            <h1>Course</h1>
-                            <h3>{course.courseCode}</h3>
+                            <h1 class='biglabel'>Course:</h1>
+                            <h3 class='generallabel'>{course.courseCode}</h3>
                             </div>
                             <div>
-                            <h1>Skills</h1>
+                            <h1 class='biglabel'>Skills:</h1>
                             {course.skills.map((value,index) =>(
-                            <h3 key={index}>{value.name}</h3>
+                            <h3 class='generallabel' key={index}>{value.name}</h3>
                             ))} 
                             </div>
                             
-                            <button className="adminbackbtn" onClick={e => handleClick()}> 
-                        <h4>
+                            <button className="btnneww" onClick={e => handleClick()}> 
                             Back
-                        </h4>
                         
                             </button>
                             </div>

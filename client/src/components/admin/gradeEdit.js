@@ -80,15 +80,14 @@ function AdminGradeEdit({grade, setGrade, setSet}) {
                 <ul>
                     <li value="100">
                         <div class="card">
-                            <button  onClick={e => handleClick()}> 
-                        <h4>
-                            Back Again
-                        </h4>
-                            </button>
                             {gradeChange.map((value,index) =>(
                             
-      <form key={index} class="test" onSubmit={handleSubmit}  >
+      <form key={index} class="page" onSubmit={handleSubmit}  >
           <div>
+            
+          <button className='btnneww'  onClick={e => handleClick()}> 
+                            Back Again
+                            </button>
                 <div class="input-group">
                 <input
                     type="text"
