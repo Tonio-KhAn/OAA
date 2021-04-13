@@ -160,7 +160,7 @@ function AdminDegreeEdit({degree, setDegree, setSet}) {
               <h6 className="generallabel">End Period</h6>
               <input type="date" class="form-control generallabel" name="endYear" value ={course.endYear} onChange={e => handleCourseChange2(index2, e)}></input>
                             <button className='btnnewww' type="button" onClick={() => handleCourseDelete(index2)}>delete <i class="fas fa-minus"></i></button>
-                          
+
                             </div>
                             ))} 
                             </div>
