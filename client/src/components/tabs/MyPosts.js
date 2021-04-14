@@ -76,13 +76,9 @@ function MyPosts(props) {
                   <tbody>
                     <tr className="unread">
                       <td>
-                        {thispost.owner == 1 ?
-                          <button onClick={() => deletePost(thispost._id)} type="button" class="label theme-bg1 text-white f-12"  style={{marginBottom: '10px'}}>
-                            Delete <i class="far fa-trash-alt"></i>
-                          </button>
-                        :
-                        <></>
-                        }
+                        <button onClick={() => deletePost(thispost._id)} type="button" class="label theme-bg1 text-white f-12"  style={{marginBottom: '10px'}}>
+                          Delete <i class="far fa-trash-alt"></i>
+                        </button>
                         <dt className="cl-sm-3">{thispost.title}</dt>
                         <dd className="cl-sm-3"><em>{thispost.body}</em></dd>
                         <dt className="cl-sm-400"> Posted at:</dt>
@@ -104,7 +100,11 @@ function MyPosts(props) {
                   <i class="fas fa-plus"></i> Create Post
                   </button>
                 </Link>
-                
+                <Link to='/postscommunity'>
+                  <button className="btnlabel theme-bgg text-white f-122">
+                  <i class="fas fa-list"></i> Community Posts
+                  </button>
+                </Link>
                 <Link to='/postsall'>
                   <button className="btnlabel theme-bgg text-white f-122">
                   <i class="fas fa-list"></i> All Posts

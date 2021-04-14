@@ -60,8 +60,8 @@ function MyUsers(props) {
             .put('/users/deletefriend/', data, config)
             .then(
                 res => { 
-                    console.log('Friend removed.')
-                    alert('Friend removed!')
+                    console.log('User unfollowed.')
+                    alert('User unfollowed!')
                     window.location.reload();
                 }
             )
@@ -150,7 +150,7 @@ function MyUsers(props) {
                 <Row>
                     <Col md={6} xl={8}>
                         <Card class='Recent-Users'>
-                            <div class='biglabel'>My Friends</div>
+                            <div class='biglabel'>My Community</div>
                             <Card.Body>
                                 <Table responsive hover>
                                     <thead>
@@ -176,7 +176,7 @@ function MyUsers(props) {
                                         <td>
                                             {user.status ?
                                                 <button onClick={() => deleteUser(user._id)} type="button" class="label1 theme-bg1 text-white f-12"  style={{marginBottom: '10px'}}>
-                                                    Unfriend <i class="fas fa-minus"></i>
+                                                    Unfollow <i class="fas fa-minus"></i>
                                                 </button>
                                                 :
                                                 <>
@@ -200,7 +200,7 @@ function MyUsers(props) {
                                 </Link>
                                 <Link to='/suggestedfriends'> 
                                     <button className="btnlabel theme-bgg text-white f-122">
-                                    <i class="fas fa-users"></i> Suggested Friends
+                                    <i class="fas fa-users"></i> Suggested Users
                                     </button>
                                 </Link>
                             </Card.Body>

@@ -60,8 +60,8 @@ function AllUsers(props) {
             .put('/users/addfriend/', data, config)
             .then(
                 res => { 
-                    console.log('Friend added.')
-                    alert('Friend added!')
+                    console.log('User followed.')
+                    alert('User followed!')
                     window.location.reload();
                 }
             )
@@ -86,8 +86,8 @@ function AllUsers(props) {
             .put('/users/deletefriend/', data, config)
             .then(
                 res => { 
-                    console.log('Friend removed.')
-                    alert('Friend removed!')
+                    console.log('User unfollowed.')
+                    alert('User unfollowed!')
                     window.location.reload();
                 }
             )
@@ -173,7 +173,7 @@ function AllUsers(props) {
                 <Row>
                     <Col md={6} xl={8}>
                         <Card class='Recent-Users'>
-                            <div class='biglabel'>Community</div>
+                            <div class='biglabel'>All Users</div>
                             <Card.Body>
                                 <Table responsive hover>
                                     <thead>
@@ -199,11 +199,11 @@ function AllUsers(props) {
                                         <td>
                                             {user.status ?
                                                 <button onClick={() => deleteUser(user._id)} type="button" class="label1 theme-bg1 text-white f-12"  style={{marginBottom: '10px'}}>
-                                                    Unfriend <i class="fas fa-minus"></i>
+                                                    Unfollow <i class="fas fa-minus"></i>
                                                 </button>
                                                 :
                                                 <button onClick={() => addUser(user._id)} type="button" class="label1 theme-bg22 text-white f-12"  style={{marginBottom: '10px'}}>
-                                                    Add Friend <i class="fas fa-plus"></i>
+                                                    Follow <i class="fas fa-plus"></i>
                                                 </button>
                                             }
                                         </td>
@@ -219,12 +219,12 @@ function AllUsers(props) {
                             <Card.Body>
                                 <Link to='/suggestedfriends'> 
                                     <button className="btnlabel theme-bgg text-white f-122">
-                                    <i class="fas fa-users"></i> Suggested Friends
+                                    <i class="fas fa-users"></i> Suggested Users
                                     </button>
                                 </Link>
                                 <Link to='/myfriends'> 
                                     <button className="btnlabel theme-bgg text-white f-122">
-                                    <i class="fas fa-users"></i> My Friends
+                                    <i class="fas fa-users"></i> My Community
                                     </button>
                                 </Link>
                             </Card.Body>

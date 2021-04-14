@@ -52,8 +52,8 @@ function SuggestedUsers(props) {
             .put('/users/addfriend/', data, config)
             .then(
                 res => { 
-                    console.log('Friend added.')
-                    alert('Friend added!')
+                    console.log('User followed.')
+                    alert('User followed!')
                     window.location.reload();
                 }
             )
@@ -71,7 +71,7 @@ function SuggestedUsers(props) {
                 <Row>
                     <Col md={6} xl={8}>
                         <Card class='Recent-Users'>
-                            <div class='biglabel'>Suggested Friends</div>
+                            <div class='biglabel'>Suggested Users</div>
                             <Card.Body>
                                 <Table responsive hover>
                                     <thead>
@@ -96,7 +96,7 @@ function SuggestedUsers(props) {
                                             </>
                                             :
                                             <button onClick={() => addUser(user._id)} className="label theme-bg text-white f-12">
-                                                Add Friend <i class="fas fa-plus"></i>
+                                                Follow <i class="fas fa-plus"></i>
                                             </button>
                                             } 
                                         </td>
@@ -117,7 +117,7 @@ function SuggestedUsers(props) {
                                 </Link>
                                 <Link to='/myfriends'> 
                                     <button className="btnlabel theme-bgg text-white f-122">
-                                    <i class="fas fa-users"></i> My Friends</button>
+                                    <i class="fas fa-users"></i> My Community</button>
                                 </Link>
                             </Card.Body>
                         </Card>

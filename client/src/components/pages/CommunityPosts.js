@@ -110,6 +110,11 @@ function CommunityPosts(props) {
                   <i class="far fa-bookmark"></i> My Posts
                   </button>
                 </Link>
+                <Link to='/postsall'>
+                  <button className="btnlabel theme-bgg text-white f-122">
+                  <i class="far fa-bookmark"></i> All Posts
+                  </button>
+                </Link>
               </Card.Body>
             </Card>
           </Col>

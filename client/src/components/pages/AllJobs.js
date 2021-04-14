@@ -181,6 +181,8 @@ function getDegrees(jobId) {
          
          </Modal.Header>
          <Modal.Body>
+         
+                        
                         <h6 className='skillsetclabel'>Requires Skills:</h6>
                         {modalSkills.map((skill,index3) =>(
                           <h6 className='options ital' key={index3} style={skill.has ? {color: 'green'}:{}} >{skill.skillName}{skill.has ? (<i class="fas fa-check-circle"></i>):(null)}</h6>
