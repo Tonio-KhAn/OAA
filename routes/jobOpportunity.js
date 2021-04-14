@@ -145,6 +145,8 @@ router.route("/add").post(auth, (req, res) => {
         title,
         description,
         company,
+        degrees,
+        skills,
         open,
     });
     console.log(documents);
