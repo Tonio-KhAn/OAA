@@ -6,6 +6,109 @@
     "Lucida Sans", Arial, sans-serif;
 }
 
+.hc {
+  background: black;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  position: fixed;
+  z-index: -1;
+  color: #f0f0f0;
+}
+
+.container-divider {
+  margin-top: 100px;
+
+  @media (max-width: 640px) {
+    margin-top: 50px;
+  }
+}
+.story-container1 {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  z-index: -1;
+}
+
+
+
+.story-container {  
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  z-index: -1;
+  color: #000000;
+  position: relative;
+  background-color: 
+  #ffffff !important;
+  padding-right: 200px;
+  padding-left: 200px;
+}
+
+
+.story-container3 {  
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+  z-index: -1;
+  color: #000000;
+  position: relative;
+  background-color: #ffffff;
+  padding-right: 200px;
+  padding-left: 200px;
+}
+
+
+.pa{
+  padding-top: 10px;
+}
+
+.pa1{
+  padding-top: 15px;
+}
+.alg{
+  text-align: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", "Arial", "sans-serif";
+}
+.sma{
+  font-size: 20px;
+}
+
+
+.alg1{
+  text-align: right;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", "Arial", "sans-serif";
+}
+
+.alg2{
+  text-align: left;
+  padding-right: 100px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", "Arial", "sans-serif";
+}
+
 .r-title {
   margin-top: var(--rTitleMarginTop, 0) !important;
   margin-bottom: var(--rTitleMarginBottom, 0) !important;
