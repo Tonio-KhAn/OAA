@@ -114,7 +114,6 @@ function RecomendedJobs(props) {
                                              
                                              <dt className="cl-sm-3"> Description:</dt>
                                              <dd className="cl-sm-3"><em>{job.description}</em></dd>
-                                            <p className="mm-h"><a href="#" class="card-link">Read More</a></p>
                                             <p> <Link to={'/info/'+ job._id}className='nav-links'>
                                               <button className="btnlabell theme-bgg text-white f-122">
                                                 <i class="fas fa-envelope-open-text"></i> Go to Job</button></Link></p>
