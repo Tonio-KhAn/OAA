@@ -23,18 +23,6 @@ const jobOpportunitySchema = new Schema({
         required: true,
         trim: true
     },
-    
-    degrees: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    
-    skills: {
-        type: String,
-        required: true,
-        trim: true
-    },
     open: {
         type: Boolean,
         required: true,

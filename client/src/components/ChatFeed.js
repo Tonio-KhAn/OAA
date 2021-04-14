@@ -46,7 +46,7 @@ const ChatFeed = (props) => {
         })
     }
 
-    if(!chat) return 'Loading...';
+    if(!chat) return 'You have no messages. Click the + to start a new chat.';
 
     return (
         <div className='chat-feed'>
