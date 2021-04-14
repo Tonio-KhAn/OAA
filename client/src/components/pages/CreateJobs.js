@@ -328,7 +328,7 @@ function CreateJobs(props) {
           <br></br>
           { degrees.map((degree,index) =>(
             <div key={index}>
-              <h5>{degree.name}<button class="label1 theme-bg1 text-white f-12" type="button" onClick={() => handleDegreeDelete(index)}>delete <i class="fas fa-minus"></i></button></h5></div>   
+              <h5>{degree.name}<button class="btnnew" type="button" onClick={() => handleDegreeDelete(index)}>delete <i class="fas fa-minus"></i></button></h5></div>   
           ))}
           <div class="input-group mb-3">
             <select class="selector" name="qualificationSelect" id="" onChange={handleDegreeChange}>
@@ -343,7 +343,7 @@ function CreateJobs(props) {
           </div>
           { qualifications.map((qualification,index) =>(
             <div key={index}>
-              <h5>{qualification.name}<button class="label1 theme-bg1 text-white f-12" type="button" onClick={() => handleQualificationDelete(index)}>delete <i class="fas fa-minus"></i></button></h5></div>
+              <h5>{qualification.name}<button class="btnnew" type="button" onClick={() => handleQualificationDelete(index)}>delete <i class="fas fa-minus"></i></button></h5></div>
           ))}
           <div class="input-group mb-3">
             
