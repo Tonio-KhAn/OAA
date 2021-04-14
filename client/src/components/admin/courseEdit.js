@@ -158,11 +158,14 @@ function AdminCourseEdit({course, setCourse, setSet}) {
                 </input>
                 </div>
             </div> 
-            <div class="input-group mb-3"><div >
+            <div class="input-group mb-3"
+            ><div class='wi'>
+              <br></br>
             { qualifications.map((skill,index) =>(
             <div key={index}>
-              <h5> {skill.name}<button class="label1 theme-bg1 text-white f-12" type="button" onClick={() => handleQualificationDelete(index)}>delete <i class="fas fa-minus"></i></button></h5>
-             
+              <h5> {skill.name}</h5>
+              <button class="btnnewww" type="button" onClick={() => handleQualificationDelete(index)}>delete <i class="fas fa-minus"></i></button>
+          
               </div>
           ))} 
           </div>
