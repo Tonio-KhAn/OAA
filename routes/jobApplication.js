@@ -18,7 +18,9 @@ const auth = require('../middleware/auth');
 
 
 router.route("/all/:id").get(auth,(req, res) => {
+    var count2 = 0;
     var count = 0;
+    var rankNumber =  1;
     JobApplication.find({jobOpportunityID:req.params.id})
       .then(applications => {
           applications.sort(function(a, b){return b.rank - a.rank});
@@ -29,6 +31,12 @@ router.route("/all/:id").get(auth,(req, res) => {
             applications.forEach(application => {
                 users.forEach( user => {
                 if (application.userID == user._id){
+
+                    if (count2 != 0) {
+                        if (applications[count2].rank != applications[count2 - 1].rank){
+                        rankNumber = rankNumber + 1;
+                    }
+                }
                    var temp = {
                     _id: application._id,
                     userID: user._id,
@@ -41,8 +49,10 @@ router.route("/all/:id").get(auth,(req, res) => {
                     comment: application.comment,
                     media: application.media,
                     counter: count,
+                    rank: rankNumber,
                 }
-                applied.push(temp)
+                applied.push(temp);
+                count2 = count2 + 1 ;
                 }
                 
                
@@ -56,6 +66,7 @@ router.route("/all/:id").get(auth,(req, res) => {
           })
       .catch(err => res.status(400).json("Error: " + err));
   });
+
 
 router.route("/add").post(auth,(req, res) => {
     console.log(req.body)

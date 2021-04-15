@@ -303,6 +303,8 @@ const submitReview = (index , e) =>{
             <h5 class="card-header">Applicants Info</h5>
                 { inputFields.map((inputField,index) =>(
                     <div class="card-body" key={index} style={{borderBottom : '2px solid black', marginTop: '10px'}} >
+                        <div style={{textAlign: 'center'}}> <h3 class="card-title">{inputField.rank}</h3></div>
+                       
                         <h5 class="card-title">{inputField.first_name} {inputField.last_name}</h5>
                         <p class="card-text">{inputField.uwi_email}</p>
                         <Button onClick={()=> openModal(inputField)}>Read More</Button>
