@@ -281,7 +281,8 @@ const submitReview = (index , e) =>{
     config
   )
   .then(
-    res => { console.log(res.data)
+    res => { alert('Review made.')
+      window.location.href = '/my';
     },
   )
   .catch(err => console.log(err));
@@ -484,7 +485,7 @@ const submitReview = (index , e) =>{
             </div> 
             <br></br>
             <div class="wrap-contact100-form-btn">
-                  <button className='contact300-form-btn' type='submit' >
+                  <button class="btnneww" type='submit' >
                     Review
                   </button>
                   </div>
