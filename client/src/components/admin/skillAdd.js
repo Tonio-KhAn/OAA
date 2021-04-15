@@ -41,7 +41,8 @@ function SkillAdd({skill, setSkill, setSet}) {
       )
 
       .then(
-        res => { console.log(res.data)
+        res => { console.log("Skill added.")
+        alert('Skill added.')
         },
       )
       .catch(err => console.log(err));
