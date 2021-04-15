@@ -43,7 +43,6 @@ function AdminGradeEdit({grade, setGrade, setSet}) {
 
     const handleSubmit = e => {
       e.preventDefault();
-      console.log("hello")
 
       const config = {
         headers: {}
@@ -62,7 +61,8 @@ function AdminGradeEdit({grade, setGrade, setSet}) {
       )
 
       .then(
-        res => { console.log(res.data)
+        res => { console.log("Grade updated.")
+        alert('Grade updated.')
         setGrade(res.data);
         },
       )

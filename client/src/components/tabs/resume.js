@@ -37,7 +37,10 @@ function Resume(props) {
             )
             .then(
               res => { setProfileImg({
-                "location": res.data})}
+                "location": res.data})
+                alert('Resume uploaded!')
+                window.location.href = '/profile';
+              }
             )
             .catch(err => console.log(err));
           

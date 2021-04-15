@@ -82,7 +82,7 @@ function CreatePosts(props) {
           res => {
             console.log('Post created!')
             alert('Post created!')
-            window.location.href = 'http://localhost:3000/postsall';
+            window.location.href = '/postsall';
           }
         )
         .catch(err => console.log(err));

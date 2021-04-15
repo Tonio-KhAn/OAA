@@ -85,7 +85,9 @@ function DegreeAdd({degree, setDegree, setSet}) {
       )
 
       .then(
-        res => { console.log(res.data)
+        res => { console.log("Degree added.")
+          alert('Degree added.')
+          window.location.href = '/admin/degree';
         },
       )
       .catch(err => console.log(err));

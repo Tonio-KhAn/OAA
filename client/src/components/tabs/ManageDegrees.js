@@ -229,7 +229,7 @@ function ManageDegrees(props) {
         res => {
           console.log('Degree added.')
           alert('Degree added!')
-          window.location.href = 'http://localhost:3000/profile';
+          window.location.href = '/profile';
         }
       )
       .catch(err => console.log(err));

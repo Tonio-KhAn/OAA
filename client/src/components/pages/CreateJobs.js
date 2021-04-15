@@ -221,7 +221,7 @@ function CreateJobs(props) {
               res => {
                 console.log('Job opportunity created!')
                 alert('Job opportunity created!')
-                window.location.href = 'http://localhost:3000/my';
+                window.location.href = '/my';
               }
             )
             .catch(err => console.log(err));
