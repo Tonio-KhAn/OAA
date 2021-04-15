@@ -1,16 +1,13 @@
-import React from 'react'
-import Apply from '../pages/Apply'
+import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import store from '../../store';
+import Reports from '../admin/reports';
 
-
-
-test('renders and uploads file', () => {
-    
+it ('renders without crashing', () => {
     const div = document.createElement('div');
     <Provider store={store}>
-    ReactDOM.render(<Apply />,div);
+    ReactDOM.render(<Reports />,div);
     </Provider>
-  ReactDOM.unmountComponentAtNode(div);
-})
+    ReactDOM.unmountComponentAtNode(div);
+});
