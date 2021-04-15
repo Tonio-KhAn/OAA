@@ -51,7 +51,8 @@ function CourseAdd({course, setCourse, setSet}) {
       )
 
       .then(
-        res => { console.log(res.data)
+        res => { console.log("Course added.")
+        alert('Course added.')
         },
       )
       .catch(err => console.log(err));

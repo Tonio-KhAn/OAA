@@ -61,7 +61,8 @@ function AdminSkillEdit({skill, setSkill, setSet}) {
       )
 
       .then(
-        res => { console.log(res.data)
+        res => { console.log("Skill updated.")
+        alert('Skill updated.')
         setSkill(res.data);
         },
       )

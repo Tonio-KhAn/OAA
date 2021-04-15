@@ -225,7 +225,7 @@ function Reports(props) {
     }, []);
     
     return (
-        <div className='page'>
+        <div >
             <Card><Card.Header><h1 className='hh'>Reports </h1></Card.Header></Card>
             <Aux>
                 <Row>

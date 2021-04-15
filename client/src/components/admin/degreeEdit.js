@@ -65,8 +65,9 @@ function AdminDegreeEdit({degree, setDegree, setSet}) {
 
     const handleSubmit = e => {
       e.preventDefault();
-      console.log("hello")
-
+      console.log("Degree updated.")
+      alert('Degree updated.')
+      
       const config = {
         headers: {}
       };

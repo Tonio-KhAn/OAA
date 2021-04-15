@@ -91,7 +91,8 @@ function AdminCourseEdit({course, setCourse, setSet}) {
       )
 
       .then(
-        res => { console.log(res.data)
+        res => { console.log("Course updated.")
+        alert('Course updated.')
         setCourse(res.data);
         },
       )
