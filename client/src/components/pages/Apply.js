@@ -138,7 +138,7 @@ function Apply(props) {
           <div>
      <h1 class='firstlabel'><em>{values.jobtitle}</em></h1>
      <h2 class='secondlabel'>{values.company}</h2>
-     <p class='thirdlabel'>{values.description}</p>
+     <p class='thirdlabell'>{values.description}</p>
      </div>
      <br></br>
       <div>
