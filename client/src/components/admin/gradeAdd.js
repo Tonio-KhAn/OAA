@@ -24,7 +24,6 @@ function GradeAdd({grade, setGrade, setSet}) {
 
     const handleSubmit = e => {
       e.preventDefault();
-      console.log("hello")
 
       const config = {
         headers: {}
@@ -43,7 +42,9 @@ function GradeAdd({grade, setGrade, setSet}) {
       )
 
       .then(
-        res => { console.log(res.data)
+        res => { console.log("Grade added.")
+        alert('Grade added.')
+        window.location.href = '/admin/grade';
         },
       )
       .catch(err => console.log(err));

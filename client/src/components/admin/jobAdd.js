@@ -174,7 +174,10 @@ function JobAdd({setSet} , props) {
               config
             )
             .then(
-              res => console.log(res.data),
+              res => { console.log("Job added.")
+                alert('Job added.')
+                window.location.href = '/admin/job';
+              },
             )
             .catch(err => console.log(err));
           

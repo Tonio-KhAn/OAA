@@ -113,7 +113,7 @@ function AdminCourseEdit({course, setCourse, setSet}) {
         )
         .then(
           res => { console.log(res.data)
-          setSkillsList(res.data);
+            setSkillsList(res.data);
           },
         )
         .catch(err => console.log(err));

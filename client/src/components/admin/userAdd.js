@@ -31,7 +31,6 @@ function UserAdd({user, setUser, setSet}) {
 
     const handleSubmit = e => {
       e.preventDefault();
-      console.log("hello")
 
       const config = {
         headers: {}
@@ -57,7 +56,9 @@ function UserAdd({user, setUser, setSet}) {
       )
 
       .then(
-        res => { console.log(res.data)
+        res => { console.log("User added.")
+        alert('User added.')
+        window.location.href = '/admin/user/home';
         },
       )
       .catch(err => console.log(err));

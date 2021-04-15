@@ -99,7 +99,9 @@ function Apply(props) {
         )
         .then(
           res => {
-            console.log("successful upload")
+            console.log("Job applied.")
+            alert('Job applied!')
+            
             inputFields.forEach(file => {
               let formdata2 = new FormData();
               formdata2.append("files", file.file);
@@ -113,10 +115,15 @@ function Apply(props) {
                 config
               )
               .then(
-                res => console.log("successful upload")
+                res => {
+                  console.log("Job application media added.")
+                  alert('Job applied!')
+                  window.location.href = '/all';
+                }
               )
               .catch(err => console.log(err));
             })
+            window.location.href = '/all';
           },
         )
         .catch(err => console.log(err));

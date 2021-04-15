@@ -53,6 +53,7 @@ function CourseAdd({course, setCourse, setSet}) {
       .then(
         res => { console.log("Course added.")
         alert('Course added.')
+        window.location.href = '/admin/course';
         },
       )
       .catch(err => console.log(err));

@@ -43,6 +43,7 @@ function SkillAdd({skill, setSkill, setSet}) {
       .then(
         res => { console.log("Skill added.")
         alert('Skill added.')
+        window.location.href = '/admin/skill';
         },
       )
       .catch(err => console.log(err));
