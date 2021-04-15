@@ -225,7 +225,7 @@ function Reports(props) {
     }, []);
     
     return (
-        <div className='page'>
+        <div >
             <Card><Card.Header><h1 className='hh'>Reports </h1></Card.Header></Card>
             <Aux>
                 <Row>
@@ -239,7 +239,7 @@ function Reports(props) {
                 <Bar type="discreteBarChart"
                     data={chartUser}
                     options={{
-                        maintainAspectRatio: false
+                        maintainAspectRatio: true
                     }}
                 />
             </div>
@@ -255,7 +255,7 @@ function Reports(props) {
                 <Bar
                     data={chartSkill}
                     options={{
-                        maintainAspectRatio: false
+                        maintainAspectRatio: true
                     }}
                 />
             </div>
@@ -272,7 +272,7 @@ function Reports(props) {
                 <Bar
                     data={chartCourse}
                     options={{
-                        maintainAspectRatio: false
+                        maintainAspectRatio: true
                     }}
                 />
             </div>
