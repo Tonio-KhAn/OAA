@@ -225,11 +225,11 @@ function Reports(props) {
     }, []);
     
     return (
-        <div >
+        <div className='page'>
             <Card><Card.Header><h1 className='hh'>Reports </h1></Card.Header></Card>
             <Aux>
                 <Row>
-                    <Col md={6}>
+                    <Col sm={12}>
                         <Card>
                             <Card.Header>
                                 <Card.Title className='biglabel'>Types Of Users</Card.Title>
@@ -245,7 +245,7 @@ function Reports(props) {
             </div>
             </Card.Body>
             </Card></Col>
-            <Col md={6}>
+            <Col sm={12}>
                         <Card>
                             <Card.Header>
                                 <Card.Title className='biglabel'>Types Of Skills</Card.Title>
