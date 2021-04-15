@@ -422,6 +422,7 @@ router.route("/add").post(auth, (req, res) => {
     var count2 = 0
     var count3 = 0
     var count4 = 0
+    var count5 = 0
     var check = false
     var skillsToSend =[]
     JobSkill.find({jobOpportunityID: req.params.id})
@@ -431,11 +432,14 @@ router.route("/add").post(auth, (req, res) => {
       }
       Qualification.find({userId: req.user.id})
         .then(myDegrees => {
+          CourseName.find()
+          .then(courseInfo =>{
           if(myDegrees.length == 0){
             skills.forEach(skill =>{
               count4 = 0
                 temp = {
                   skillName: skill.skillName,
+                  yeas: 'yasss',
                   has: false
                 }
                 skillsToSend.push(temp)
@@ -448,51 +452,61 @@ router.route("/add").post(auth, (req, res) => {
           myDegrees.forEach(myDegree =>{
           count2 = 0
           count1 = count1 + 1
-          myDegree.courses.forEach(course =>{
-            CourseName.find({courseTitle: course.name})
-            .then(courseInfo =>{
-            mySkills.concat(courseInfo.skills)
-          })
-          .catch(err => res.status(400).json("Error: " + err));
-          count2 = count2 + 1
-          })
-               if (count1 == myDegrees.length && count2 == myDegree.courses.length){
-            skills.forEach(skill =>{
-              check= false
-              count4 = 0
-              if (mySkills.length == 0){
-                
-                var temp = {
-                  skillName: skill.skillName,
-                  has: check
+            myDegree.courses.forEach(course =>{
+              count5 = 0
+              count2 = count2 + 1
+                courseInfo.forEach(singleCourseInfo=>{
+                  if (course.name == singleCourseInfo.courseTitle ){
+                  mySkills= mySkills.concat(singleCourseInfo.skills)
                 }
-                skillsToSend.push(temp)
-                count3 = count3 + 1
+                  count5 = count5 + 1 
+                  if (count1 == myDegrees.length && count2 == myDegree.courses.length && count5 == courseInfo.length ){
+                    skills.forEach(skill =>{
+                    check= false
+                    count4 = 0
+                    if (mySkills.length == 0){
+                      var temp = {
+                      skillName: skill.skillName,
+                      has: check
+                      }
+                  skillsToSend.push(temp)
+                  count3 = count3 + 1
+                  if (count3 == skills.length){
+                    return res.json(skillsToSend)
+                  }
+                }else{
+                mySkills.forEach(mySkill =>{
+                if (skill.skillName == mySkill.name){
+                check= true
+                }
+                count4 = count4 + 1
+                if (count4 == mySkills.length ){
+                  temp = {
+                    skillName: skill.skillName,
+                    has: check
+                  }
+                  skillsToSend.push(temp)
+                  count3 = count3 + 1
+                }
                 if (count3 == skills.length){
                   return res.json(skillsToSend)
                 }
-              }
-              mySkills.forEach(mySkill =>{
-              if (skill.skillName == mySkill.name){
-              check= true
-              }
-              count4 = count4 + 1
-              if (count4 == mySkills.length ){
-                temp = {
-                  skillName: skill.skillName,
-                  has: check
-                }
-                skillsToSend.push(temp)
-                count3 = count3 + 1
-              }
-              if (count3 == skills.length){
-                return res.json(skillsToSend)
+                })
               }
               })
-            })
-    
-          }
+      
+            }
+            
+                  
+                }) 
+              
+                
+            
+          })
+               
         })
+      })
+      .catch(err => res.status(400).json("Error: " + err));
       })
         .catch(err => res.status(400).json("Error: " + err));
     })
@@ -506,7 +520,8 @@ router.route("/add").post(auth, (req, res) => {
     var count2 = 0
     var count3 = 0
     var count4 = 0
-    var ckeck = false
+    var count5 = 0
+    var check = false
     var skillsToSend =[]
     JobSkill.find({jobOpportunityID: req.params.jobId})
     .then(skills =>{
@@ -515,11 +530,15 @@ router.route("/add").post(auth, (req, res) => {
       }
       Qualification.find({userId: req.params.userId})
         .then(myDegrees => {
+          console.log(myDegrees)
+          CourseName.find()
+          .then(courseInfo =>{
           if(myDegrees.length == 0){
             skills.forEach(skill =>{
               count4 = 0
                 temp = {
                   skillName: skill.skillName,
+                  yeas: 'yasss',
                   has: false
                 }
                 skillsToSend.push(temp)
@@ -532,56 +551,72 @@ router.route("/add").post(auth, (req, res) => {
           myDegrees.forEach(myDegree =>{
           count2 = 0
           count1 = count1 + 1
-          myDegree.courses.forEach(course =>{
-            CourseName.find({courseTitle: course.name})
-            .then(courseInfo =>{
-            mySkills.concat(courseInfo.skills)
-          })
-          .catch(err => res.status(400).json("Error: " + err));
-          count2 = count2 + 1
-          })
-               if (count1 == myDegrees.length && count2 == myDegree.courses.length){
-            skills.forEach(skill =>{
-              check= false
-              count4 = 0
-              if (mySkills.length == 0){
-                
-                temp = {
-                  skillName: skill.skillName,
-                  has: check
+           console.log('first loop')
+            myDegree.courses.forEach(course =>{
+              console.log(myDegree.courses)
+              console.log('second loop')
+              count5 = 0
+              count2 = count2 + 1
+                courseInfo.forEach(singleCourseInfo=>{
+                  if (course.name == singleCourseInfo.courseTitle ){
+                  mySkills= mySkills.concat(singleCourseInfo.skills)
                 }
-                skillsToSend.push(temp)
-                count3 = count3 + 1
+                  count5 = count5 + 1 
+                  if (count1 == myDegrees.length && count2 == myDegree.courses.length && count5 == courseInfo.length ){
+                    skills.forEach(skill =>{
+                    check= false
+                    count4 = 0
+                    if (mySkills.length == 0){
+                      console.log("my skills lenght" + count2)
+                      var temp = {
+                      skillName: skill.skillName,
+                      has: check
+                      }
+                  skillsToSend.push(temp)
+                  count3 = count3 + 1
+                  if (count3 == skills.length){
+                    return res.json(skillsToSend)
+                  }
+                }else{
+                mySkills.forEach(mySkill =>{
+                console.log(skill.skillName)
+                console.log(mySkill.name)
+                if (skill.skillName == mySkill.name){
+                check= true
+                }
+                count4 = count4 + 1
+                if (count4 == mySkills.length ){
+                  temp = {
+                    skillName: skill.skillName,
+                    has: check
+                  }
+                  skillsToSend.push(temp)
+                  count3 = count3 + 1
+                }
                 if (count3 == skills.length){
                   return res.json(skillsToSend)
                 }
-              }
-              mySkills.forEach(mySkill =>{
-              if (skill.skillName == mySkill.name){
-              check= true
-              }
-              count4 = count4 + 1
-              if (count4 == mySkills.length ){
-                temp = {
-                  skillName: skill.skillName,
-                  has: check
-                }
-                skillsToSend.push(temp)
-                count3 = count3 + 1
-              }
-              if (count3 == skills.length){
-                return res.json(skillsToSend)
+                })
               }
               })
-            })
-    
-          }
+      
+            }
+            
+                  
+                }) 
+              
+                
+            
+          })
+               
         })
+      })
+      .catch(err => res.status(400).json("Error: " + err));
       })
         .catch(err => res.status(400).json("Error: " + err));
     })
     .catch(err => res.status(400).json("Error: " + err));
 
   });
-
+  
   module.exports = router;
