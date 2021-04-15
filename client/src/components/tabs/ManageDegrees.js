@@ -245,9 +245,9 @@ function ManageDegrees(props) {
     <div class= "page-back">
       <div class= "page">
         <div>
-          <div>
+          <div className='alg'>
             {degreeNames.map((degreeName,index) =>(
-            <div class="input-group" key={index}>
+            <div class="biglabel alg" key={index}>
               <h4>{degreeName.name}</h4>
             </div> 
             ))} 
