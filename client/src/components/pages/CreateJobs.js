@@ -309,8 +309,8 @@ function CreateJobs(props) {
 
           <div class="wrap-contact100-form-btn">
 						<div class="contact100-form-bgbtn"></div>
-						<button class="contact100-form-btn theme-bgg text-white" type="button"onClick={() => handleRemove(index)}>
-							Remove
+						<button class="contact100-form-btn theme-bg1 text-white" type="button"onClick={() => handleRemove(index)}>
+            Remove
 						</button>
 					</div>
           
@@ -336,7 +336,6 @@ function CreateJobs(props) {
               <option key={index} value={degreeList._id}>{degreeList.name}</option>
               ))}              
             </select>
-            
             <div class="sel">
               <button class="btnnew" type="button" onClick={() => handleDegreeAdd()}>Add Required Degree</button>
             </div>
