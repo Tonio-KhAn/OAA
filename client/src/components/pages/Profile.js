@@ -106,16 +106,16 @@ function loadUser(){
         <div>
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
-              <Link to='/profile/manageDegrees' className='nav-links'>
-                <button class="nav-link active " id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true" >
-                  Manage Degrees
+              <Link to='/profile/myPosts' className='nav-links'>
+                <button class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true" >
+                  My Posts
                 </button>
               </Link>
             </li>
             <li class="nav-item">
-              <Link to='/profile/myPosts' className='nav-links'>
-                <button class="nav-link active" id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true" >
-                  My Posts
+              <Link to='/profile/manageDegrees' className='nav-links'>
+                <button class="nav-link active " id="home-tab" data-toggle="tab"  role="tab" aria-controls="home" aria-selected="true" >
+                  Manage Degrees
                 </button>
               </Link>
             </li>
