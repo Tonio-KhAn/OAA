@@ -8,7 +8,7 @@ import '../css/CreateJobs.css';
 
 function Resume(props) {
     const [profileImg, setProfileImg] = useState({
-        location:"https://sothis.es/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"
+        location:""
       });
     const[image, setImage] = useState(null)
     const handleSingleChange = e =>{
@@ -65,7 +65,7 @@ function Resume(props) {
           res => { console.log(res.data)
             if (res.data.location == null){
               setProfileImg({
-                "location": "https://sothis.es/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"});
+                "location": ""});
               
             }
             else{
