@@ -8,7 +8,7 @@ import '../css/CreateJobs.css';
 
 function Resume(props) {
     const [profileImg, setProfileImg] = useState({
-        location:"https://sothis.es/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"
+        location:""
       });
     const[image, setImage] = useState(null)
     const handleSingleChange = e =>{
@@ -65,7 +65,7 @@ function Resume(props) {
           res => { console.log(res.data)
             if (res.data.location == null){
               setProfileImg({
-                "location": "https://sothis.es/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png"});
+                "location": ""});
               
             }
             else{
@@ -87,8 +87,9 @@ function Resume(props) {
 
         <br></br>
 <form class="test" onSubmit={handleSubmit}>
+{profileImg.location != '' ? (
 <iframe
-              width="727"
+              width="600"
               height="409"
               src={"http://localhost:8080/" + profileImg.location}
               frameborder="0"
@@ -97,6 +98,10 @@ function Resume(props) {
               style={{ outline : "none", borderColor : "#7198b8", boxShadow : "0 0 30px #62a3d8", margin: "auto"}}
              
             ></iframe>
+) :
+
+(<> </>)
+    }
 <div>
   <br></br>
   <div class="input-group">

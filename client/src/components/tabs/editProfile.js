@@ -37,7 +37,10 @@ function EditProfile(props) {
             )
             .then(
               res => { setProfileImg({
-                "location": res.data})}
+                "location": res.data})
+                alert('Profile picture updated!')
+                window.location.href = 'http://localhost:3000/profile';
+              }
             )
             .catch(err => console.log(err));
           

@@ -7,8 +7,8 @@ import {connect} from 'react-redux';
 import '../css/CreateJobs.css';
 
 function Apply(props) {
-    const[ values] = useState(
-        {jobtitle: 'IT Manage', company: 'A Company', description:'A Job description goes here'},
+    const[values, setValues] = useState(
+        {jobtitle: '', company: '', description:''},
     )
     const[ inputFields, setInputFields] = useState([
     ])
@@ -47,6 +47,29 @@ function Apply(props) {
       )
       .catch(err => console.log(err));
   }
+
+  function getJobInformation(){
+    const token = props.auth.token;
+    const config = {
+        headers: {}
+      };
+
+      if (token) {
+        config.headers["x-auth-token"] = token;
+      }
+
+    axios
+    .get(
+      "/jobOpportunity/individual/"+ props.match.params.id,
+      config
+    )
+    .then(
+      res => { console.log(res.data)
+        setValues(res.data);
+      },
+    )
+    .catch(err => console.log(err));
+}
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -103,6 +126,7 @@ function Apply(props) {
   }
 
   useEffect(() => {
+    getJobInformation();
     getMedias();
   }, []);
 
